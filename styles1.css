@@ -1,0 +1,96 @@
+body {
+  height: 100%;
+}
+
+.mark {
+  opacity: 80%
+}
+
+.box img {
+    -webkit-filter: brightness(0.6);
+    filter: brightness(0.7);
+}
+
+
+.btn {
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 20px;
+}
+
+.carousel { z-index: -99; } /* keeps this behind all content */
+.carousel .item {
+    position: fixed;
+    width: 100%; height: 100%;
+    -webkit-transition: opacity 1s;
+    -moz-transition: opacity 1s;
+    -ms-transition: opacity 1s;
+    -o-transition: opacity 1s;
+    transition: opacity 1s;
+
+}
+.carousel .one {
+    background: url(assets/img/slide3blur.jpg);
+    background-size: cover;
+    -moz-background-size: cover;
+}
+.carousel .two {
+    background: url(assets/img/slide2blur.jpg);
+    background-size: cover;
+    -moz-background-size: cover;
+}
+.carousel .three {
+    background: url(assets/img/slide1blur.jpg);
+    background-size: cover;
+    -moz-background-size: cover;
+}
+.carousel .active.left {
+    left:0;
+    opacity:0;
+    z-index:2;
+}
+
+.body{
+  @font-face {
+    font-family: "Open Sans";
+    src: url("/fonts/OpenSans-Regular-webfont.woff2") format("woff2"),
+         url("/fonts/OpenSans-Regular-webfont.woff") format("woff");
+  }
+}
+
+------
+------
+
+.container {
+    text-align: center;
+}
+
+.container h4 {
+    text-align: center;
+    color: black;
+}
+
+#project1 {
+    text-align: center;
+    color: white;
+    background-color: white;
+    background-color: rgba(255,255,255,0.9);
+    color: black;
+}
+
+#project1:hover {
+    background-color: blue;
+    color: white;
+}
+
+#project1:hover h4 {
+    color: white;
+}
+
+#project1 h4 {
+    text-transform: uppercase;
+}
+
+a {
+    text-decoration: none;
+}
