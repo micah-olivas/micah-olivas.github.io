@@ -24,12 +24,27 @@
           min-width: 100%;
           min-height: 100%;
         }
+        .flex-container {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: baseline;
+        }
+        .subtitle{
+          color: yellow;
+          font-size: medium;
+          position: relative;
+          margin-bottom: 5px;
+
+        }
+        .nametext{
+          color: white;
+          font-weight: bold;
+          font-size: x-large;
+          margin-bottom: -10px;
+          padding-right: 6px;
+        }
 
         </style>
-        <!--
-        favicon
-        -->
-
       </head>
 
     <body>
@@ -43,9 +58,11 @@
         </video>
         <div class="col-sm">
           <div class="col-lg-10">
-            <h2 class="text-white">Micah Olivas
-            <small class="text-warning"><small>Genome Engineering</small></small></h2>
-            <p class="text-white">Hello! I am a fourth-year biochemistry major at California State University Fresno interested in developing scalable genome-wide CRISPR/Cas screens to study cancer signaling. By mining genomic data for novel CRISPR systems, I hope to improve the specificity and feasibility of gene editing strategies. This winter, I will apply to Ph.D. programs in genetics and genomics for fall 2020 matriculation. Feel free to reach out to me by email for more information!</p>
+            <div class="flex-container">
+              <div class="nametext">Micah Olivas</div>
+              <div class="subtitle">Genome Engineer</div>
+            </div>
+            <p class="text-white">Hello! I am a fourth-year biochemistry major at California State University, Fresno interested in developing scalable genome-wide CRISPR/Cas screens to study cancer signaling. By mining genomic data for novel CRISPR systems, I hope to improve the specificity and feasibility of gene editing strategies. This winter, I will apply to Ph.D. programs in genetics and genomics for fall 2020 matriculation. Feel free to reach out to me by email for more information!</p>
             <div class="container">
             <div class="row justify-content-start">
                 <div class="col-md-10 py-1">
