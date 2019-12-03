@@ -32,11 +32,12 @@
           flex-wrap: wrap;
           align-items: baseline;
         }
-        .subtitle{
+        h2{
           color: yellow;
           font-size: medium;
           position: relative;
           margin-bottom: 5px;
+          mix-blend-mode: overlay;
         }
         .nametext{
           color: white;
@@ -44,6 +45,15 @@
           font-size: x-large;
           margin-bottom: -10px;
           padding-right: 6px;
+        }
+        .btn-secondary{
+          mix-blend-mode: luminosity;
+          margin-right: 4px;
+        }
+        .btn-primary{
+          mix-blend-mode: exclusion;
+          margin-top: 6px;
+
         }
 
         </style>
@@ -61,9 +71,14 @@
         <div class="col-sm">
             <div class="flex-container">
               <div class="nametext">Micah Olivas</div>
-              <div class="subtitle">Genome Engineer</div>
+              <h2 contenteditable role='textbox' aria-multiline='true'>Genome Engineer</h2>
             </div>
-            <p class="text-white">Hello! I am a fourth-year biochemistry major at California State University, Fresno interested in developing scalable genome-wide CRISPR/Cas screens to study cancer signaling. By mining genomic data for novel CRISPR systems, I hope to improve the specificity and feasibility of gene editing strategies. This winter, I will apply to Ph.D. programs in genetics and genomics for fall 2020 matriculation. Feel free to reach out to me by email for more information!</p>
+            <p class="text-white">Hello! I am a fourth-year biochemistry major at California
+              State University, Fresno interested in developing scalable genome-wide CRISPR
+              screening. Through the development of novel functionality in CRISPR/Cas systems,
+              I hope to improve the specificity and feasibility of gene editing strategies.
+              This winter, I will apply to Ph.D. programs in genetics and genomics for fall
+              2020 matriculation. Feel free to reach out to me by email for more information!</p>
             <div class="flex-container" id="iconsetc">
                   <div class="flex-container">
                     <a href="https://www.linkedin.com/in/micaholivas/">
@@ -79,7 +94,7 @@
                     </div>
                   </div>
                     <div>
-                      <a href="Olivas.CVsite.pdf" class="btn btn-secondary" style="margin-left: 10px" >
+                      <a href="Olivas.CVsite.pdf" class="btn btn-secondary" style="margin-left: 10px">
                           Curriculum Vitae
                       </a>
                     </div>
