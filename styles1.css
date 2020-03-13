@@ -26,6 +26,12 @@
           margin-bottom: 5px;
           mix-blend-mode: ;
         }
+        .linktext {
+          color: #4a65cf;
+          font-size: 14px;
+          font-weight: bold;
+          vertical-align: super;
+        }
         .btn {
             padding: 4px 12px;
             font-size: 12px;
