@@ -1,3 +1,4 @@
+
         #myVideo1 {
           position: fixed;
           right: 0;
@@ -26,16 +27,41 @@
           margin-bottom: 5px;
           mix-blend-mode: ;
         }
-        .linktext {
-          color: #4a65cf;
-          font-size: 14px;
-          font-weight: bold;
-          vertical-align: super;
-        }
         .btn {
-            padding: 4px 12px;
-            font-size: 12px;
-            border-radius: 20px;
+          padding: 4px 12px;
+          font-size: 12px;
+          border-radius: 20px;
+        }
+        :root {
+          --mainColor: #5E62BD;
+        }
+        .linktext{
+          color: white;
+          background:
+             linear-gradient(
+               to bottom, var(--mainColor) 0%,
+               var(--mainColor) 100%
+             );
+            background-position: 0 100%;
+            background-repeat: repeat-x;
+            background-size: 4px 2px;
+          color: white;
+          text-decoration: none;
+          transition: background-size .8s;
+        }
+        .linktext:hover {
+          background-size: 4px 50px;
+        }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        a:hover
+        {
+             color: inherit;
+             text-decoration:none;
+             cursor:pointer;
         }
         .nametext{
           color: white;
