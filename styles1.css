@@ -84,7 +84,7 @@
           --mainColor: #5E62BD;
         }
         .linktext{
-          color: white;
+          color: pink;
           background:
              linear-gradient(
                to bottom, var(--mainColor) 0%,
