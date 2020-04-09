@@ -25,7 +25,8 @@
              cursor:pointer;
         }
         body {
-          background-color: #a983de;
+          background-color: #374e73;
+          font-family: ;
         }
         .flex-container {
           display: flex;
@@ -68,7 +69,7 @@
           }
         }
         h2{
-          color: #3752FF;
+          color: #9ebae8;
           font-size: medium;
           font-weight: bold;
           position: relative;
@@ -81,10 +82,10 @@
           border-radius: 20px;
         }
         :root {
-          --mainColor: #5E62BD;
+          --mainColor: #8372d4;
         }
         .linktext{
-          color: white;
+          color: inherit;
           background:
              linear-gradient(
                to bottom, var(--mainColor) 0%,
@@ -93,7 +94,7 @@
             background-position: 0 100%;
             background-repeat: repeat-x;
             background-size: 4px 2px;
-          color: white;
+          color: inherit;
           text-decoration: none;
           transition: background-size .8s;
         }
