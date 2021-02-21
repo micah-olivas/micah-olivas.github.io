@@ -1,3 +1,3 @@
 # micah-olivas.github.io
 
-Done.
+My personal blog/landing page, hosted here.
