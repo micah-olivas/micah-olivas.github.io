@@ -3,7 +3,7 @@
 /* Set the maximum width of an image to 200% and the minimum width to 150px, while maintaining its aspect ratio */
 img {
     max-width: 200%;
-    min-width: 150px;
+    min-width: 140px;
     height: auto;
 }
 
