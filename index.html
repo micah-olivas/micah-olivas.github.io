@@ -14,34 +14,28 @@
 </head>
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174155188-1"></script>
 
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'UA-174155188-1');
-</script>
-
   <body data-gr-c-s-loaded="true">
     <div class="container content">
       <main>
         <div class="home">
     <div class="mini-intro">
-    <img class="avatar" src="my-pic.png" alt="My Picture" style="float: right; margin-left: 5px; margin-bottom: 5px; box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">
-    <h1 id="micah-olivas">Micah Olivas</h1>
-    <p><small> <code class="language-plaintext highlighter-rouge">mbolivas [at] stanford.edu</code></small></p>
+    <img class="avatar fade-in" src="my-pic.png" alt="My Picture" style="float: right; margin-left: 5px; margin-bottom: 5px; box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">
+    <!-- <h1 id="micah-olivas">Micah Olivas</h1> -->
+    <h1 id="micah-olivas" class="fade-in">Micah Olivas</h1>
+    <p class="fade-in"><small> <code class="language-plaintext highlighter-rouge">mbolivas [at] stanford.edu</code></small></p>
     
-    <p>
+    <p class="fade-in">
       Hi! I’m a fourth-year Genetics PhD student studying enzyme evolution at Stanford University.
       I am a member of <a href="http://www.fordycelab.com">Polly Fordyce's group</a> in the Departments of Genetics and
       Bioengineering, and <a href="https://chemh.stanford.edu/">Sarafan ChEM-H</a>. I am grateful to be supported by a <a href="https://reporter.nih.gov/search/bPF1kztkukeMtJJIhyTr_w/project-details/10752370">NRSA F31 fellowship
       </a> from the <a href="https://www.genome.gov/careers-training/NHGRI-Funding-Opportunities-Training-Career-Development/Fellowships-FAQ">National Human Genome Research Institute</a> of the NIH.
     </p>
 
-    <p>In my research, I use high-throughput microfluidics experiments
+    <p class="fade-in">In my research, I use high-throughput microfluidics experiments
       to dissect how enzymatic properties like allosteric regulation, substrate specificity, and thermostability are encoded in the amino acid sequences of natural proteins. 
       Through this work, I hope to improve sequence-to-function prediction in both natural and engineered proteins.
 
-    <p>
+    <p class="fade-in">
       Here are my
       <a href="https://scholar.google.com/citations?user=4dvV9YAAAAAJ&hl=en">Google Scholar</a>,
       <a href="https://twitter.com/MicahOlivas1">Twitter</a>,
@@ -245,5 +239,25 @@
 
 
 
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-174155188-1');
 
-</body></html>
+  window.addEventListener('load', function() {
+    const elements = document.querySelectorAll('.fade-in');
+    let delay = 0;
+
+    elements.forEach(function(element) {
+        setTimeout(function() {
+            element.style.opacity = 1; // This will trigger the CSS transition
+        }, delay);
+
+        delay += 500; // Adjust delay as needed (500ms here)
+    });
+});
+</script>
+
+</body>
+</html>

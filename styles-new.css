@@ -11,4 +11,21 @@ h1 {
     color: #000000;
 }
 
-/*# sourceMappingURL=styles.css.map */
+  
+  
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in {
+  opacity: 0; /* Start with elements invisible */
+  transition: opacity 0.5s ease-in-out; /* Smooth transition for opacity change */
+}
+
+
+.start-fade-in {
+  animation: fadeIn 0.5s ease-in-out forwards; /* Reduced time for faster animation */
+}
+
+
