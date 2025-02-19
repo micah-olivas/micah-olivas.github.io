@@ -15,6 +15,20 @@ html{
   line-height:1.5
 }
 
+:root {
+  --background-color: #fff; /* Light theme background */
+  --text-color: #515151; /* Light theme text */
+  --link-color: #268bd2; /* Light theme link color */
+  --border-color: #e5e5e5; /* Light theme border color */
+}
+
+[data-theme="dark"] {
+  --background-color: #121212; /* Dark theme background */
+  --text-color: #e0e0e0; /* Dark theme text */
+  --link-color: #89CFF0; /* Dark theme link color */
+  --border-color: #333; /* Dark theme border color */
+}
+
 @media (min-width: 54rem){
   html{
     color:blue;
