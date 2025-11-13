@@ -4,13 +4,20 @@
       "year": "2025",
       "entries": [
         {
+          "type": "Talk",
+          "title": "Investigating Sequence-based Function Prediction with High-throughput Microfluidic Enzymology",
+          "venue": "Enzymes, Coenzymes, and Metabolic Pathways Gordon Research Conference, New Hampshire",
+          "date": "July 2025",
+          "accolades": "Selected graduate student speaker"
+        },
+        {
           "type": "Poster",
           "title": "Reimagining mutational scanning through microfluidic variant assays with suppressor tRNAs.",
           "venue": "Mutational Scanning Symposium (MSS2025), Barcelona, Spain",
           "date": "April 2025"
         },
         {
-          "type": "Lightning Talk",
+          "type": "Talk",
           "title": "Reimagining mutational scanning: microfluidic variant assays with suppressor tRNAs.",
           "venue": "Chan Zuckerberg Biohub Interlab Confabulation, San Francisco, CA",
           "date": "April 2025"
@@ -30,7 +37,8 @@
           "type": "Poster",
           "title": "Using high-throughput microfluidic enzymology to investigate machine learning-informed functional prediction.",
           "venue": "Enzymes, Coenzymes, and Metabolic Pathways Gordon Research Conference, New Hampshire",
-          "date": "July 2024"
+          "date": "July 2024",
+          "accolades": "Received ACS Best Poster Award"
         },
         {
           "type": "Poster",
