@@ -559,4 +559,438 @@ h1 {
  /* Reduced time for faster animation */
 }
 
+/* Modern presentation cards */
+.presentations-section {
+  margin-top: 2rem;
+}
+
+.presentations-year {
+  margin: 2.5rem 0 1.5rem 0;
+  color: #1d1d1f;
+  font-weight: 600;
+  font-size: 1.3rem;
+  padding-bottom: 0.5rem;
+}
+
+.presentations-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.presentation-card {
+  display: flex;
+  align-items: flex-start;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 1rem 0;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: visible;
+}
+
+.presentation-card:hover {
+  opacity: 0.8;
+}
+
+.presentation-type {
+  display: inline-block;
+  background: #f5f5f7;
+  color: #1565c0;
+  padding: 0.4rem 0.75rem;
+  border-radius: 16px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  width: 85px;
+  text-align: center;
+  margin-right: 1rem;
+}
+
+.presentation-type.type-paper {
+  color: #1565c0;
+}
+
+.presentation-type.type-talk {
+  color: #7b1fa2;
+}
+
+.presentation-type.type-poster {
+  color: #2e7d32;
+}
+
+.presentation-type.type-lightning-talk {
+  color: #ef6c00;
+}
+
+.presentation-content {
+  flex: 1;
+}
+
+.presentation-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1d1d1f;
+  line-height: 1.4;
+  margin-bottom: 0.4rem;
+  font-style: italic;
+}
+
+.presentation-authors {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 0.3rem;
+  line-height: 1.3;
+}
+
+.presentation-venue {
+  font-size: 0.85rem;
+  color: #515151;
+  margin-bottom: 0.2rem;
+  line-height: 1.3;
+}
+
+.presentation-date {
+  font-size: 0.8rem;
+  color: #888;
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+}
+
+.presentation-accolades {
+  font-size: 0.8rem;
+  color: #666;
+  font-style: italic;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.presentation-links {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.presentation-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.6rem;
+  background: #f5f5f7;
+  color: #268bd2 !important;
+  text-decoration: none;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.presentation-link:hover {
+  background: #e8e8ed;
+  color: #268bd2 !important;
+}
+
+.presentation-link:visited {
+  color: #268bd2 !important;
+}
+
+/* Enhanced mobile responsiveness for presentations */
+@media (max-width: 48rem) {
+  .presentations-section {
+    margin-top: 1.5rem;
+  }
+
+  .presentations-year {
+    font-size: 1.15rem;
+    margin: 2rem 0 1rem 0;
+  }
+
+  .presentation-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem 0;
+  }
+
+  .presentation-type {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.6rem;
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+    width: auto;
+  }
+
+  .presentation-content {
+    width: 100%;
+  }
+
+  .presentation-title {
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .presentation-authors {
+    font-size: 0.8rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .presentation-venue {
+    font-size: 0.8rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .presentation-date {
+    font-size: 0.75rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .presentation-accolades {
+    font-size: 0.75rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .presentation-links {
+    margin-top: 0.3rem;
+  }
+
+  .presentation-link {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 30rem) {
+  .presentation-type {
+    font-size: 0.65rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .presentation-title {
+    font-size: 0.85rem;
+  }
+
+  .presentation-authors,
+  .presentation-venue {
+    font-size: 0.75rem;
+  }
+
+  .presentation-date {
+    font-size: 0.7rem;
+  }
+
+  .presentation-accolades {
+    font-size: 0.7rem;
+  }
+
+  .presentation-link {
+    font-size: 0.65rem;
+  }
+}
+
+/* Touch-friendly hover effects for mobile */
+@media (hover: none) and (pointer: coarse) {
+  .presentation-card:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: #e5e5e5;
+  }
+
+  .presentation-card:hover::before {
+    transform: none;
+  }
+
+  .presentation-link:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  /* Add touch feedback instead */
+  .presentation-card:active {
+    background-color: #f8f9fa;
+    transform: scale(0.98);
+    transition: all 0.1s ease;
+  }
+
+  .presentation-link:active {
+    background: #268bd2;
+    color: #fff !important;
+  }
+}
+
+/* Modern Apple-inspired news */
+.news-section {
+  margin-top: 2rem;
+}
+
+.news-timeline {
+  padding: 0;
+}
+
+.news-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  padding: 0;
+  transition: all 0.2s ease;
+}
+
+.news-item:hover {
+  opacity: 0.8;
+}
+
+.news-date {
+  display: inline-block;
+  background: #f5f5f7;
+  color: var(--news-color, #268bd2);
+  padding: 0.4rem 0.75rem;
+  border-radius: 16px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-right: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  width: 85px;
+  text-align: center;
+}
+
+.news-type {
+  display: none;
+}
+
+.news-type.type-fellowship {
+  background: rgba(255, 215, 0, 0.1);
+  color: #cc8400;
+  border-color: rgba(255, 215, 0, 0.3);
+}
+
+.news-type.type-award {
+  background: rgba(255, 193, 7, 0.1);
+  color: #cc7700;
+  border-color: rgba(255, 193, 7, 0.3);
+}
+
+.news-type.type-milestone {
+  background: rgba(76, 175, 80, 0.1);
+  color: #2e7d32;
+  border-color: rgba(76, 175, 80, 0.3);
+}
+
+.news-type.type-publication {
+  background: rgba(156, 39, 176, 0.1);
+  color: #7b1fa2;
+  border-color: rgba(156, 39, 176, 0.3);
+}
+
+.news-type.type-conference {
+  background: rgba(33, 150, 243, 0.1);
+  color: #1976d2;
+  border-color: rgba(33, 150, 243, 0.3);
+}
+
+.news-type.type-talk {
+  background: rgba(255, 152, 0, 0.1);
+  color: #ef6c00;
+  border-color: rgba(255, 152, 0, 0.3);
+}
+
+.news-type.type-rotation {
+  background: rgba(96, 125, 139, 0.1);
+  color: #455a64;
+  border-color: rgba(96, 125, 139, 0.3);
+}
+
+.news-type.type-internship {
+  background: rgba(63, 81, 181, 0.1);
+  color: #303f9f;
+  border-color: rgba(63, 81, 181, 0.3);
+}
+
+.news-content {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #1d1d1f;
+  flex: 1;
+}
+
+.news-content a {
+  color: #268bd2;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.news-content a:hover {
+  text-decoration: underline;
+}
+
+.news-show-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.news-show-more-btn {
+  background: #f5f5f7;
+  color: #6e6e73;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.news-show-more-btn:hover {
+  background: #e8e8ed;
+  color: #515151;
+}
+
+.news-item.hidden {
+  display: none;
+}
+
+/* Mobile responsive Apple design */
+@media (max-width: 48rem) {
+  .news-item {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 1.25rem;
+  }
+
+  .news-date {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.6rem;
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+    width: auto;
+  }
+
+  .news-content {
+    font-size: 0.9rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    width: 100%;
+  }
+}
+
+@media (max-width: 30rem) {
+  .news-date {
+    font-size: 0.65rem;
+    padding: 0.25rem 0.5rem;
+    width: auto;
+  }
+
+  .news-content {
+    font-size: 0.85rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+}
+
 
