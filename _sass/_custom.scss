@@ -1,8 +1,11 @@
 // Custom styles for Micah's site
 
-// Clean sans-serif font
+// Import Roboto font
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+// Roboto as default font
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
 }
 
 // Make name all same weight (remove bold from last name)
@@ -24,4 +27,25 @@ header.post-header .post-title {
   .last-name {
     font-weight: 400 !important;
   }
+}
+
+// Fix news scrolling
+.announcements {
+  max-height: 400px;
+  overflow-y: auto !important;
+}
+
+// Light mode customizations
+html[data-theme='light'] {
+  --global-bg-color: #FAF9F5 !important;
+  --global-theme-color: #0066cc !important; // Blue links
+
+  a {
+    color: #0066cc !important;
+  }
+}
+
+// Dark mode customizations
+html[data-theme='dark'] {
+  --global-bg-color: #3A3E4F !important;
 }
