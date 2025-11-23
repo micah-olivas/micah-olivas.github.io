@@ -34,7 +34,7 @@ jobs:
         run: |
           npm install -g npm@latest
           npm ci
-          bundle exec jekyll build --lsi
+          bundle exec jekyll build
         env:
           JEKYLL_ENV: production
       
