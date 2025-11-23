@@ -1,0 +1,182 @@
+{
+  "presentations": [
+    {
+      "year": "2025",
+      "entries": [
+        {
+          "type": "Talk",
+          "title": "Investigating Sequence-based Function Prediction with High-throughput Microfluidic Enzymology",
+          "venue": "Enzymes, Coenzymes, and Metabolic Pathways Gordon Research Conference, New Hampshire",
+          "date": "July 2025",
+          "accolades": "Selected graduate student speaker"
+        },
+        {
+          "type": "Poster",
+          "title": "Reimagining mutational scanning through microfluidic variant assays with suppressor tRNAs.",
+          "venue": "Mutational Scanning Symposium (MSS2025), Barcelona, Spain",
+          "date": "April 2025"
+        },
+        {
+          "type": "Talk",
+          "title": "Reimagining mutational scanning: microfluidic variant assays with suppressor tRNAs.",
+          "venue": "Chan Zuckerberg Biohub Interlab Confabulation, San Francisco, CA",
+          "date": "April 2025"
+        },
+        {
+          "type": "Poster",
+          "title": "Reimagining mutational scanning through microfluidic variant assays with suppressor tRNAs (µVAST).",
+          "venue": "NHGRI Trainee Meeting, Philadelphia, PA",
+          "date": "April 2025"
+        }
+      ]
+    },
+    {
+      "year": "2024",
+      "entries": [
+        {
+          "type": "Poster",
+          "title": "Using high-throughput microfluidic enzymology to investigate machine learning-informed functional prediction.",
+          "venue": "Enzymes, Coenzymes, and Metabolic Pathways Gordon Research Conference, New Hampshire",
+          "date": "July 2024",
+          "accolades": "Received ACS Best Poster Award"
+        },
+        {
+          "type": "Poster",
+          "title": "Using high-throughput microfluidic enzymology to investigate machine learning-informed functional prediction.",
+          "venue": "NHGRI Trainee Meeting, Philadelphia, PA",
+          "date": "April 2025"
+        }
+      ]
+    },
+    {
+      "year": "2023",
+      "entries": [
+        {
+          "type": "Talk",
+          "title": "Beyond Structure: Exploring the Language of Enzyme Function with HT-MEK.",
+          "venue": "Current Issues in Genetics Seminar Series. Stanford Genetics Department",
+          "date": "August 4th, 2023"
+        }
+      ]
+    },
+    {
+      "year": "2022",
+      "entries": [
+        {
+          "type": "Poster",
+          "title": "Leveraging novel protein language models to understand constraints on enzyme function and design.",
+          "authors": "Olivas M.*, Wong-Fannjiang C.*, Markin C., Naik N., and Fordyce P.M.",
+          "venue": "Quantitative Biology Institute Bay Area Chemical Biology Symposium. San Francisco, CA",
+          "date": "2022",
+          "link": "public/2022-olivas-genetics-retreat-poster-final.pdf"
+        },
+        {
+          "type": "Paper",
+          "title": "Designing active and thermostable enzymes with sequence-only predictive models.",
+          "authors": "Wong-Fannjiang C.*, Olivas M.*, Greene E.R., Markin C.J., Wallace B., Krause B., Pinney M., Fraser J., Fordyce P.M., Madani A., and Naik N.",
+          "venue": "Neural Information Processing Systems (NeurIPS) Learning Meaningful Representations of Life Workshop",
+          "date": "2022",
+          "link": "https://openreview.net/forum?id=Nc7EsfpZ7C"
+        }
+      ]
+    },
+    {
+      "year": "2021",
+      "entries": [
+        {
+          "type": "Talk",
+          "title": "Developing predictive models of enzyme function from physics and phylogeny.",
+          "venue": "Genetics Department Annual Retreat. Stanford, CA",
+          "date": "2021"
+        }
+      ]
+    },
+    {
+      "year": "2020",
+      "entries": [
+        {
+          "type": "Paper",
+          "title": "CRISPR screens in cancer spheroids identify 3D growth-specific vulnerabilities.",
+          "authors": "Kyuho Han, Sarah E. Pierce, Amy Li, Kaitlyn Spees, Gray R. Anderson, Jose A. Seoane, Yuan-Hung Lo, Michael Dubreuil, Micah Olivas, Roarke A. Kamber, Michael Wainberg, Kaja Kostyrko, Marcus R. Kelly, Maryam Yousefi, Scott W. Simpkins, David Yao, Keonil Lee, Calvin J. Kuo, Peter K. Jackson, Alejandro Sweet-Cordero, Anshul Kundaje, Andrew J. Gentles, Christina Curtis, Monte M. Winslow and Michael C. Bassik.",
+          "venue": "Nature",
+          "date": "2020",
+          "link": "papers/2020_Nature.pdf"
+        }
+      ]
+    },
+    {
+      "year": "2019",
+      "entries": [
+        {
+          "type": "Poster",
+          "title": "Genome-wide CRISPR screens in 3D tumor spheroids reveal IGF1R processing dependencies in lung adenocarcinoma.",
+          "authors": "Olivas M*, Han K, Anderson G, and Bassik MC.",
+          "venue": "Stanford Summer Research Program Symposium. Stanford, CA",
+          "date": "08/2019"
+        },
+        {
+          "type": "Poster",
+          "title": "Development of an inducible Cas9 for temporally controlled gene editing in mammary adenocarcinoma.",
+          "authors": "Olivas M*, Fox D, and Alvarez J.",
+          "venue": "American Society for Pharmacology and Experimental Therapeutics meeting. Orlando, FL",
+          "date": "04/2019",
+          "link": "public/posters/2019-FASEB-iCas-Poster.pdf"
+        },
+        {
+          "type": "Poster",
+          "title": "Study of the chemical and signaling bases of ambient particulate matter-induced oxidative stress in alveolar macrophages.",
+          "authors": "Olivas M*, Flores D*, Waterston A, Dejean L, and Hasson A.",
+          "venue": "California State University Program for Education and Research in Biotechnology (CSUPERB) meeting. Garden Grove, CA",
+          "date": "01/2019"
+        }
+      ]
+    },
+    {
+      "year": "2018",
+      "entries": [
+        {
+          "type": "Talk",
+          "title": "Chemical and signaling bases of PM-mediated ROS production in alveolar macrophages.",
+          "authors": "Olivas M*, Flores D*, Waterston A, Dejean L, and Hasson A.",
+          "venue": "American Society for Cell Biology meeting. San Diego, CA",
+          "date": "12/2018"
+        },
+        {
+          "type": "Talk",
+          "title": "Development of an inducible Cas9 for temporally controlled gene editing. Selected for symposium review.",
+          "authors": "Olivas M*, Fox D, and Alvarez J.",
+          "venue": "BioCoRE symposium. Durham, NC",
+          "date": "07/2018"
+        },
+        {
+          "type": "Poster",
+          "title": "PM2.5 Exposure and ROS Production in NR8383 Alveolar Macrophages.",
+          "authors": "Olivas M*, Waterston A, Dejean L, and Hasson A.",
+          "venue": "California State University Honors Research Conference. Northridge, CA",
+          "date": "04/2018"
+        },
+        {
+          "type": "Poster",
+          "title": "PM2.5 Exposure and ROS Production in NR8383 Alveolar Macrophages.",
+          "authors": "Olivas M*, Waterston A, Dejean L, and Hasson A.",
+          "venue": "California State University Program for Education and Research in Biotechnology (CSUPERB). Santa Clara, CA",
+          "date": "01/2018",
+          "link": "public/posters/2019-CSUPERB-Poster.pdf"
+        }
+      ]
+    },
+    {
+      "year": "2017",
+      "entries": [
+        {
+          "type": "Poster",
+          "title": "Effects of particulate matter aerosols on ROS production in alveolar macrophage cells.",
+          "authors": "Castillo J*, Olivas M*, Waterston A, Dejean L, and Hasson A.",
+          "venue": "Central California Research Symposium. Fresno, CA",
+          "date": "04/2017",
+          "link": "public/posters/2019-CSUPERB-Poster.pdf"
+        }
+      ]
+    }
+  ]
+}
