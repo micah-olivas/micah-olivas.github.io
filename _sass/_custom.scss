@@ -179,10 +179,27 @@ header nav {
   }
 }
 
+// Shrink publication link buttons by 30%
+.bibliography .links {
+  .btn {
+    font-size: 0.7rem !important;
+    padding: 0.25rem 0.5rem !important;
+  }
+}
+
 // Add email styling below social icons
 .profile .email-address {
   margin-top: 0.5rem;
   font-size: 0.9rem;
-  color: var(--global-text-color);
   text-align: center;
+
+  a {
+    font-family: 'Courier New', Courier, monospace !important;
+    color: var(--global-theme-color) !important;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }

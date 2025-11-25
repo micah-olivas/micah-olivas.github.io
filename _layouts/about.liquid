@@ -37,7 +37,7 @@ layout: default
         {% if page.social %}
           <div class="social mt-3">
             <div class="contact-icons">{% include social.liquid %}</div>
-            <div class="email-address">{{ site.email }}</div>
+            <div class="email-address"><a href="mailto:{{ site.email }}">{{ site.email }}</a></div>
           </div>
         {% endif %}
       </div>
