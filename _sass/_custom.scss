@@ -92,6 +92,11 @@ html[data-theme='dark'] {
   padding-top: 0;
 }
 
+// Reduce profile picture size by 20%
+.profile {
+  max-width: 80% !important;
+}
+
 // Fix mobile profile picture size
 @media (max-width: 576px) {
   .profile {
@@ -177,10 +182,10 @@ header nav {
 
 // Profile social and email layout - very compact spacing
 .profile .social {
-  margin-top: 0.25rem !important;
+  margin-top: 0rem !important;
 
   .contact-icons {
-    margin-bottom: 0.1rem !important;
+    margin-bottom: 0rem !important;
 
     a {
       font-size: 1.2rem !important;
@@ -215,7 +220,7 @@ header nav {
 
 // Add email styling below social icons - very compact, standard font
 .profile .email-address {
-  margin-top: 0.1rem;
+  margin-top: 0rem;
   font-size: 0.85rem;
   text-align: center;
 
