@@ -95,6 +95,15 @@ html[data-theme='dark'] {
 // Reduce profile picture size by 20%
 .profile {
   max-width: 80% !important;
+
+  // Remove all spacing around profile image
+  figure {
+    margin-bottom: 0 !important;
+  }
+
+  .img-fluid {
+    margin-bottom: 0 !important;
+  }
 }
 
 // Fix mobile profile picture size
@@ -182,15 +191,21 @@ header nav {
 
 // Profile social and email layout - very compact spacing
 .profile .social {
-  margin-top: 0rem !important;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
 
   .contact-icons {
-    margin-bottom: 0rem !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
 
     a {
       font-size: 1.2rem !important;
       opacity: 0;
       animation: fadeIn 0.5s ease-in forwards;
+      margin: 0 !important;
+      padding: 0 !important;
     }
 
     a:nth-child(1) { animation-delay: 0.1s; }
@@ -220,7 +235,10 @@ header nav {
 
 // Add email styling below social icons - very compact, standard font
 .profile .email-address {
-  margin-top: 0rem;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
   font-size: 0.85rem;
   text-align: center;
 
