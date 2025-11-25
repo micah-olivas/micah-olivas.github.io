@@ -1,11 +1,11 @@
 // Custom styles for Micah's site
 
-// Import Roboto font
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+// Import Real Head Pro Semilight font
+@import url('https://db.onlinewebfonts.com/c/d95435f10571a13cbfea1d673e6b3c99?family=Real+Head+Pro+Semilight');
 
-// Roboto as default font
+// Real Head Pro Semilight as default font
 body {
-  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+  font-family: 'Real Head Pro Semilight', -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
 }
 
 // Make name all same weight (remove bold from last name)
@@ -29,11 +29,12 @@ header.post-header .post-title {
   }
 }
 
-// Fix news scrolling
+// News section styling
 .news {
-  .table-responsive {
-    max-height: 400px !important;
-    overflow-y: auto !important;
+  h2 {
+    border-top: 1px solid var(--global-divider-color);
+    padding-top: 1.5rem;
+    margin-top: 2rem;
   }
 }
 
@@ -65,7 +66,17 @@ a {
 
 // Dark mode customizations
 html[data-theme='dark'] {
-  --global-bg-color: #3A3E4F !important;
+  --global-bg-color: #2B3A66 !important;
+  --global-theme-color: #6BA3FF !important; // Lighter blue for links
+
+  a {
+    color: #6BA3FF !important;
+  }
+
+  // Keep section titles white
+  h2, h3 {
+    color: white !important;
+  }
 }
 
 // Add horizontal lines above section headings
@@ -89,4 +100,32 @@ html[data-theme='dark'] {
     margin-left: 1rem !important;
     margin-bottom: 1rem !important;
   }
+}
+
+// Add adaptive outline to profile picture
+.profile img {
+  border: 3px solid var(--global-theme-color) !important;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1) !important;
+}
+
+html[data-theme='dark'] .profile img {
+  border-color: #6BA3FF !important;
+  box-shadow: 0 0 10px rgba(107, 163, 255, 0.3) !important;
+}
+
+// Make news scrollable
+.news .table-responsive {
+  max-height: 400px !important;
+  overflow-y: auto !important;
+}
+
+// Add outline to publication thumbnails
+.bibliography .preview {
+  border: 2px solid var(--global-divider-color) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+html[data-theme='dark'] .bibliography .preview {
+  border-color: #6BA3FF !important;
+  box-shadow: 0 2px 8px rgba(107, 163, 255, 0.2) !important;
 }
