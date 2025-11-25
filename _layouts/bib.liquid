@@ -5,7 +5,7 @@
   <div id="{{ entry.key }}" class="col-sm-12">
     <!-- Thumbnail above citation -->
     {% if site.enable_publication_thumbnails and entry.preview %}
-      <div class="text-center mb-3">
+      <div class="text-left mb-3">
         {% if entry.preview contains '://' %}
           <img class="preview z-depth-1 rounded" src="{{ entry.preview }}" style="max-width: 200px; width: 100%;">
         {% else %}

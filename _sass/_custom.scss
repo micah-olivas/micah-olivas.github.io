@@ -126,7 +126,7 @@ html[data-theme='dark'] .profile img {
 
 // Add outline to publication thumbnails and cap size
 .bibliography .preview {
-  border: 2px solid var(--global-divider-color) !important;
+  border: 1px solid #000000 !important;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
   max-width: 200px !important;
   max-height: 200px !important;
@@ -134,8 +134,8 @@ html[data-theme='dark'] .profile img {
 }
 
 html[data-theme='dark'] .bibliography .preview {
-  border-color: #6BA3FF !important;
-  box-shadow: 0 2px 8px rgba(107, 163, 255, 0.2) !important;
+  border-color: #FFFFFF !important;
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2) !important;
 }
 
 // Navbar styling - make tabs black/white based on theme
