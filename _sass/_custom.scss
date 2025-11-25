@@ -102,15 +102,15 @@ html[data-theme='dark'] {
   }
 }
 
-// Add adaptive outline to profile picture
+// Add adaptive outline to profile picture (black/white)
 .profile img {
-  border: 3px solid var(--global-theme-color) !important;
+  border: 3px solid #000000 !important;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1) !important;
 }
 
 html[data-theme='dark'] .profile img {
-  border-color: #6BA3FF !important;
-  box-shadow: 0 0 10px rgba(107, 163, 255, 0.3) !important;
+  border-color: #FFFFFF !important;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3) !important;
 }
 
 // Make news scrollable
@@ -128,4 +128,46 @@ html[data-theme='dark'] .profile img {
 html[data-theme='dark'] .bibliography .preview {
   border-color: #6BA3FF !important;
   box-shadow: 0 2px 8px rgba(107, 163, 255, 0.2) !important;
+}
+
+// Navbar styling - make tabs black/white based on theme
+.navbar-light {
+  .navbar-nav {
+    .nav-link {
+      color: #000000 !important;
+
+      &:hover {
+        color: #000000 !important;
+      }
+    }
+
+    .active > .nav-link {
+      color: #000000 !important;
+      font-weight: bolder !important;
+    }
+  }
+}
+
+html[data-theme='dark'] {
+  .navbar-light {
+    .navbar-nav {
+      .nav-link {
+        color: #FFFFFF !important;
+
+        &:hover {
+          color: #FFFFFF !important;
+        }
+      }
+
+      .active > .nav-link {
+        color: #FFFFFF !important;
+        font-weight: bolder !important;
+      }
+    }
+  }
+}
+
+// Add horizontal line below navbar
+header nav {
+  border-bottom: 1px solid var(--global-divider-color) !important;
 }
