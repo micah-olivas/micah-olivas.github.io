@@ -41,8 +41,8 @@ header.post-header .post-title {
 // Narrow page margins (wider content area)
 .container {
   max-width: 900px !important;
-  padding-left: 20px !important;
-  padding-right: 20px !important;
+  padding-left: 40px !important;
+  padding-right: 40px !important;
 }
 
 // Light mode customizations
@@ -102,15 +102,15 @@ html[data-theme='dark'] {
   }
 }
 
-// Add adaptive outline to profile picture (black/white)
+// Add adaptive outline to profile picture (lighter black/white)
 .profile img {
-  border: 3px solid #000000 !important;
+  border: 2px solid #999999 !important;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1) !important;
 }
 
 html[data-theme='dark'] .profile img {
-  border-color: #FFFFFF !important;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3) !important;
+  border-color: #CCCCCC !important;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2) !important;
 }
 
 // Make news scrollable
@@ -170,4 +170,19 @@ html[data-theme='dark'] {
 // Add horizontal line below navbar
 header nav {
   border-bottom: 1px solid var(--global-divider-color) !important;
+}
+
+// Shrink social icons in profile
+.profile .social {
+  .contact-icons a {
+    font-size: 1.2rem !important;
+  }
+}
+
+// Add email styling below social icons
+.profile .email-address {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--global-text-color);
+  text-align: center;
 }
