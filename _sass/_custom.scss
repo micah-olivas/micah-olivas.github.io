@@ -102,14 +102,14 @@ html[data-theme='dark'] {
   }
 }
 
-// Add adaptive outline to profile picture (lighter black/white)
+// Add adaptive outline to profile picture (black/white)
 .profile img {
-  border: 2px solid #999999 !important;
+  border: 2px solid #000000 !important;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1) !important;
 }
 
 html[data-theme='dark'] .profile img {
-  border-color: #CCCCCC !important;
+  border-color: #FFFFFF !important;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.2) !important;
 }
 
@@ -119,10 +119,13 @@ html[data-theme='dark'] .profile img {
   overflow-y: auto !important;
 }
 
-// Add outline to publication thumbnails
+// Add outline to publication thumbnails and cap size
 .bibliography .preview {
   border: 2px solid var(--global-divider-color) !important;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  max-width: 200px !important;
+  max-height: 200px !important;
+  object-fit: contain !important;
 }
 
 html[data-theme='dark'] .bibliography .preview {

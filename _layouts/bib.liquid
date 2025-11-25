@@ -7,14 +7,14 @@
     {% if site.enable_publication_thumbnails and entry.preview %}
       <div class="text-center mb-3">
         {% if entry.preview contains '://' %}
-          <img class="preview z-depth-1 rounded" src="{{ entry.preview }}" style="max-width: 300px; width: 100%;">
+          <img class="preview z-depth-1 rounded" src="{{ entry.preview }}" style="max-width: 200px; width: 100%;">
         {% else %}
           {% assign entry_path = entry.preview | prepend: '/assets/img/publication_preview/' %}
           {%
             include figure.liquid
             loading="eager"
             path=entry_path
-            sizes = "300px"
+            sizes = "200px"
             class="preview z-depth-1 rounded"
             zoomable=true
             avoid_scaling=true
