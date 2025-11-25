@@ -66,7 +66,7 @@ a {
 
 // Dark mode customizations
 html[data-theme='dark'] {
-  --global-bg-color: #03070F !important;
+  --global-bg-color: #1E2952 !important;
   --global-theme-color: #6BA3FF !important; // Lighter blue for links
 
   a {
@@ -172,23 +172,37 @@ header nav {
   border-bottom: 1px solid var(--global-divider-color) !important;
 }
 
-// Profile social and email layout - compact spacing
+// Profile social and email layout - very compact spacing
 .profile .social {
-  margin-top: 0.5rem !important;
+  margin-top: 0.25rem !important;
 
   .contact-icons {
-    margin-bottom: 0.25rem !important;
+    margin-bottom: 0.1rem !important;
 
     a {
       font-size: 1.2rem !important;
+      opacity: 0;
+      animation: fadeIn 0.5s ease-in forwards;
     }
+
+    a:nth-child(1) { animation-delay: 0.1s; }
+    a:nth-child(2) { animation-delay: 0.2s; }
+    a:nth-child(3) { animation-delay: 0.3s; }
+    a:nth-child(4) { animation-delay: 0.4s; }
+    a:nth-child(5) { animation-delay: 0.5s; }
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
   }
 }
 
 // Publication link buttons - better size
 .bibliography .links {
-  margin-top: 0.5rem !important;
-  margin-bottom: 0.5rem !important;
+  margin-top: 0.25rem !important;
+  margin-bottom: 0.25rem !important;
 
   .btn {
     font-size: 0.8rem !important;
@@ -196,14 +210,13 @@ header nav {
   }
 }
 
-// Add email styling below social icons - compact
+// Add email styling below social icons - very compact, standard font
 .profile .email-address {
-  margin-top: 0.25rem;
-  font-size: 0.9rem;
+  margin-top: 0.1rem;
+  font-size: 0.85rem;
   text-align: center;
 
   a {
-    font-family: 'Courier New', Courier, monospace !important;
     color: var(--global-theme-color) !important;
     text-decoration: none;
 

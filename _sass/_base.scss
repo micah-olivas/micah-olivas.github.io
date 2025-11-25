@@ -940,12 +940,12 @@ code {
   word-wrap: break-word;
 }
 
-// Transitioning Themes - simplified and subtle
+// Transitioning Themes - smooth and subtle
 html.transition,
 html.transition *,
 html.transition *:before,
 html.transition *:after {
-  transition: background-color 150ms ease, color 150ms ease !important;
+  transition: background-color 300ms ease-in-out, color 300ms ease-in-out !important;
   transition-delay: 0 !important;
 }
 
