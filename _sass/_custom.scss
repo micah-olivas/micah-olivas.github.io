@@ -30,9 +30,18 @@ header.post-header .post-title {
 }
 
 // Fix news scrolling
-.announcements {
-  max-height: 400px;
-  overflow-y: auto !important;
+.news {
+  .table-responsive {
+    max-height: 400px !important;
+    overflow-y: auto !important;
+  }
+}
+
+// Narrow page margins (wider content area)
+.container {
+  max-width: 900px !important;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
 }
 
 // Light mode customizations
@@ -45,7 +54,39 @@ html[data-theme='light'] {
   }
 }
 
+// Ensure link color is blue in default/light mode
+:root {
+  --global-theme-color: #0066cc !important;
+}
+
+a {
+  color: var(--global-theme-color) !important;
+}
+
 // Dark mode customizations
 html[data-theme='dark'] {
   --global-bg-color: #3A3E4F !important;
+}
+
+// Add horizontal lines above section headings
+.post article h2 {
+  border-top: 1px solid var(--global-divider-color);
+  padding-top: 1.5rem;
+  margin-top: 2rem;
+}
+
+// First h2 shouldn't have top border
+.post article > h2:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+// Fix mobile profile picture size
+@media (max-width: 576px) {
+  .profile {
+    width: 40% !important;
+    float: right !important;
+    margin-left: 1rem !important;
+    margin-bottom: 1rem !important;
+  }
 }

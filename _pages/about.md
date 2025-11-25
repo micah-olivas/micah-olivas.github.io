@@ -26,7 +26,7 @@ I'm a Genetics PhD student studying enzyme evolution at Stanford University. I a
 
 In my research, I use high-throughput microfluidics experiments to dissect how enzymatic properties are encoded in the amino acid sequences of both natural and model-designed proteins. Through this work, I hope to improve sequence-to-function prediction and provide insights into emerging sequence-based models.
 
-### Current Research Interests
+**Research interests**
 - High-throughput assay development for kinetic measurements of proteins
 - Inferring catalytic properties from evolutionary sequence data
 - Library generation methods for high-throughput experimental biophysics and biochemistry
