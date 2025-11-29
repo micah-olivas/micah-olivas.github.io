@@ -61,6 +61,14 @@ layout: default
       {% include latest_posts.liquid %}
     {% endif %}
 
+    <!-- Highlighted projects -->
+    {% if page.highlighted_projects %}
+      <h2>
+        <a href="{{ page.highlighted_projects.link | default: '#' }}" style="color: inherit">projects</a>
+      </h2>
+      {% include highlighted_projects.liquid %}
+    {% endif %}
+
     <!-- Selected papers -->
     {% if page.selected_papers %}
       <h2>

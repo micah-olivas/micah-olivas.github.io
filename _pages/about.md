@@ -10,6 +10,7 @@ profile:
   image_circular: false
   more_info:
 
+highlighted_projects: true
 selected_papers: true
 social: true
 
