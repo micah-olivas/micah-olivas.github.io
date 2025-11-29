@@ -191,21 +191,27 @@ header nav {
 
 // Profile social and email layout - very compact spacing
 .profile .social {
-  margin-top: 0 !important;
+  margin-top: 0.5rem !important;
   padding-top: 0 !important;
 
   .contact-icons {
     margin-top: 0 !important;
-    margin-bottom: 0 !important;
+    margin-bottom: 0.25rem !important;
     padding-top: 0 !important;
     padding-bottom: 0 !important;
+    font-size: 1.5rem !important;
 
     a {
-      font-size: 1.2rem !important;
       opacity: 0;
       animation: fadeIn 0.5s ease-in forwards;
-      margin: 0 !important;
+      margin: 0 0.25rem !important;
       padding: 0 !important;
+
+      img, svg {
+        width: 1.5rem !important;
+        height: 1.5rem !important;
+        margin-bottom: 0 !important;
+      }
     }
 
     a:nth-child(1) { animation-delay: 0.1s; }
@@ -235,7 +241,7 @@ header nav {
 
 // Add email styling below social icons - very compact, standard font
 .profile .email-address {
-  margin-top: 0 !important;
+  margin-top: 0.25rem !important;
   margin-bottom: 0 !important;
   padding-top: 0 !important;
   padding-bottom: 0 !important;
