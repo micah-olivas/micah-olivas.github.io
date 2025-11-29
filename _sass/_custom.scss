@@ -77,7 +77,7 @@ a {
 
 // Dark mode customizations
 html[data-theme='dark'] {
-  --global-bg-color: #253564 !important;
+  --global-bg-color: #1a2440 !important;
   --global-theme-color: #6BA3FF !important; // Lighter blue for links
 
   a {
@@ -122,15 +122,39 @@ html[data-theme='dark'] {
   .profile {
     width: 100% !important;
     float: none !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
     margin-bottom: 1.5rem !important;
-    text-align: center;
+    text-align: center !important;
+    display: block !important;
 
     figure {
       margin-left: auto !important;
       margin-right: auto !important;
-      max-width: 60% !important;
+      max-width: 50% !important;
+      display: block !important;
+    }
+
+    img {
+      margin-left: auto !important;
+      margin-right: auto !important;
+      display: block !important;
+    }
+
+    .social {
+      text-align: center !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+
+      .contact-icons {
+        text-align: center !important;
+        justify-content: center !important;
+        display: flex !important;
+      }
+
+      .email-address {
+        text-align: center !important;
+      }
     }
   }
 
@@ -149,8 +173,8 @@ html[data-theme='dark'] {
 
   // Better container padding on mobile
   .container {
-    padding-left: 20px !important;
-    padding-right: 20px !important;
+    padding-left: 40px !important;
+    padding-right: 40px !important;
   }
 
   // Improve text readability on mobile
@@ -162,7 +186,8 @@ html[data-theme='dark'] {
       margin-bottom: 1rem;
       word-wrap: break-word;
       overflow-wrap: break-word;
-      hyphens: auto;
+      hyphens: none;
+      text-align: left;
     }
   }
 
@@ -373,31 +398,51 @@ footer.fixed-bottom {
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
 
+    .row {
+      margin: 0;
+    }
+
     .project-thumbnail {
       width: 100%;
+      height: 100%;
       overflow: hidden;
-      background-color: var(--global-bg-color);
+      background-color: var(--global-card-bg-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       img {
         width: 100%;
-        height: auto;
+        height: 100%;
         object-fit: cover;
-        max-height: 250px;
       }
     }
 
-    .card-title a {
-      color: var(--global-text-color);
-      text-decoration: none;
-      font-weight: 600;
+    .card-body {
+      padding: 1rem;
+    }
 
-      &:hover {
-        color: var(--global-theme-color);
+    .card-title {
+      margin-bottom: 0.5rem;
+
+      a {
+        color: var(--global-text-color);
+        text-decoration: none;
+        font-weight: 600;
+
+        &:hover {
+          color: var(--global-theme-color);
+        }
       }
+    }
+
+    .card-text {
+      font-size: 0.9rem;
+      margin-bottom: 0.75rem;
     }
 
     .project-links {
-      margin-top: 1rem;
+      margin-top: 0.75rem;
 
       .btn {
         color: var(--global-text-color);

@@ -5,20 +5,26 @@
       {% for project in projects %}
         <div class="col">
           <div class="card h-100">
-            {% if project.thumbnail %}
-              <div class="project-thumbnail">
-                {% include figure.liquid loading="eager" path=project.thumbnail alt=project.name class="card-img-top" %}
-              </div>
-            {% endif %}
-            <div class="card-body">
-              <h5 class="card-title">
-                <a href="{{ project.github }}" target="_blank" rel="noopener noreferrer">{{ project.name }}</a>
-              </h5>
-              <p class="card-text">{{ project.description }}</p>
-              <div class="project-links">
-                <a href="{{ project.github }}" class="btn btn-sm z-depth-0" role="button" target="_blank" rel="noopener noreferrer">
-                  <i class="fa-brands fa-github"></i> GitHub
-                </a>
+            <div class="row g-0">
+              {% if project.thumbnail %}
+                <div class="col-md-4">
+                  <div class="project-thumbnail">
+                    {% include figure.liquid loading="eager" path=project.thumbnail alt=project.name class="img-fluid" %}
+                  </div>
+                </div>
+              {% endif %}
+              <div class="{% if project.thumbnail %}col-md-8{% else %}col-md-12{% endif %}">
+                <div class="card-body">
+                  <h5 class="card-title">
+                    <a href="{{ project.github }}" target="_blank" rel="noopener noreferrer">{{ project.name }}</a>
+                  </h5>
+                  <p class="card-text">{{ project.description }}</p>
+                  <div class="project-links">
+                    <a href="{{ project.github }}" class="btn btn-sm z-depth-0" role="button" target="_blank" rel="noopener noreferrer">
+                      <i class="fa-brands fa-github"></i> GitHub
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

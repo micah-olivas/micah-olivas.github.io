@@ -61,20 +61,20 @@ layout: default
       {% include latest_posts.liquid %}
     {% endif %}
 
-    <!-- Highlighted projects -->
-    {% if page.highlighted_projects %}
-      <h2>
-        <a href="{{ page.highlighted_projects.link | default: '#' }}" style="color: inherit">projects</a>
-      </h2>
-      {% include highlighted_projects.liquid %}
-    {% endif %}
-
     <!-- Selected papers -->
     {% if page.selected_papers %}
       <h2>
         <a href="{{ '/publications/' | relative_url }}" style="color: inherit">publications</a>
       </h2>
       {% include selected_papers.liquid %}
+    {% endif %}
+
+    <!-- Highlighted projects -->
+    {% if page.highlighted_projects %}
+      <h2>
+        <a href="{{ page.highlighted_projects.link | default: '#' }}" style="color: inherit">projects</a>
+      </h2>
+      {% include highlighted_projects.liquid %}
     {% endif %}
 
     {% if site.newsletter and site.newsletter.enabled and site.footer_fixed %}
