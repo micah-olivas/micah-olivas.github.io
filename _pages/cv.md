@@ -8,7 +8,7 @@ description:
 ---
 
 <div class="pdf-viewer">
-  <iframe src="{{ '/assets/pdf/CV.pdf' | relative_url }}" width="100%" height="800px" style="border: none;">
+  <iframe src="{{ '/assets/pdf/CV.pdf' | relative_url }}">
     This browser does not support PDFs. Please download the PDF to view it: <a href="{{ '/assets/pdf/CV.pdf' | relative_url }}">Download PDF</a>.
   </iframe>
 </div>
