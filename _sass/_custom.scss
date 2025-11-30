@@ -461,46 +461,6 @@ html[data-theme='dark'] .highlighted-projects {
   }
 }
 
-// Mobile theme toggle - separate fixed button on upper left
-.mobile-theme-toggle {
-  display: none;
-}
-
-@media (max-width: 576px) {
-  .mobile-theme-toggle {
-    display: block !important;
-    position: fixed !important;
-    top: 12px !important;
-    left: 15px !important;
-    z-index: 9999 !important;
-
-    button {
-      background: var(--global-bg-color) !important;
-      border: 1px solid var(--global-divider-color) !important;
-      border-radius: 4px !important;
-      padding: 0 !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      width: 36px !important;
-      height: 36px !important;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
-      cursor: pointer !important;
-
-      i {
-        font-size: 1.2rem !important;
-        padding: 0 !important;
-        margin: 0 !important;
-      }
-    }
-  }
-
-  // Add padding to navbar to account for theme toggle
-  header nav .navbar-brand {
-    margin-left: 45px !important;
-  }
-}
-
 // Tablet optimizations
 @media (min-width: 577px) and (max-width: 768px) {
   .profile {
