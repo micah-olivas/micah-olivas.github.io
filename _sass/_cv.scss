@@ -2,6 +2,25 @@
  * CV shared styles
  *****************************/
 
+/* Remove extra spacing on CV page */
+body:has(.pdf-viewer) {
+  .post-header {
+    margin-bottom: 0.5rem !important;
+
+    .post-title {
+      margin-bottom: 0 !important;
+    }
+
+    .post-description {
+      display: none;
+    }
+  }
+
+  .post article {
+    margin-top: 0 !important;
+  }
+}
+
 /* PDF Viewer styles for mobile responsiveness */
 div.pdf-viewer {
   width: 100%;
