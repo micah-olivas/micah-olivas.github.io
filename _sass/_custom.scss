@@ -113,6 +113,19 @@ html[data-theme='dark'] {
   }
 }
 
+// Shrink profile picture even more on wider screens
+@media (min-width: 992px) {
+  .profile {
+    max-width: 60% !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .profile {
+    max-width: 50% !important;
+  }
+}
+
 // Fix mobile profile picture size and layout
 @media (max-width: 576px) {
   .profile {
@@ -318,6 +331,11 @@ header nav {
         height: 1.5rem !important;
         margin-bottom: 0 !important;
       }
+
+      // Hide email icon since email address is displayed below
+      &[href^="mailto"] {
+        display: none !important;
+      }
     }
 
     a:nth-child(1) { animation-delay: 0.1s; }
@@ -458,46 +476,6 @@ footer.fixed-bottom {
 html[data-theme='dark'] .highlighted-projects {
   .card:hover {
     box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
-  }
-}
-
-// Mobile theme toggle - separate fixed button on upper left
-.mobile-theme-toggle {
-  display: none;
-}
-
-@media (max-width: 576px) {
-  .mobile-theme-toggle {
-    display: block !important;
-    position: fixed !important;
-    top: 12px !important;
-    left: 15px !important;
-    z-index: 9999 !important;
-
-    button {
-      background: var(--global-bg-color) !important;
-      border: 1px solid var(--global-divider-color) !important;
-      border-radius: 4px !important;
-      padding: 0 !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      width: 36px !important;
-      height: 36px !important;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
-      cursor: pointer !important;
-
-      i {
-        font-size: 1.2rem !important;
-        padding: 0 !important;
-        margin: 0 !important;
-      }
-    }
-  }
-
-  // Add padding to navbar to account for theme toggle
-  header nav .navbar-brand {
-    margin-left: 45px !important;
   }
 }
 

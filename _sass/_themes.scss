@@ -43,20 +43,17 @@
   --global-danger-block-text: #600;
   --global-danger-block-title: #c00;
 
-  #light-toggle-system,
-  #light-toggle-mobile-system {
+  #light-toggle-system {
     padding-left: 10px;
     padding-top: 12px;
     display: block;
   }
 
-  #light-toggle-dark,
-  #light-toggle-mobile-dark {
+  #light-toggle-dark {
     display: none;
   }
 
-  #light-toggle-light,
-  #light-toggle-mobile-light {
+  #light-toggle-light {
     display: none;
   }
 
@@ -127,20 +124,17 @@ html[data-theme="dark"] {
 }
 
 html[data-theme-setting="dark"] {
-  #light-toggle-system,
-  #light-toggle-mobile-system {
+  #light-toggle-system {
     display: none;
   }
 
-  #light-toggle-dark,
-  #light-toggle-mobile-dark {
+  #light-toggle-dark {
     padding-left: 10px;
     padding-top: 12px;
     display: block;
   }
 
-  #light-toggle-light,
-  #light-toggle-mobile-light {
+  #light-toggle-light {
     display: none;
   }
 
@@ -151,18 +145,15 @@ html[data-theme-setting="dark"] {
 }
 
 html[data-theme-setting="light"] {
-  #light-toggle-system,
-  #light-toggle-mobile-system {
+  #light-toggle-system {
     display: none;
   }
 
-  #light-toggle-dark,
-  #light-toggle-mobile-dark {
+  #light-toggle-dark {
     display: none;
   }
 
-  #light-toggle-light,
-  #light-toggle-mobile-light {
+  #light-toggle-light {
     padding-left: 10px;
     padding-top: 12px;
     display: block;
