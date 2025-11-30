@@ -113,6 +113,19 @@ html[data-theme='dark'] {
   }
 }
 
+// Shrink profile picture even more on wider screens
+@media (min-width: 992px) {
+  .profile {
+    max-width: 60% !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .profile {
+    max-width: 50% !important;
+  }
+}
+
 // Fix mobile profile picture size and layout
 @media (max-width: 576px) {
   .profile {
@@ -317,6 +330,11 @@ header nav {
         width: 1.5rem !important;
         height: 1.5rem !important;
         margin-bottom: 0 !important;
+      }
+
+      // Hide email icon since email address is displayed below
+      &[href^="mailto"] {
+        display: none !important;
       }
     }
 
