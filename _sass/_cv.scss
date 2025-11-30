@@ -27,13 +27,14 @@ div.pdf-viewer {
     margin-right: -10px;
     width: calc(100% + 20px);
     max-width: calc(100% + 20px);
+    overflow: visible !important;
 
     iframe,
     object,
     embed {
-      /* Tall enough to show multiple pages with scrolling */
-      height: 1200px;
-      min-height: 800px;
+      /* Much taller to show all pages - user can scroll down the page */
+      height: 2400px;
+      min-height: 1600px;
     }
   }
 }
