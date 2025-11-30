@@ -21,15 +21,22 @@
   >
 {% endif %}
 
-<!-- Fonts & Icons -->
-<link defer rel="stylesheet" href="{{ '/assets/css/academicons.min.css' | relative_url | bust_file_cache }}">
-<link defer rel="stylesheet" href="{{ '/assets/css/scholar-icons.css' | relative_url | bust_file_cache }}">
+<!-- Preload profile image for smooth loading -->
+{% if page.profile and page.profile.image %}
+  <link rel="preload" as="image" href="{{ page.profile.image | prepend: 'assets/img/' | relative_url }}">
+{% endif %}
+
+<!-- Fonts & Icons - no defer for smoother initial load -->
+<link rel="stylesheet" href="{{ '/assets/css/academicons.min.css' | relative_url | bust_file_cache }}">
+<link rel="stylesheet" href="{{ '/assets/css/scholar-icons.css' | relative_url | bust_file_cache }}">
 <link
-  defer
   rel="stylesheet"
   type="text/css"
   href="{{ site.third_party_libraries.google_fonts.url.fonts }}"
 >
+
+<!-- Smooth page load script -->
+<script src="{{ '/assets/js/page-load.js' | relative_url | bust_file_cache }}"></script>
 
 <!-- Code Syntax Highlighting -->
 <link
