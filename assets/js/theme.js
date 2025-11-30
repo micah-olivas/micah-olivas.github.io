@@ -262,10 +262,20 @@ let determineThemeSetting = () => {
 };
 
 // Determine the computed theme, which can be "dark" or "light". If the theme setting is
-// "system", the computed theme is determined based on the user's system preference.
+// "system", the computed theme is determined based on the user's local time (dark hours)
+// or system preference as fallback.
 let determineComputedTheme = () => {
   let themeSetting = determineThemeSetting();
   if (themeSetting == "system") {
+    // Check local time - use dark mode during dark hours (6 PM to 6 AM)
+    const currentHour = new Date().getHours();
+    const isDarkHours = currentHour >= 18 || currentHour < 6;
+
+    if (isDarkHours) {
+      return "dark";
+    }
+
+    // Fallback to system preference during day hours
     const userPref = window.matchMedia;
     if (userPref && userPref("(prefers-color-scheme: dark)").matches) {
       return "dark";
