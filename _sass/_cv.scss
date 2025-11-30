@@ -10,7 +10,8 @@ div.pdf-viewer {
   position: relative;
 
   iframe,
-  object {
+  object,
+  embed {
     width: 100%;
     height: 800px;
     border: none;
@@ -20,24 +21,19 @@ div.pdf-viewer {
 
 /* Mobile specific adjustments */
 @media (max-width: 768px) {
-  /* Override post container padding on mobile for CV page */
-  .post {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-  }
-
   div.pdf-viewer {
-    /* Full viewport width on mobile */
-    width: 100vw;
-    max-width: 100vw;
-    margin-left: calc(-50vw + 50%);
-    margin-right: calc(-50vw + 50%);
+    /* Slightly narrower margins on mobile */
+    margin-left: -10px;
+    margin-right: -10px;
+    width: calc(100% + 20px);
+    max-width: calc(100% + 20px);
 
     iframe,
-    object {
-      /* Significantly taller on mobile to show full page */
-      height: calc(100vh - 100px);
-      min-height: 500px;
+    object,
+    embed {
+      /* Tall enough to show multiple pages with scrolling */
+      height: 1200px;
+      min-height: 800px;
     }
   }
 }
