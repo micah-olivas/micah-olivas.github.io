@@ -6,10 +6,11 @@
 div.pdf-viewer {
   width: 100%;
   max-width: 100%;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  margin: 0 auto;
+  position: relative;
 
-  iframe {
+  iframe,
+  object {
     width: 100%;
     height: 800px;
     border: none;
@@ -19,16 +20,24 @@ div.pdf-viewer {
 
 /* Mobile specific adjustments */
 @media (max-width: 768px) {
-  div.pdf-viewer {
-    /* Ensure container doesn't exceed viewport */
-    max-width: 100vw;
-    margin-left: 0;
-    margin-right: 0;
+  /* Override post container padding on mobile for CV page */
+  .post {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
 
-    iframe {
-      /* Adjust height for mobile */
-      height: 600px;
-      min-height: 400px;
+  div.pdf-viewer {
+    /* Full viewport width on mobile */
+    width: 100vw;
+    max-width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+
+    iframe,
+    object {
+      /* Significantly taller on mobile to show full page */
+      height: calc(100vh - 100px);
+      min-height: 500px;
     }
   }
 }
