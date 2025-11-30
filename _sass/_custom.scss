@@ -15,6 +15,11 @@ body.page-loaded {
   opacity: 1;
 }
 
+// Ensure bold text works properly
+strong, b {
+  font-weight: 700 !important;
+}
+
 // Make name all same weight (remove bold from last name)
 .profile {
   .name {
@@ -321,8 +326,6 @@ header nav {
     font-size: 1.5rem !important;
 
     a {
-      opacity: 0;
-      animation: fadeIn 0.5s ease-in forwards;
       margin: 0 0.25rem !important;
       padding: 0 !important;
 
@@ -337,18 +340,6 @@ header nav {
         display: none !important;
       }
     }
-
-    a:nth-child(1) { animation-delay: 0.1s; }
-    a:nth-child(2) { animation-delay: 0.2s; }
-    a:nth-child(3) { animation-delay: 0.3s; }
-    a:nth-child(4) { animation-delay: 0.4s; }
-    a:nth-child(5) { animation-delay: 0.5s; }
-  }
-}
-
-@keyframes fadeIn {
-  to {
-    opacity: 1;
   }
 }
 
