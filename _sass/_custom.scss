@@ -106,7 +106,7 @@ html[data-theme='dark'] {
 
 // Reduce profile picture size by 20%
 .profile {
-  max-width: 80% !important;
+  max-width: 60% !important;
 
   // Remove all spacing around profile image
   figure {
@@ -121,13 +121,13 @@ html[data-theme='dark'] {
 // Shrink profile picture even more on wider screens
 @media (min-width: 992px) {
   .profile {
-    max-width: 60% !important;
+    max-width: 40% !important;
   }
 }
 
 @media (min-width: 1200px) {
   .profile {
-    max-width: 50% !important;
+    max-width: 35% !important;
   }
 }
 
