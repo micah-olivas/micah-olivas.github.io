@@ -404,20 +404,20 @@ footer.fixed-bottom {
     }
 
     .card-body {
-      padding: 1.5rem;
+      padding: 1rem;
     }
 
     .project-header {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.5rem;
     }
 
     .card-title {
       margin-bottom: 0;
       flex: 1;
-      padding-right: 1rem;
+      padding-right: 0.75rem;
 
       a {
         color: var(--global-text-color);
@@ -431,8 +431,8 @@ footer.fixed-bottom {
     }
 
     .project-icon {
-      width: 60px;
-      height: 60px;
+      width: 80px;
+      height: 80px;
       flex-shrink: 0;
       display: flex;
       align-items: center;
@@ -447,12 +447,12 @@ footer.fixed-bottom {
 
     .card-text {
       font-size: 0.9rem;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.5rem;
       text-align: left;
     }
 
     .project-links {
-      margin-top: 0.75rem;
+      margin-top: 0.5rem;
       text-align: left;
 
       .btn {
