@@ -190,6 +190,15 @@
           <a href="{{ entry.supp | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">SUPPLEMENT</a>
         {% endif %}
       {% endif %}
+      {% if entry.code %}
+        <a href="{{ entry.code }}" class="btn btn-sm z-depth-0" role="button">GitHub</a>
+      {% endif %}
+      {% if entry.website %}
+        <a href="{{ entry.website }}" class="btn btn-sm z-depth-0" role="button">Preprint</a>
+      {% endif %}
+      {% if entry.url %}
+        <a href="{{ entry.url }}" class="btn btn-sm z-depth-0" role="button">Preprint</a>
+      {% endif %}
     </div>
     {% if site.enable_publication_badges %}
       {% assign entry_has_altmetric_badge = false %}

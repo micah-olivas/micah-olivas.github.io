@@ -2,3 +2,8 @@
   description: "A tool for analyzing and visualizing protein sequence data"
   github: "https://github.com/micah-olivas/beak"
   thumbnail: "assets/img/beak_thumbnail.jpg"
+
+- name: "uSort-M"
+  description: "Rapid and low-cost parsed variant library generation"
+  github: "https://github.com/FordyceLab/usortm"
+  thumbnail: "assets/img/usortm-icon.png"

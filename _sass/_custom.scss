@@ -394,41 +394,30 @@ footer.fixed-bottom {
   }
 
   .card {
-    border: 1px solid var(--global-divider-color);
-    transition: transform 0.2s ease-in-out;
+    border: 1.5px solid var(--global-divider-color);
+    transition: border-color 0.3s ease;
     overflow: hidden;
+    box-shadow: none;
 
     &:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    }
-
-    .row {
-      margin: 0;
-    }
-
-    .project-thumbnail {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      background-color: var(--global-card-bg-color);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
+      border-color: var(--global-theme-color);
     }
 
     .card-body {
-      padding: 1rem;
+      padding: 1.5rem;
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.75rem;
     }
 
     .card-title {
-      margin-bottom: 0.5rem;
+      margin-bottom: 0;
+      flex: 1;
+      padding-right: 1rem;
 
       a {
         color: var(--global-text-color);
@@ -441,13 +430,30 @@ footer.fixed-bottom {
       }
     }
 
+    .project-icon {
+      width: 60px;
+      height: 60px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+
     .card-text {
       font-size: 0.9rem;
       margin-bottom: 0.75rem;
+      text-align: left;
     }
 
     .project-links {
       margin-top: 0.75rem;
+      text-align: left;
 
       .btn {
         color: var(--global-text-color);
@@ -466,7 +472,7 @@ footer.fixed-bottom {
 
 html[data-theme='dark'] .highlighted-projects {
   .card:hover {
-    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
+    border-color: var(--global-theme-color);
   }
 }
 

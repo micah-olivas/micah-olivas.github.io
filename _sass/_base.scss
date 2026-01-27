@@ -847,11 +847,11 @@ footer.sticky-bottom {
         max-height: 0px;
         overflow: hidden;
         text-align: justify;
-        transition-property: 0.15s ease;
-        -moz-transition: 0.15s ease;
-        -ms-transition: 0.15s ease;
-        -o-transition: 0.15s ease;
-        transition: all 0.15s ease;
+        transition-property: 0.5s ease;
+        -moz-transition: 0.5s ease;
+        -ms-transition: 0.5s ease;
+        -o-transition: 0.5s ease;
+        transition: all 0.5s ease;
 
         p {
           line-height: 1.4em;
@@ -866,12 +866,12 @@ footer.sticky-bottom {
       }
 
       .hidden.open {
-        max-height: 100em;
-        transition-property: 0.15s ease;
-        -moz-transition: 0.15s ease;
-        -ms-transition: 0.15s ease;
-        -o-transition: 0.15s ease;
-        transition: all 0.15s ease;
+        max-height: 30em;
+        transition-property: 0.5s ease;
+        -moz-transition: 0.5s ease;
+        -ms-transition: 0.5s ease;
+        -o-transition: 0.5s ease;
+        transition: all 0.5s ease;
       }
 
       div.abstract.hidden {
