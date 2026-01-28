@@ -6,17 +6,19 @@
         <div class="col">
           <div class="card h-100">
             <div class="card-body">
-              <div class="project-header">
-                <h5 class="card-title">
-                  <a href="{{ project.github }}" target="_blank" rel="noopener noreferrer">{{ project.name }}</a>
-                </h5>
+              <div class="project-content-wrapper">
+                <div class="project-text">
+                  <h5 class="card-title">
+                    <a href="{{ project.github }}" target="_blank" rel="noopener noreferrer">{{ project.name }}</a>
+                  </h5>
+                  <p class="card-text">{{ project.description }}</p>
+                </div>
                 {% if project.thumbnail %}
                   <div class="project-icon">
                     {% include figure.liquid loading="eager" path=project.thumbnail alt=project.name class="img-fluid" %}
                   </div>
                 {% endif %}
               </div>
-              <p class="card-text">{{ project.description }}</p>
               <div class="project-links">
                 <a href="{{ project.github }}" class="btn btn-sm z-depth-0" role="button" target="_blank" rel="noopener noreferrer">
                   <i class="fa-brands fa-github"></i> GitHub
