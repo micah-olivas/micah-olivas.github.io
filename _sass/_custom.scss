@@ -78,8 +78,11 @@ a {
 
 // Dark mode customizations
 html[data-theme='dark'] {
-  --global-bg-color: #1a2440 !important;
+  --global-bg-color: #2b2b2b !important;
+  --global-card-bg-color: #3d3d3d !important;
+  --global-divider-color: rgba(255, 255, 255, 0.18) !important;
   --global-theme-color: #6BA3FF !important; // Lighter blue for links
+  --global-text-color-light: rgba(255, 255, 255, 0.6) !important;
 
   a {
     color: #6BA3FF !important;
@@ -104,9 +107,9 @@ html[data-theme='dark'] {
   padding-top: 0;
 }
 
-// Reduce profile picture size by 20%
+// Reduce profile picture size
 .profile {
-  max-width: 60% !important;
+  max-width: 42% !important;
 
   // Remove all spacing around profile image
   figure {
@@ -121,13 +124,13 @@ html[data-theme='dark'] {
 // Shrink profile picture even more on wider screens
 @media (min-width: 992px) {
   .profile {
-    max-width: 40% !important;
+    max-width: 28% !important;
   }
 }
 
 @media (min-width: 1200px) {
   .profile {
-    max-width: 35% !important;
+    max-width: 25% !important;
   }
 }
 
@@ -261,8 +264,8 @@ html[data-theme='dark'] .profile img {
 .bibliography .preview {
   border: 1px solid #000000 !important;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
-  max-width: 100px !important;
-  max-height: 100px !important;
+  max-width: 60px !important;
+  max-height: 60px !important;
   object-fit: contain !important;
 }
 
@@ -378,6 +381,39 @@ footer.fixed-bottom {
   display: none !important;
 }
 
+// Project tags — shared across all card types
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+.project-tag {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: 6px;
+  background-color: rgba(var(--global-theme-color-rgb, 0, 123, 255), 0.08);
+  color: var(--global-theme-color);
+  border: 1px solid rgba(var(--global-theme-color-rgb, 0, 123, 255), 0.15);
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+}
+
+html[data-theme='dark'] .project-tag {
+  background-color: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.75);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+// Project card footer (GitHub link area)
+.project-card-footer {
+  margin-top: auto;
+  padding-top: 0.75rem;
+}
+
 // Highlighted projects styling
 .highlighted-projects {
   margin-bottom: 2rem;
@@ -394,31 +430,38 @@ footer.fixed-bottom {
   }
 
   .card {
-    border: 1.5px solid var(--global-divider-color);
-    transition: border-color 0.3s ease;
+    border: 1px solid var(--global-divider-color);
+    border-radius: 10px;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
     overflow: hidden;
     box-shadow: none;
 
     &:hover {
       border-color: var(--global-theme-color);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
     }
 
     .card-body {
-      padding: 1rem;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
 
     .project-content-wrapper {
       display: flex;
-      gap: 0.75rem;
+      gap: 1rem;
       margin-bottom: 0.5rem;
     }
 
     .project-text {
       flex: 1;
+      min-width: 0;
     }
 
     .card-title {
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
+      font-size: 1.1rem;
 
       a {
         color: var(--global-text-color);
@@ -432,39 +475,83 @@ footer.fixed-bottom {
     }
 
     .project-icon {
-      width: 80px;
-      height: 80px;
+      width: 64px;
+      height: 64px;
       flex-shrink: 0;
       display: flex;
       align-items: center;
       justify-content: center;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #000000;
 
-      img {
+      figure {
+        margin: 0;
         width: 100%;
         height: 100%;
+      }
+
+      picture {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+      }
+
+      img {
+        max-width: 100%;
+        max-height: 100%;
         object-fit: contain;
       }
     }
 
     .card-text {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       margin-bottom: 0;
       text-align: left;
+      color: var(--global-text-color-light);
+      line-height: 1.5;
     }
 
     .project-links {
-      margin-top: 0.5rem;
+      margin-top: auto;
+      padding-top: 0.75rem;
       text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
 
       .btn {
         color: var(--global-text-color);
-        border: 1px solid var(--global-text-color);
+        border: 1px solid var(--global-divider-color);
         padding: 0.3rem 0.8rem;
-        font-size: 0.85rem;
+        font-size: 0.8rem;
+        border-radius: 6px;
+        transition: all 0.2s ease;
 
         &:hover {
           color: var(--global-theme-color);
           border-color: var(--global-theme-color);
+          background-color: rgba(var(--global-theme-color-rgb, 0, 123, 255), 0.05);
+        }
+      }
+
+      .project-stats {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-size: 0.8rem;
+        color: var(--global-text-color-light, rgba(0, 0, 0, 0.5));
+      }
+
+      .project-stat {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+
+        i {
+          font-size: 0.7rem;
         }
       }
     }
@@ -472,15 +559,75 @@ footer.fixed-bottom {
 }
 
 html[data-theme='dark'] .highlighted-projects {
-  .card:hover {
-    border-color: var(--global-theme-color);
+  .card {
+    background-color: var(--global-card-bg-color);
+    border-color: var(--global-divider-color);
+
+    &:hover {
+      border-color: var(--global-theme-color);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    .project-icon {
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+  }
+}
+
+// Full projects page card styling
+.projects {
+  .card {
+    border: 1px solid var(--global-divider-color);
+    border-radius: 10px;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    overflow: hidden;
+
+    &:hover {
+      border-color: var(--global-theme-color);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    .card-img-top {
+      border-radius: 10px 10px 0 0;
+    }
+
+    .card-body {
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .card-text {
+      font-size: 0.88rem;
+      color: var(--global-text-color-light);
+      line-height: 1.5;
+      margin-bottom: 0;
+    }
+  }
+}
+
+html[data-theme='dark'] .projects {
+  .card {
+    background-color: var(--global-card-bg-color);
+    border-color: var(--global-divider-color);
+
+    &:hover {
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    }
   }
 }
 
 // Tablet optimizations
 @media (min-width: 577px) and (max-width: 768px) {
   .profile {
-    width: 45% !important;
+    width: 32% !important;
   }
 
   .container {

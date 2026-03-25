@@ -1,7 +1,7 @@
 <div class="highlighted-projects">
   {% assign projects = site.data.highlighted_projects %}
   {% if projects %}
-    <div class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
       {% for project in projects %}
         <div class="col">
           <div class="card h-100">
@@ -23,11 +23,42 @@
                 <a href="{{ project.github }}" class="btn btn-sm z-depth-0" role="button" target="_blank" rel="noopener noreferrer">
                   <i class="fa-brands fa-github"></i> GitHub
                 </a>
+                {% if project.github_repo %}
+                  <span class="project-stats" data-repo="{{ project.github_repo }}">
+                    <span class="project-stat">
+                      <i class="fa-solid fa-star"></i>
+                      <span class="star-count">-</span>
+                    </span>
+                    <span class="project-stat">
+                      <i class="fa-solid fa-eye"></i>
+                      <span class="watcher-count">-</span>
+                    </span>
+                  </span>
+                {% endif %}
               </div>
             </div>
           </div>
         </div>
       {% endfor %}
     </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".project-stats[data-repo]").forEach(function (el) {
+          var repo = el.getAttribute("data-repo");
+          fetch("https://api.github.com/repos/" + repo)
+            .then(function (res) { return res.json(); })
+            .then(function (data) {
+              if (data.stargazers_count !== undefined) {
+                el.querySelector(".star-count").textContent = data.stargazers_count;
+              }
+              if (data.watchers_count !== undefined) {
+                el.querySelector(".watcher-count").textContent = data.subscribers_count || data.watchers_count;
+              }
+            })
+            .catch(function () {});
+        });
+      });
+    </script>
   {% endif %}
 </div>

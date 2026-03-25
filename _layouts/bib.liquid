@@ -7,7 +7,7 @@
     {% if site.enable_publication_thumbnails and entry.preview %}
       <div class="text-left mb-3">
         {% if entry.preview contains '://' %}
-          <img class="preview z-depth-1 rounded" src="{{ entry.preview }}" style="max-width: 100px; width: 100%;">
+          <img class="preview z-depth-1 rounded" src="{{ entry.preview }}" style="max-width: 60px; width: 100%;">
         {% else %}
           {% assign entry_path = entry.preview | prepend: '/assets/img/publication_preview/' %}
           {%
