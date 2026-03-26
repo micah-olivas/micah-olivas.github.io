@@ -11,3 +11,9 @@
   github_repo: "FordyceLab/usortm"
   thumbnail: "assets/img/publication_preview/usortm-icon.png"
   tags: ["Python", "Protein Engineering", "Library Design"]
+
+- name: "ArrayPrint"
+  description: "Programmatic spotting using Scienion S3 liquid-handling robots"
+  github: "https://github.com/micah-olivas/array-print"
+  github_repo: "micah-olivas/array-print"
+  tags: ["Python", "Automation", "Lab Hardware"]
