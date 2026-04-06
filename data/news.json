@@ -1,6 +1,13 @@
 {
   "news": [
     {
+      "date": "Mar 2026",
+      "year": "2026",
+      "color": "#6fd2ab",
+      "content": "I gave a talk at the NHGRI Training Meeting in St. Louis, MO. It was great to catch up with other trainees!",
+      "type": "talk"
+    },
+    {
       "date": "Jul 2025",
       "year": "2025",
       "color": "#6fd2ab",
