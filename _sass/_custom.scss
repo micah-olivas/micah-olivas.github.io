@@ -866,19 +866,25 @@ html[data-theme='dark'] .profile img {
     }
 
     a {
-      color: var(--em-text) !important;
-      text-decoration: none !important;
-      background-image: linear-gradient(var(--em-accent), var(--em-accent));
-      background-size: 0 1px;
-      background-repeat: no-repeat;
-      background-position: 0 100%;
-      transition: background-size 0.2s ease;
+      color: var(--em-accent) !important;
+      text-decoration: underline !important;
+      text-decoration-thickness: 1px !important;
+      text-underline-offset: 3px !important;
+      text-decoration-color: rgba(47, 91, 216, 0.35) !important;
+      transition: text-decoration-color 0.15s ease;
 
       &:hover {
-        background-size: 100% 1px;
-        color: var(--em-accent) !important;
+        text-decoration-color: var(--em-accent) !important;
       }
     }
+  }
+}
+
+html[data-theme='dark'] .news table a {
+  text-decoration-color: rgba(158, 183, 255, 0.45) !important;
+
+  &:hover {
+    text-decoration-color: var(--em-accent) !important;
   }
 }
 
