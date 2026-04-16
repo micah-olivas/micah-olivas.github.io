@@ -1084,9 +1084,10 @@ html[data-theme='dark'] .navbar-light .navbar-nav .active > .nav-link {
 // --- Bibliography / publications fine-tuning ----------------------------
 .bibliography {
   .preview {
-    border: 1px solid var(--em-divider-strong) !important;
+    border: none !important;
     box-shadow: none !important;
     border-radius: 4px !important;
+    background-color: transparent;
   }
 
   .title { font-weight: 500 !important; }
