@@ -269,6 +269,17 @@ html[data-theme='dark'] .profile img {
   object-fit: contain !important;
 }
 
+// Per-entry thumbnail sizing: some images have built-in padding, some don't
+.bibliography #olivas2025usortm .preview {
+  max-width: 64px !important;
+  max-height: 64px !important;
+}
+
+.bibliography #fannjiang2022designing .preview {
+  max-width: 104px !important;
+  max-height: 104px !important;
+}
+
 html[data-theme='dark'] .bibliography .preview {
   border-color: #FFFFFF !important;
   box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2) !important;
