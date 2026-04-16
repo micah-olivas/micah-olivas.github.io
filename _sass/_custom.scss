@@ -663,13 +663,13 @@ html[data-theme='dark'] .projects {
 }
 
 html[data-theme='dark'] {
-  --em-bg: #141414;            // warmer, cleaner near-black
-  --em-surface: #1e1e1e;
+  --em-bg: #1f1d1a;            // warm dark, not pitch black
+  --em-surface: #2a2824;
   --em-text: rgba(255, 255, 255, 0.92);
-  --em-text-soft: rgba(255, 255, 255, 0.68);
-  --em-text-muted: rgba(255, 255, 255, 0.48);
-  --em-divider: rgba(255, 255, 255, 0.09);
-  --em-divider-strong: rgba(255, 255, 255, 0.18);
+  --em-text-soft: rgba(255, 255, 255, 0.7);
+  --em-text-muted: rgba(255, 255, 255, 0.5);
+  --em-divider: rgba(255, 255, 255, 0.1);
+  --em-divider-strong: rgba(255, 255, 255, 0.2);
   --em-accent: #9EB7FF;
   --em-accent-soft: rgba(158, 183, 255, 0.12);
 }
