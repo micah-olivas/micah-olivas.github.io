@@ -640,3 +640,449 @@ html[data-theme='dark'] .projects {
     line-height: 1.6;
   }
 }
+
+/* =============================================================================
+   EDITORIAL MODERNIZATION (prototype)
+   Inter (UI) + Instrument Serif (display) + JetBrains Mono (accents).
+   Appended last so it overrides earlier rules. Remove this block to revert.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+// --- Refined palette ------------------------------------------------------
+:root {
+  --em-bg: #FAF8F3;            // slightly warmer cream
+  --em-surface: #F3EFE6;       // card/hover surface
+  --em-text: #141414;
+  --em-text-soft: #5a5a5a;
+  --em-text-muted: #8a8a8a;
+  --em-divider: rgba(20, 20, 20, 0.08);
+  --em-divider-strong: rgba(20, 20, 20, 0.16);
+  --em-accent: #2F5BD8;        // refined editorial blue
+  --em-accent-soft: rgba(47, 91, 216, 0.08);
+}
+
+html[data-theme='dark'] {
+  --em-bg: #141414;            // warmer, cleaner near-black
+  --em-surface: #1e1e1e;
+  --em-text: rgba(255, 255, 255, 0.92);
+  --em-text-soft: rgba(255, 255, 255, 0.68);
+  --em-text-muted: rgba(255, 255, 255, 0.48);
+  --em-divider: rgba(255, 255, 255, 0.09);
+  --em-divider-strong: rgba(255, 255, 255, 0.18);
+  --em-accent: #9EB7FF;
+  --em-accent-soft: rgba(158, 183, 255, 0.12);
+}
+
+// --- Body + background ----------------------------------------------------
+html[data-theme='light'],
+:root {
+  --global-bg-color: var(--em-bg) !important;
+  --global-text-color: var(--em-text) !important;
+  --global-text-color-light: var(--em-text-soft) !important;
+  --global-theme-color: var(--em-accent) !important;
+  --global-divider-color: var(--em-divider) !important;
+}
+
+html[data-theme='dark'] {
+  --global-bg-color: var(--em-bg) !important;
+  --global-text-color: var(--em-text) !important;
+  --global-text-color-light: var(--em-text-soft) !important;
+  --global-theme-color: var(--em-accent) !important;
+  --global-divider-color: var(--em-divider) !important;
+  --global-card-bg-color: var(--em-surface) !important;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif !important;
+  font-feature-settings: 'cv11', 'ss01', 'ss03';
+  font-size: 17px;
+  line-height: 1.65;
+  letter-spacing: -0.005em;
+  color: var(--em-text);
+  background-color: var(--em-bg) !important;
+}
+
+a {
+  color: var(--em-accent) !important;
+  text-decoration: none;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+
+  &:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--em-accent);
+  }
+}
+
+// --- Display typography ---------------------------------------------------
+header.post-header .post-title,
+.post-title {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-weight: 700 !important;
+  font-size: clamp(2.2rem, 4.5vw, 3rem) !important;
+  line-height: 1.05 !important;
+  letter-spacing: -0.035em !important;
+  margin-bottom: 0.35rem !important;
+
+  .first-name, .middle-name, .last-name {
+    font-weight: 700 !important;
+  }
+}
+
+header.post-header .desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: var(--em-text-soft);
+  letter-spacing: 0;
+}
+
+// Section headings with mono eyebrow label
+.post article h2 {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 1.5rem !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.02em !important;
+  color: var(--em-text) !important;
+  border-top: 1px solid var(--em-divider) !important;
+  padding-top: 2.75rem !important;
+  margin-top: 3.5rem !important;
+  margin-bottom: 1.25rem !important;
+  position: relative;
+
+  // Mono eyebrow label
+  &::before {
+    content: attr(data-label);
+    display: block;
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--em-text-muted);
+    margin-bottom: 0.6rem;
+  }
+
+  a {
+    color: inherit !important;
+
+    &:hover {
+      color: var(--em-accent) !important;
+      text-decoration: none;
+    }
+  }
+}
+
+.post article > h2:first-of-type {
+  border-top: none !important;
+  padding-top: 0 !important;
+  margin-top: 2.5rem !important;
+}
+
+// --- Profile --------------------------------------------------------------
+.profile img {
+  border: none !important;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.08) !important;
+  border-radius: 6px !important;
+}
+
+html[data-theme='dark'] .profile img {
+  box-shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.35) !important;
+}
+
+.profile .email-address {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.78rem;
+  letter-spacing: -0.01em;
+
+  a {
+    color: var(--em-text-soft) !important;
+
+    &:hover {
+      color: var(--em-accent) !important;
+    }
+  }
+}
+
+// --- Content body ---------------------------------------------------------
+.post article p,
+.post article li {
+  color: var(--em-text);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+
+.post article strong, .post article b {
+  font-weight: 600 !important;
+}
+
+// --- News: table → editorial list ----------------------------------------
+.news {
+  .table-responsive {
+    max-height: 380px !important;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    mask-image: linear-gradient(to bottom, black calc(100% - 24px), transparent);
+    -webkit-mask-image: linear-gradient(to bottom, black calc(100% - 24px), transparent);
+  }
+
+  table, table.table {
+    border-collapse: collapse !important;
+
+    tr {
+      border-bottom: 1px solid var(--em-divider) !important;
+      transition: background-color 0.15s ease;
+
+      &:last-child { border-bottom: none !important; }
+
+      &:hover {
+        background-color: var(--em-accent-soft);
+      }
+    }
+
+    th, td {
+      border: none !important;
+      padding: 0.85rem 0.5rem !important;
+      vertical-align: top !important;
+      color: var(--em-text) !important;
+    }
+
+    th[scope="row"] {
+      font-family: 'JetBrains Mono', ui-monospace, monospace !important;
+      font-size: 0.78rem !important;
+      font-weight: 400 !important;
+      letter-spacing: -0.01em !important;
+      color: var(--em-text-muted) !important;
+      padding-top: 1rem !important;
+      white-space: nowrap;
+      width: 110px !important;
+    }
+
+    td {
+      font-size: 0.98rem;
+      line-height: 1.55;
+    }
+
+    a {
+      color: var(--em-text) !important;
+      text-decoration: none !important;
+      background-image: linear-gradient(var(--em-accent), var(--em-accent));
+      background-size: 0 1px;
+      background-repeat: no-repeat;
+      background-position: 0 100%;
+      transition: background-size 0.2s ease;
+
+      &:hover {
+        background-size: 100% 1px;
+        color: var(--em-accent) !important;
+      }
+    }
+  }
+}
+
+// --- Project cards: borderless, whitespace-led ---------------------------
+.highlighted-projects {
+  margin-bottom: 3rem;
+
+  .row { margin-left: -1rem; margin-right: -1rem; }
+
+  .col {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .card {
+    background-color: transparent !important;
+    border: none !important;
+    border-radius: 10px !important;
+    box-shadow: none !important;
+    transition: background-color 0.2s ease, transform 0.2s ease !important;
+
+    &:hover {
+      background-color: var(--em-surface) !important;
+      border-color: transparent !important;
+      box-shadow: none !important;
+      transform: translateY(-1px);
+
+      .project-icon {
+        transform: scale(1.03);
+      }
+    }
+
+    .card-body {
+      padding: 1.1rem 1.1rem 1.25rem !important;
+    }
+
+    .project-content-wrapper {
+      display: flex;
+      gap: 0.9rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .card-title {
+      font-family: 'Inter', -apple-system, sans-serif !important;
+      font-size: 1.05rem !important;
+      font-weight: 600 !important;
+      letter-spacing: -0.015em !important;
+      line-height: 1.25 !important;
+      margin-bottom: 0.35rem !important;
+
+      a {
+        color: var(--em-text) !important;
+        text-decoration: none !important;
+        font-weight: 600 !important;
+
+        &:hover {
+          color: var(--em-accent) !important;
+          text-decoration: none !important;
+        }
+      }
+    }
+
+    .project-icon {
+      width: 56px !important;
+      height: 56px !important;
+      border-radius: 8px !important;
+      border: 1px solid var(--em-divider-strong) !important;
+      background-color: var(--em-bg);
+      transition: transform 0.2s ease;
+    }
+
+    .card-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem !important;
+      color: var(--em-text-soft) !important;
+      line-height: 1.55 !important;
+    }
+
+    .project-links {
+      margin-top: 0.85rem !important;
+      padding-top: 0.75rem !important;
+      border-top: 1px solid var(--em-divider) !important;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+
+      .btn {
+        background-color: transparent !important;
+        border: none !important;
+        padding: 0.2rem 0 !important;
+        font-family: 'JetBrains Mono', ui-monospace, monospace !important;
+        font-size: 0.72rem !important;
+        font-weight: 500 !important;
+        letter-spacing: 0.04em !important;
+        text-transform: uppercase;
+        color: var(--em-text-soft) !important;
+        border-radius: 0 !important;
+
+        &:hover {
+          color: var(--em-accent) !important;
+          background-color: transparent !important;
+          border: none !important;
+        }
+
+        i { font-size: 0.85rem; margin-right: 0.3rem; }
+      }
+
+      .project-stats {
+        font-family: 'JetBrains Mono', ui-monospace, monospace !important;
+        font-size: 0.72rem !important;
+        color: var(--em-text-muted) !important;
+      }
+    }
+  }
+}
+
+html[data-theme='dark'] .highlighted-projects .card {
+  &:hover {
+    background-color: var(--em-surface) !important;
+  }
+  .project-icon {
+    background-color: var(--em-surface);
+  }
+}
+
+// --- Project tags (refine if present) ------------------------------------
+.project-tag {
+  font-family: 'JetBrains Mono', ui-monospace, monospace !important;
+  font-size: 0.7rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.02em !important;
+  padding: 0.15rem 0.5rem !important;
+  border-radius: 4px !important;
+  background-color: var(--em-accent-soft) !important;
+  color: var(--em-accent) !important;
+  border: none !important;
+  text-transform: lowercase;
+}
+
+// --- Navbar ---------------------------------------------------------------
+header nav {
+  border-bottom: 1px solid var(--em-divider) !important;
+  background-color: var(--em-bg) !important;
+  backdrop-filter: saturate(140%) blur(8px);
+}
+
+.navbar-light .navbar-nav .nav-link,
+html[data-theme='dark'] .navbar-light .navbar-nav .nav-link {
+  font-family: 'JetBrains Mono', ui-monospace, monospace !important;
+  font-size: 0.78rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.02em !important;
+  text-transform: lowercase;
+  color: var(--em-text-soft) !important;
+  transition: color 0.15s ease;
+
+  &:hover { color: var(--em-text) !important; }
+}
+
+.navbar-light .navbar-nav .active > .nav-link,
+html[data-theme='dark'] .navbar-light .navbar-nav .active > .nav-link {
+  color: var(--em-text) !important;
+  font-weight: 500 !important;
+}
+
+// --- Bibliography / publications fine-tuning ----------------------------
+.bibliography {
+  .preview {
+    border: 1px solid var(--em-divider-strong) !important;
+    box-shadow: none !important;
+    border-radius: 4px !important;
+  }
+
+  .title { font-weight: 500 !important; }
+
+  .author { color: var(--em-text-soft) !important; font-size: 0.95rem; }
+
+  .periodical, .journal {
+    font-style: italic;
+    color: var(--em-text-muted) !important;
+    font-size: 0.9rem;
+  }
+
+  .links .btn {
+    font-family: 'JetBrains Mono', ui-monospace, monospace !important;
+    font-size: 0.7rem !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.04em !important;
+    text-transform: uppercase;
+    border-radius: 4px !important;
+  }
+}
+
+// --- Container width ------------------------------------------------------
+.container {
+  max-width: 860px !important;
+}
+
+// --- Respect reduced motion ----------------------------------------------
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}

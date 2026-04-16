@@ -47,7 +47,7 @@ layout: default
 
     <!-- News -->
     {% if page.announcements and page.announcements.enabled %}
-      <h2 style="border-top: 1px solid var(--global-divider-color); padding-top: 1.5rem; margin-top: 2rem;">
+      <h2 data-label="Updates">
         <a href="{{ '/news/' | relative_url }}" style="color: inherit">news</a>
       </h2>
       {% include news.liquid limit=true %}
@@ -55,7 +55,7 @@ layout: default
 
     <!-- Latest posts -->
     {% if page.latest_posts and page.latest_posts.enabled %}
-      <h2>
+      <h2 data-label="Writing">
         <a href="{{ '/blog/' | relative_url }}" style="color: inherit">latest posts</a>
       </h2>
       {% include latest_posts.liquid %}
@@ -63,7 +63,7 @@ layout: default
 
     <!-- Selected papers -->
     {% if page.selected_papers %}
-      <h2>
+      <h2 data-label="Selected">
         <a href="{{ '/publications/' | relative_url }}" style="color: inherit">publications</a>
       </h2>
       {% include selected_papers.liquid %}
@@ -71,7 +71,7 @@ layout: default
 
     <!-- Highlighted projects -->
     {% if page.highlighted_projects %}
-      <h2>
+      <h2 data-label="Current work">
         <a href="{{ page.highlighted_projects.link | default: '#' }}" style="color: inherit">projects</a>
       </h2>
       {% include highlighted_projects.liquid %}
