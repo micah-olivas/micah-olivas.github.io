@@ -1097,16 +1097,14 @@ html[data-theme='dark'] .navbar-light .navbar-nav .active > .nav-link {
   list-style: none;
   padding-left: 0;
 
-  // More breathing room between papers
+  // More breathing room between papers (no dividers)
   > li + li {
-    margin-top: 2.75rem;
-    padding-top: 2.25rem;
-    border-top: 1px solid var(--em-divider);
+    margin-top: 3rem;
   }
 
   // Tighten the gap between thumbnail and title
   .text-left.mb-3 {
-    margin-bottom: 0.4rem !important;
+    margin-bottom: 0.15rem !important;
   }
 
   .preview {
