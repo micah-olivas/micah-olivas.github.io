@@ -32,3 +32,7 @@
 "planck":
   - firstname: ["Max"]
     url: https://en.wikipedia.org/wiki/Max_Planck
+
+"fordyce":
+  - firstname: ["Polly", "P.", "P. M.", "Polly M."]
+    url: http://www.fordycelab.com

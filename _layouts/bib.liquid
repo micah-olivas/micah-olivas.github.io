@@ -2,27 +2,28 @@
 ---
 <div class="row">
   <!-- Entry bib key -->
-  <div id="{{ entry.key }}" class="col-sm-12">
-    <!-- Thumbnail above citation -->
+  <div id="{{ entry.key }}" class="col-sm-12 pub-entry">
+    <div class="pub-row">
+    <div class="pub-thumb">
     {% if site.enable_publication_thumbnails and entry.preview %}
-      <div class="text-left mb-3">
         {% if entry.preview contains '://' %}
-          <img class="preview z-depth-1 rounded" src="{{ entry.preview }}" style="max-width: 60px; width: 100%;">
+          <img class="preview z-depth-1 rounded" src="{{ entry.preview }}" style="max-width: 88px; width: 100%;">
         {% else %}
           {% assign entry_path = entry.preview | prepend: '/assets/img/publication_preview/' %}
           {%
             include figure.liquid
             loading="eager"
             path=entry_path
-            sizes = "100px"
+            sizes = "88px"
             class="preview z-depth-1 rounded"
             zoomable=true
             avoid_scaling=true
             alt=entry.preview
           %}
         {% endif %}
-      </div>
     {% endif %}
+    </div>
+    <div class="pub-body">
     <!-- Title -->
     <div class="title">{{ entry.title }}</div>
     <!-- Author -->
@@ -337,5 +338,7 @@
         <div style="text-align: center;">{% include video.liquid path=entry.video class="img-fluid rounded z-depth-1" controls=true %}</div>
       </div>
     {% endif %}
+    </div><!-- /.pub-body -->
+    </div><!-- /.pub-row -->
   </div>
 </div>
