@@ -23,10 +23,12 @@ latest_posts:
   enabled: false
 ---
 
-I'm a Genetics PhD candidate and [NHGRI NRSA F31 fellow](https://reporter.nih.gov/search/bPF1kztkukeMtJJIhyTr_w/project-details/10752370) in [Polly Fordyce's lab](http://www.fordycelab.com) at Stanford University.
+I'm a Genetics PhD candidate and [NRSA F31 fellow](https://reporter.nih.gov/search/bPF1kztkukeMtJJIhyTr_w/project-details/10752370) at Stanford University, where I am advised by [Polly Fordyce](http://www.fordycelab.com).
 
-In my research, I design high-throughput microfluidics experiments to reveal how the sequences of natural and designed enzymes encode their function. Through this work, I hope to improve sequence-to-function prediction and provide insights into fundamental mechanisms of enzyme function.
+In my research, I design high-throughput microfluidics experiments to reveal how the sequences of natural and designed enzymes determine their function. By developing optically-coupled assays... 
 
-**Research interests**:
+<!-- Image: overview of work -->
+
+<!-- **Research interests**:
 - assay development for high-throughput measurements of catalysis, binding, and protein stability
-- inferring catalytic properties from evolutionary sequence data
+- inferring catalytic properties from evolutionary sequence data -->
