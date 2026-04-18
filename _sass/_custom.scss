@@ -447,12 +447,29 @@ header nav {
 
 // Publication link buttons - better size
 .bibliography .links {
-  margin-top: 0.25rem !important;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.5rem !important;
   margin-bottom: 0.25rem !important;
 
   .btn {
     font-size: 0.8rem !important;
-    padding: 0.3rem 0.6rem !important;
+    padding: 0.32rem 0.7rem !important;
+    margin: 0 !important;
+    line-height: 1.3 !important;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 576px) {
+  .bibliography .links {
+    gap: 0.45rem;
+
+    .btn {
+      font-size: 0.82rem !important;
+      padding: 0.38rem 0.75rem !important;
+    }
   }
 }
 
@@ -751,7 +768,8 @@ html[data-theme='dark'] .projects {
 // --- Refined palette ------------------------------------------------------
 :root {
   --em-bg: #FAF8F3;            // cream (kept as-is)
-  --em-surface: #F3EFE6;       // card/hover surface
+  --em-surface: #F1ECE2;       // card resting surface (a touch darker than bg)
+  --em-surface-strong: #EAE3D4; // card hover / stronger offset
   --em-news-bg: #F7F4ED;       // just a hint darker than bg, for news container
   --em-text: #141414;
   --em-text-soft: #5a5a5a;
@@ -764,7 +782,8 @@ html[data-theme='dark'] .projects {
 
 html[data-theme='dark'] {
   --em-bg: #26262a;            // lighter, cooler dark (was #1f1d1a)
-  --em-surface: #2f2f33;       // card/hover surface, slightly lighter than bg
+  --em-surface: #2d2d31;       // card resting surface (slightly lighter than bg)
+  --em-surface-strong: #36363b; // card hover / stronger offset
   --em-news-bg: #1b1b1f;       // darker than bg, for news container
   --em-text: #D8D5CF;          // warm off-white, not pure white (Jordan-style)
   --em-text-soft: #A7A49C;
@@ -1054,14 +1073,14 @@ html[data-theme='dark'] .news table a {
   }
 
   .card {
-    background-color: transparent !important;
+    background-color: var(--em-surface) !important;
     border: 1px solid var(--em-divider-strong) !important;
     border-radius: 10px !important;
     box-shadow: none !important;
     transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease !important;
 
     &:hover {
-      background-color: var(--em-surface) !important;
+      background-color: var(--em-surface-strong, var(--em-surface)) !important;
       border-color: var(--em-divider-strong) !important;
       box-shadow: none !important;
       transform: translateY(-1px);
@@ -1403,8 +1422,7 @@ html[data-theme='dark'] .bibliography .links .btn:hover {
 
 // Don't let long abstracts get clipped when expanded; clean up dashed border
 .bibliography .hidden {
-  text-align: justify !important;
-  hyphens: auto;
+  text-align: left !important;
   transition: max-height 0.45s cubic-bezier(0.2, 0.6, 0.2, 1), opacity 0.35s ease !important;
 
   &.open {
@@ -1415,7 +1433,7 @@ html[data-theme='dark'] .bibliography .links .btn:hover {
   p {
     margin: 0.75rem 1rem !important;
     line-height: 1.55 !important;
-    text-align: justify !important;
+    text-align: left !important;
   }
 }
 
