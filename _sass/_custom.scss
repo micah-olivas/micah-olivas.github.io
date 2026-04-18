@@ -1243,6 +1243,19 @@ header nav .navbar-nav {
   align-items: center;
 }
 
+// Desktop: center the nav items with the page content instead of pinning them right
+@media (min-width: 577px) {
+  header nav .navbar-collapse {
+    justify-content: center !important;
+  }
+
+  header nav .navbar-nav {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    gap: 0.25rem 1.25rem;
+  }
+}
+
 header nav .toggle-container,
 header nav #search-toggle {
   display: flex;
