@@ -8,5 +8,8 @@ description:
 ---
 
 <div class="pdf-viewer">
-  <embed src="{{ '/assets/pdf/CV.pdf' | relative_url }}#zoom=FitH&view=Fit" type="application/pdf">
+  <object data="{{ '/assets/pdf/CV.pdf' | relative_url }}#view=FitH" type="application/pdf">
+    <iframe src="{{ '/assets/pdf/CV.pdf' | relative_url }}#view=FitH" title="CV PDF"></iframe>
+    <p>Your browser can't display PDFs inline. <a href="{{ '/assets/pdf/CV.pdf' | relative_url }}">Download the CV</a>.</p>
+  </object>
 </div>
