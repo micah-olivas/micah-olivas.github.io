@@ -979,6 +979,7 @@ html[data-theme='dark'] .profile img {
     border: 1px solid var(--em-divider);
     border-radius: 8px;
     padding: 0.25rem 1rem;
+    contain: paint; // isolate repaints from the rest of the page
   }
 
   table, table.table {
@@ -988,7 +989,6 @@ html[data-theme='dark'] .profile img {
 
     tr {
       border-bottom: 1px solid var(--em-divider) !important;
-      transition: background-color 0.15s ease;
 
       &:last-child { border-bottom: none !important; }
 
@@ -1088,6 +1088,7 @@ html[data-theme='dark'] .news table a {
     border: 1px solid var(--em-divider-strong) !important;
     border-radius: 10px !important;
     box-shadow: none !important;
+    contain: layout paint; // isolate repaints/layout from the rest of the page
     transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease !important;
 
     &:hover {
@@ -1215,6 +1216,17 @@ header nav {
   border-bottom: 1px solid var(--em-divider) !important;
   background-color: var(--em-bg) !important;
   backdrop-filter: saturate(140%) blur(8px);
+  -webkit-backdrop-filter: saturate(140%) blur(8px);
+}
+
+// Skip the 300ms theme cross-fade on the navbar — backdrop-filter on a
+// fixed element forces Safari to recomposite blur every frame, which causes
+// visible lag on theme switch. Snap the bg instead.
+html.transition header nav,
+html.transition header nav *,
+html.transition header nav *:before,
+html.transition header nav *:after {
+  transition: none !important;
 }
 
 .navbar-light .navbar-nav .nav-link,
