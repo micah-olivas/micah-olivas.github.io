@@ -992,9 +992,7 @@ html[data-theme='dark'] .profile img {
 
       &:last-child { border-bottom: none !important; }
 
-      &:hover {
-        background-color: var(--em-accent-soft);
-      }
+      // No background shift on hover — keep news rows flat
     }
 
     th, td {
