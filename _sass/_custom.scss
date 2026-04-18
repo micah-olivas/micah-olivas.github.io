@@ -149,7 +149,7 @@ html[data-theme='dark'] {
     figure {
       margin-left: auto !important;
       margin-right: auto !important;
-      max-width: 70% !important;
+      max-width: 75% !important;
       display: block !important;
     }
 
@@ -176,8 +176,8 @@ html[data-theme='dark'] {
     }
   }
 
-  // Center name on mobile
-  .post header.post-header {
+  // About page: center the name above the profile image
+  .post.post-about header.post-header {
     text-align: center;
 
     .post-title {
@@ -189,10 +189,61 @@ html[data-theme='dark'] {
     }
   }
 
+  // Other pages: left-align page titles with the content margin
+  .post:not(.post-about) header.post-header {
+    text-align: left;
+
+    .post-title {
+      text-align: left;
+    }
+
+    .desc,
+    .post-description {
+      text-align: left;
+    }
+  }
+
   // Better container padding on mobile
   .container {
-    padding-left: 40px !important;
-    padding-right: 40px !important;
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+
+  // Replace hamburger with inline compact nav links
+  header nav .navbar-toggler {
+    display: none !important;
+  }
+
+  header nav .navbar-collapse {
+    display: flex !important;
+    flex-basis: auto !important;
+
+    .navbar-nav {
+      flex-direction: row !important;
+      flex-wrap: wrap !important;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 0.1rem 0.85rem;
+      margin-left: auto !important;
+    }
+
+    .nav-item {
+      display: inline-flex;
+    }
+
+    .nav-link {
+      padding: 0.25rem 0 !important;
+      font-size: 0.88rem !important;
+    }
+  }
+
+  // Hide brand name on mobile — nav's "about" link serves the same purpose
+  header nav .navbar-brand {
+    display: none !important;
+  }
+
+  header nav .container {
+    flex-wrap: nowrap !important;
   }
 
   // Improve text readability on mobile
