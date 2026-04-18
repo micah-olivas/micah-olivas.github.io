@@ -53,22 +53,20 @@ div.pdf-viewer {
   }
 }
 
-/* Mobile specific adjustments */
+/* Mobile: size the embed to match the CV's rendered height at phone widths
+   (FitH scales pages to viewport width — ~1.3× width per page, ×2 pages). */
 @media (max-width: 768px) {
   div.pdf-viewer {
-    /* Slightly narrower margins on mobile */
     margin-left: -10px;
     margin-right: -10px;
     width: calc(100% + 20px);
     max-width: calc(100% + 20px);
-    overflow: visible !important;
 
     iframe,
     object,
     embed {
-      /* Much taller to show all pages - user can scroll down the page */
-      height: 2400px;
-      min-height: 1600px;
+      height: calc(100vw * 1.3 * 2 + 40px);
+      min-height: 900px;
     }
   }
 }
