@@ -260,19 +260,19 @@ html[data-theme='dark'] .profile img {
   }
 }
 
-// Add outline to publication thumbnails and cap size
+// Publication thumbnails — no outline, clean
 .bibliography .preview {
-  border: 1px solid #000000 !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
-  max-width: 78px !important;
-  max-height: 78px !important;
+  border: none !important;
+  box-shadow: none !important;
+  max-width: 88px !important;
+  max-height: 88px !important;
   object-fit: contain !important;
 }
 
 // Per-entry thumbnail sizing: some images have built-in padding, some don't
 .bibliography #olivas2025usortm .preview {
-  max-width: 76px !important;
-  max-height: 76px !important;
+  max-width: 88px !important;
+  max-height: 88px !important;
 }
 
 .bibliography #fannjiang2022designing .preview {
@@ -280,9 +280,11 @@ html[data-theme='dark'] .profile img {
   max-height: 104px !important;
 }
 
-html[data-theme='dark'] .bibliography .preview {
-  border-color: #FFFFFF !important;
-  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2) !important;
+// Dark-mode: invert dark-on-light thumbnails so they render on the dark bg.
+// Opt in per entry via data-invert-dark (set in _sass via entry key).
+html[data-theme='dark'] .bibliography .preview.invert-on-dark,
+html[data-theme='dark'] .bibliography .invert-on-dark .preview {
+  filter: invert(1) hue-rotate(180deg);
 }
 
 // Navbar styling - make tabs black/white based on theme
@@ -662,25 +664,27 @@ html[data-theme='dark'] .projects {
 
 // --- Refined palette ------------------------------------------------------
 :root {
-  --em-bg: #FAF8F3;            // slightly warmer cream
+  --em-bg: #FAF8F3;            // cream (kept as-is)
   --em-surface: #F3EFE6;       // card/hover surface
+  --em-news-bg: #F7F4ED;       // just a hint darker than bg, for news container
   --em-text: #141414;
   --em-text-soft: #5a5a5a;
   --em-text-muted: #8a8a8a;
-  --em-divider: rgba(20, 20, 20, 0.08);
-  --em-divider-strong: rgba(20, 20, 20, 0.16);
+  --em-divider: rgba(20, 20, 20, 0.18);
+  --em-divider-strong: rgba(20, 20, 20, 0.28);
   --em-accent: #2F5BD8;        // refined editorial blue
   --em-accent-soft: rgba(47, 91, 216, 0.08);
 }
 
 html[data-theme='dark'] {
-  --em-bg: #1f1d1a;            // warm dark, not pitch black
-  --em-surface: #2a2824;
-  --em-text: rgba(255, 255, 255, 0.92);
-  --em-text-soft: rgba(255, 255, 255, 0.7);
-  --em-text-muted: rgba(255, 255, 255, 0.5);
-  --em-divider: rgba(255, 255, 255, 0.1);
-  --em-divider-strong: rgba(255, 255, 255, 0.2);
+  --em-bg: #26262a;            // lighter, cooler dark (was #1f1d1a)
+  --em-surface: #2f2f33;       // card/hover surface, slightly lighter than bg
+  --em-news-bg: #1b1b1f;       // darker than bg, for news container
+  --em-text: #D8D5CF;          // warm off-white, not pure white (Jordan-style)
+  --em-text-soft: #A7A49C;
+  --em-text-muted: #7A7770;
+  --em-divider: rgba(255, 255, 255, 0.32);
+  --em-divider-strong: rgba(255, 255, 255, 0.44);
   --em-accent: #9EB7FF;
   --em-accent-soft: rgba(158, 183, 255, 0.12);
 }
@@ -705,13 +709,17 @@ html[data-theme='dark'] {
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif !important;
-  font-feature-settings: 'cv11', 'ss01', 'ss03';
-  font-size: 17px;
-  line-height: 1.65;
-  letter-spacing: -0.005em;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+  font-size: 15.5px;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-wrap: pretty;
   color: var(--em-text);
   background-color: var(--em-bg) !important;
+}
+
+.post article p {
+  margin-bottom: 0.75rem;
 }
 
 a {
@@ -730,51 +738,37 @@ a {
 // --- Display typography ---------------------------------------------------
 header.post-header .post-title,
 .post-title {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
-  font-weight: 700 !important;
+  font-family: inherit !important;
+  font-weight: 400 !important;
   font-size: clamp(1.75rem, 3.4vw, 2.25rem) !important;
-  line-height: 1.1 !important;
-  letter-spacing: -0.03em !important;
+  line-height: 1.15 !important;
+  letter-spacing: -0.02em !important;
   margin-bottom: 0.35rem !important;
 
   .first-name, .middle-name, .last-name {
-    font-weight: 700 !important;
+    font-weight: 400 !important;
   }
 }
 
 header.post-header .desc {
-  font-family: 'Inter', sans-serif;
+  font-family: inherit;
   font-size: 1rem;
   color: var(--em-text-soft);
   letter-spacing: 0;
 }
 
-// Section headings with mono eyebrow label
-.post article h2 {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+// Section headings — plain, no mono eyebrow label (skip .year/.publications h2)
+.post article h2:not(.year):not(.bibliography) {
+  font-family: inherit !important;
   font-weight: 600 !important;
-  font-size: 1.5rem !important;
+  font-size: 1.2rem !important;
   line-height: 1.2 !important;
-  letter-spacing: -0.02em !important;
+  letter-spacing: -0.015em !important;
   color: var(--em-text) !important;
   border-top: 1px solid var(--em-divider) !important;
-  padding-top: 2.75rem !important;
-  margin-top: 3.5rem !important;
-  margin-bottom: 1.25rem !important;
-  position: relative;
-
-  // Mono eyebrow label
-  &::before {
-    content: attr(data-label);
-    display: block;
-    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--em-text-muted);
-    margin-bottom: 0.6rem;
-  }
+  padding-top: 1.1rem !important;
+  margin-top: 1.5rem !important;
+  margin-bottom: 0.65rem !important;
 
   a {
     color: inherit !important;
@@ -786,10 +780,37 @@ header.post-header .desc {
   }
 }
 
+// Jekyll-scholar per-year heading inside .publications — subtle right-aligned label
+.publications h2.bibliography {
+  font-family: inherit !important;
+  font-weight: 500 !important;
+  font-size: 0.82rem !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  color: var(--em-text-muted) !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0.9rem 0 0.25rem !important;
+  text-align: left !important;
+}
+
 .post article > h2:first-of-type {
   border-top: none !important;
   padding-top: 0 !important;
-  margin-top: 2.5rem !important;
+  margin-top: 1.25rem !important;
+}
+
+// About page: let content wrap/hyphenate nicely around the profile image
+.post.about-page article .clearfix {
+  container-type: inline-size;
+}
+
+.post.about-page article .clearfix > p {
+  text-align: start;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  text-wrap: pretty;
 }
 
 // --- Profile --------------------------------------------------------------
@@ -821,25 +842,30 @@ html[data-theme='dark'] .profile img {
 .post article p,
 .post article li {
   color: var(--em-text);
-  font-size: 1.0625rem;
-  line-height: 1.7;
+  font-size: 1rem;
+  line-height: 1.65;
+  text-wrap: pretty;
 }
 
 .post article strong, .post article b {
   font-weight: 600 !important;
 }
 
-// --- News: table → editorial list ----------------------------------------
+// --- News: contained in a slightly darker box, plain dates ---------------
 .news {
   .table-responsive {
     max-height: 380px !important;
     overflow-y: auto;
     scrollbar-width: thin;
-    mask-image: linear-gradient(to bottom, black calc(100% - 24px), transparent);
-    -webkit-mask-image: linear-gradient(to bottom, black calc(100% - 24px), transparent);
+    background-color: var(--em-news-bg);
+    border: 1px solid var(--em-divider);
+    border-radius: 8px;
+    padding: 0.25rem 1rem;
   }
 
   table, table.table {
+    background-color: transparent !important;
+    margin-bottom: 0 !important;
     border-collapse: collapse !important;
 
     tr {
@@ -855,47 +881,48 @@ html[data-theme='dark'] .profile img {
 
     th, td {
       border: none !important;
-      padding: 0.85rem 0.5rem !important;
+      padding: 0.75rem 0.5rem !important;
       vertical-align: top !important;
       color: var(--em-text) !important;
+      background-color: transparent !important;
     }
 
     th[scope="row"] {
-      font-family: 'JetBrains Mono', ui-monospace, monospace !important;
-      font-size: 0.78rem !important;
+      font-family: inherit !important;
+      font-size: 0.88rem !important;
       font-weight: 400 !important;
-      letter-spacing: -0.01em !important;
+      letter-spacing: normal !important;
       color: var(--em-text-muted) !important;
-      padding-top: 1rem !important;
+      padding-top: 0.85rem !important;
       white-space: nowrap;
       width: 110px !important;
     }
 
     td {
-      font-size: 0.98rem;
+      font-size: 0.95rem;
       line-height: 1.55;
     }
 
     a {
       color: var(--em-accent) !important;
-      text-decoration: underline !important;
-      text-decoration-thickness: 1px !important;
-      text-underline-offset: 3px !important;
-      text-decoration-color: rgba(47, 91, 216, 0.35) !important;
-      transition: text-decoration-color 0.15s ease;
+      text-decoration: none !important;
+      transition: color 0.15s ease;
+
+      strong, b, em, span {
+        color: inherit !important;
+      }
 
       &:hover {
-        text-decoration-color: var(--em-accent) !important;
+        color: var(--em-text) !important;
+        text-decoration: none !important;
       }
     }
   }
 }
 
 html[data-theme='dark'] .news table a {
-  text-decoration-color: rgba(158, 183, 255, 0.45) !important;
-
   &:hover {
-    text-decoration-color: var(--em-accent) !important;
+    color: var(--em-text) !important;
   }
 }
 
@@ -942,14 +969,14 @@ html[data-theme='dark'] .news table a {
 
   .card {
     background-color: transparent !important;
-    border: none !important;
+    border: 1px solid var(--em-divider-strong) !important;
     border-radius: 10px !important;
     box-shadow: none !important;
-    transition: background-color 0.2s ease, transform 0.2s ease !important;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease !important;
 
     &:hover {
       background-color: var(--em-surface) !important;
-      border-color: transparent !important;
+      border-color: var(--em-divider-strong) !important;
       box-shadow: none !important;
       transform: translateY(-1px);
 
@@ -1015,28 +1042,29 @@ html[data-theme='dark'] .news table a {
 
       .btn {
         background-color: transparent !important;
-        border: none !important;
-        padding: 0.2rem 0 !important;
-        font-family: 'JetBrains Mono', ui-monospace, monospace !important;
-        font-size: 0.72rem !important;
+        border: 1px solid var(--em-divider-strong) !important;
+        padding: 0.2rem 0.55rem !important;
+        font-family: inherit !important;
+        font-size: 0.78rem !important;
         font-weight: 500 !important;
-        letter-spacing: 0.04em !important;
-        text-transform: uppercase;
+        letter-spacing: normal !important;
+        text-transform: none !important;
         color: var(--em-text-soft) !important;
-        border-radius: 0 !important;
+        border-radius: 4px !important;
+        transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
 
         &:hover {
-          color: var(--em-accent) !important;
-          background-color: transparent !important;
-          border: none !important;
+          color: var(--em-bg) !important;
+          background-color: var(--em-accent) !important;
+          border-color: var(--em-accent) !important;
         }
 
         i { font-size: 0.85rem; margin-right: 0.3rem; }
       }
 
       .project-stats {
-        font-family: 'JetBrains Mono', ui-monospace, monospace !important;
-        font-size: 0.72rem !important;
+        font-family: inherit !important;
+        font-size: 0.82rem !important;
         color: var(--em-text-muted) !important;
       }
     }
@@ -1054,16 +1082,16 @@ html[data-theme='dark'] .highlighted-projects .card {
 
 // --- Project tags (refine if present) ------------------------------------
 .project-tag {
-  font-family: 'JetBrains Mono', ui-monospace, monospace !important;
-  font-size: 0.7rem !important;
-  font-weight: 400 !important;
-  letter-spacing: 0.02em !important;
-  padding: 0.15rem 0.5rem !important;
-  border-radius: 4px !important;
+  font-family: inherit !important;
+  font-size: 0.72rem !important;
+  font-weight: 500 !important;
+  letter-spacing: normal !important;
+  padding: 0.15rem 0.55rem !important;
+  border-radius: 999px !important;
   background-color: var(--em-accent-soft) !important;
   color: var(--em-accent) !important;
-  border: none !important;
-  text-transform: lowercase;
+  border: 1px solid var(--em-divider-strong) !important;
+  text-transform: none !important;
 }
 
 // --- Navbar ---------------------------------------------------------------
@@ -1075,11 +1103,11 @@ header nav {
 
 .navbar-light .navbar-nav .nav-link,
 html[data-theme='dark'] .navbar-light .navbar-nav .nav-link {
-  font-family: 'JetBrains Mono', ui-monospace, monospace !important;
-  font-size: 0.78rem !important;
+  font-family: inherit !important;
+  font-size: 0.95rem !important;
   font-weight: 400 !important;
-  letter-spacing: 0.02em !important;
-  text-transform: lowercase;
+  letter-spacing: normal !important;
+  text-transform: none !important;
   color: var(--em-text-soft) !important;
   transition: color 0.15s ease;
 
@@ -1089,30 +1117,54 @@ html[data-theme='dark'] .navbar-light .navbar-nav .nav-link {
 .navbar-light .navbar-nav .active > .nav-link,
 html[data-theme='dark'] .navbar-light .navbar-nav .active > .nav-link {
   color: var(--em-text) !important;
-  font-weight: 500 !important;
+  font-weight: 600 !important;
 }
 
-// --- Bibliography / publications fine-tuning ----------------------------
+// Navbar brand (name on non-home pages) — match body font
+.navbar.navbar-light .navbar-brand,
+html[data-theme='dark'] .navbar.navbar-light .navbar-brand {
+  font-family: inherit !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  color: var(--em-text) !important;
+  letter-spacing: -0.01em !important;
+}
+
+// --- Bibliography / publications: richer, cleaner ------------------------
 .bibliography {
   list-style: none;
   padding-left: 0;
 
-  // More breathing room between papers (no dividers)
+  // Compact gaps between papers
   > li + li {
-    margin-top: 3rem;
+    margin-top: 1.4rem;
   }
 
-  // Tighten the gap between thumbnail and title
-  .text-left.mb-3 {
-    margin-bottom: 0 !important;
+  // Flex row: thumbnail left, body right
+  .pub-row {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
   }
 
-  .text-left figure {
-    margin: 0 !important;
+  .pub-thumb {
+    flex: 0 0 88px;
+    max-width: 88px;
+    margin-top: 0.15rem;
+
+    figure {
+      margin: 0 !important;
+    }
+
+    .preview {
+      width: 100% !important;
+      height: auto !important;
+    }
   }
 
-  .title {
-    margin-top: 0.35rem !important;
+  .pub-body {
+    flex: 1 1 auto;
+    min-width: 0;
   }
 
   .preview {
@@ -1120,26 +1172,127 @@ html[data-theme='dark'] .navbar-light .navbar-nav .active > .nav-link {
     box-shadow: none !important;
     border-radius: 0 !important;
     background-color: transparent;
+    overflow: visible !important;
   }
 
-  .title { font-weight: 500 !important; }
+  .title {
+    margin-top: 0 !important;
+    font-weight: 500 !important;
+    font-size: 1.02rem !important;
+    line-height: 1.35 !important;
+    color: var(--em-text) !important;
+  }
 
-  .author { color: var(--em-text-soft) !important; font-size: 0.95rem; }
+  .author {
+    color: var(--em-text-soft) !important;
+    font-size: 0.93rem;
+    line-height: 1.5;
+    margin-top: 0.2rem;
+  }
 
-  .periodical, .journal {
-    font-style: italic;
-    color: var(--em-text-muted) !important;
-    font-size: 0.9rem;
+  .periodical {
+    color: var(--em-text-soft) !important;
+    font-size: 0.92rem;
+    font-style: normal;
+    margin-top: 0.2rem;
+
+    em, .journal {
+      font-style: italic;
+      color: var(--em-text) !important;
+      font-weight: 500;
+    }
+  }
+
+  .links {
+    margin-top: 0.55rem !important;
   }
 
   .links .btn {
-    font-family: 'JetBrains Mono', ui-monospace, monospace !important;
-    font-size: 0.7rem !important;
-    font-weight: 400 !important;
-    letter-spacing: 0.04em !important;
-    text-transform: uppercase;
+    font-family: inherit !important;
+    font-size: 0.78rem !important;
+    font-weight: 500 !important;
+    letter-spacing: normal !important;
+    text-transform: none !important;
     border-radius: 4px !important;
+    padding: 0.25rem 0.6rem !important;
+    color: var(--em-accent) !important;
+    border: 1px solid var(--em-divider-strong) !important;
+    background-color: transparent !important;
+    transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+
+    &:hover {
+      color: var(--em-bg) !important;
+      background-color: var(--em-accent) !important;
+      border-color: var(--em-accent) !important;
+    }
   }
+}
+
+html[data-theme='dark'] .bibliography .links .btn:hover {
+  color: var(--em-bg) !important;
+}
+
+// --- Publications page: section headings + scholar pointer --------------
+.pub-section-heading {
+  font-family: inherit !important;
+  font-weight: 500 !important;
+  font-size: 1.05rem !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+  color: var(--em-text-soft) !important;
+  border-top: 1px solid var(--em-divider) !important;
+  padding-top: 0.35rem !important;
+  margin-top: 1.35rem !important;
+  margin-bottom: 0.25rem !important;
+}
+
+.pub-section-heading:first-of-type,
+.post article > .pub-section-heading:first-of-type {
+  border-top: none !important;
+  padding-top: 0 !important;
+  margin-top: 0.35rem !important;
+}
+
+.pub-scholar-pointer {
+  color: var(--em-text-soft);
+  font-size: 0.95rem;
+  margin: 0.25rem 0 1rem;
+
+  a {
+    color: var(--em-accent) !important;
+    text-decoration: none;
+    border-bottom: 1px solid var(--em-divider-strong);
+    transition: color 0.15s ease, border-color 0.15s ease;
+
+    &:hover {
+      color: var(--em-text) !important;
+      border-color: var(--em-accent);
+    }
+  }
+}
+
+// Don't let long abstracts get clipped when expanded; clean up dashed border
+.bibliography .hidden {
+  text-align: left !important;
+
+  &.open {
+    max-height: 200em !important;
+  }
+
+  p {
+    margin: 0.75rem 1rem !important;
+    line-height: 1.55 !important;
+  }
+}
+
+.bibliography div.abstract.hidden,
+.bibliography div.abstract.hidden.open,
+.bibliography div.award.hidden,
+.bibliography div.award.hidden.open {
+  border: none !important;
+  background-color: var(--em-accent-soft);
+  border-radius: 4px;
+  margin-top: 0.6rem;
 }
 
 // --- Container width ------------------------------------------------------
