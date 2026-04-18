@@ -138,6 +138,7 @@ html[data-theme='dark'] {
 @media (max-width: 576px) {
   .profile {
     width: 100% !important;
+    max-width: 100% !important;
     float: none !important;
     margin-left: auto !important;
     margin-right: auto !important;
@@ -148,7 +149,7 @@ html[data-theme='dark'] {
     figure {
       margin-left: auto !important;
       margin-right: auto !important;
-      max-width: 65% !important;
+      max-width: 70% !important;
       display: block !important;
     }
 
@@ -1165,6 +1166,23 @@ html[data-theme='dark'] .navbar.navbar-light .navbar-brand {
   .pub-body {
     flex: 1 1 auto;
     min-width: 0;
+  }
+
+  // Mobile: stack thumbnail above full-width body
+  @media (max-width: 576px) {
+    .pub-row {
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .pub-thumb {
+      flex: 0 0 auto;
+      max-width: 88px;
+    }
+
+    .pub-thumb:empty {
+      display: none;
+    }
   }
 
   .preview {
