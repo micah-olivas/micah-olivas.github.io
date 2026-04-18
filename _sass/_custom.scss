@@ -160,6 +160,12 @@ html[data-theme='dark'] {
     font-size: 1rem !important;
     line-height: 1.55 !important;
   }
+
+  // Justify about-page intro paragraphs so they fill the viewport width
+  .post.post-about article > .clearfix p {
+    text-align: justify;
+    hyphens: auto;
+  }
 }
 
 // Fix mobile profile picture size and layout
