@@ -1,17 +1,17 @@
-// Smooth page loading - wait for critical resources before showing content
+// Smooth page loading - reveal content once HTML is parsed so pages with
+// many images (e.g. publications) still animate in quickly.
 
 (function() {
-  // Function to add loaded class
   function showPage() {
     document.body.classList.add('page-loaded');
   }
 
-  // Wait for window load (all resources including images, fonts, and icons)
-  window.addEventListener('load', function() {
-    // Additional small delay to ensure icon fonts are fully rendered
-    setTimeout(showPage, 150);
-  });
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => requestAnimationFrame(showPage));
+  } else {
+    requestAnimationFrame(showPage);
+  }
 
-  // Fallback: if taking too long, show after 2 seconds
-  setTimeout(showPage, 2000);
+  // Safety net in case something prevents the above
+  setTimeout(showPage, 1500);
 })();

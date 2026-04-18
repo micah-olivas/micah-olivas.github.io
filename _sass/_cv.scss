@@ -3,7 +3,7 @@
  *****************************/
 
 /* Remove extra spacing on CV page */
-body:has(.pdf-viewer) {
+body:has(.cv-pages) {
   .container.mt-5 {
     margin-top: 1rem !important;
     padding-top: 0 !important;
@@ -36,39 +36,27 @@ body:has(.pdf-viewer) {
   }
 }
 
-/* PDF Viewer styles for mobile responsiveness */
-div.pdf-viewer {
+.cv-pages {
   width: 100%;
-  max-width: 100%;
-  margin: 0 auto;
-  position: relative;
-
-  iframe,
-  object,
-  embed {
-    width: 100%;
-    height: 800px;
-    border: none;
-    display: block;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
-/* Mobile: size the embed to match the CV's rendered height at phone widths
-   (FitH scales pages to viewport width — ~1.3× width per page, ×2 pages). */
-@media (max-width: 768px) {
-  div.pdf-viewer {
-    margin-left: -10px;
-    margin-right: -10px;
-    width: calc(100% + 20px);
-    max-width: calc(100% + 20px);
+canvas.cv-page {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #fff;
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.12);
+  border-radius: 2px;
+}
 
-    iframe,
-    object,
-    embed {
-      height: calc(100vw * 1.3 * 2 + 40px);
-      min-height: 900px;
-    }
-  }
+.cv-fallback {
+  color: var(--global-text-color-light);
+  font-size: 0.9rem;
+  text-align: center;
+  padding: 2rem 0;
 }
 
 div.container-link-button {
@@ -263,27 +251,3 @@ ul.timeline li::before {
   left: 2px;
   top: -0.5rem;
 }
-
-/*ul.timeline::before {
-     content: "●";
-     font-size: 1em;
-     display: inline-block;
-     margin: 0;
-     padding: 0;
-     position: relative;
-     left: -2px;
-     top: 0.4rem;
-     color: var(--global-text-color);
-}
- ul.timeline::after {
-     content: "●";
-     font-size: 1em;
-     display: inline-block;
-     margin: 0;
-     padding: 0;
-     position: relative;
-     left: -2px;
-     top: -1rem;
-     color: var(--global-text-color);
-}
-*/

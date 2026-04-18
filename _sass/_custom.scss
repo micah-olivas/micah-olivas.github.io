@@ -161,10 +161,10 @@ html[data-theme='dark'] {
     line-height: 1.55 !important;
   }
 
-  // Justify about-page intro paragraphs so they fill the viewport width
+  // About-page intro paragraphs: left-aligned reads cleanest at narrow column widths
   .post.post-about article > .clearfix p {
-    text-align: justify;
-    hyphens: auto;
+    text-align: left;
+    hyphens: manual;
   }
 }
 
@@ -183,7 +183,7 @@ html[data-theme='dark'] {
     figure {
       margin-left: auto !important;
       margin-right: auto !important;
-      max-width: 75% !important;
+      max-width: 62% !important;
       display: block !important;
     }
 
@@ -364,6 +364,19 @@ html[data-theme='dark'] .profile img {
 .bibliography #fannjiang2022designing .preview {
   max-width: 104px !important;
   max-height: 104px !important;
+}
+
+// Mobile: let stacked thumbnails grow to ~80% viewport width
+@media (max-width: 576px) {
+  .bibliography .preview,
+  .bibliography #olivas2025usortm .preview,
+  .bibliography #fannjiang2022designing .preview,
+  .bibliography #han2020crispr .preview {
+    max-width: 100% !important;
+    max-height: none !important;
+    width: 100% !important;
+    height: auto !important;
+  }
 }
 
 // Dark-mode: invert dark-on-light thumbnails so they render on the dark bg.
@@ -1308,7 +1321,24 @@ html[data-theme='dark'] .navbar.navbar-light .navbar-brand {
 
     .pub-thumb {
       flex: 0 0 auto;
-      max-width: 88px;
+      width: 80%;
+      max-width: 80%;
+    }
+
+    .pub-thumb .preview {
+      width: 100% !important;
+      height: auto !important;
+    }
+
+    // Design paper thumbnail has built-in whitespace — bump it a touch over the 88px default
+    #fannjiang2022designing .pub-thumb {
+      width: auto;
+      max-width: 128px;
+    }
+
+    #fannjiang2022designing .pub-thumb .preview {
+      max-width: 128px !important;
+      width: 100% !important;
     }
 
     .pub-thumb:empty {
