@@ -251,14 +251,16 @@ html[data-theme='dark'] {
   header nav .navbar-collapse {
     display: flex !important;
     flex-basis: auto !important;
+    justify-content: center !important;
 
     .navbar-nav {
       flex-direction: row !important;
       flex-wrap: wrap !important;
       align-items: center;
-      justify-content: flex-end;
+      justify-content: center;
       gap: 0.1rem 0.85rem;
       margin-left: auto !important;
+      margin-right: auto !important;
     }
 
     .nav-item {
