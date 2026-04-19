@@ -1359,6 +1359,8 @@ html[data-theme='dark'] .navbar.navbar-light .navbar-brand {
     .preview {
       width: 100% !important;
       height: auto !important;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
     }
   }
 
@@ -1383,6 +1385,8 @@ html[data-theme='dark'] .navbar.navbar-light .navbar-brand {
     .pub-thumb .preview {
       width: 100% !important;
       height: auto !important;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
     }
 
     // Design paper thumbnail has built-in whitespace — give it a touch more
@@ -1394,6 +1398,7 @@ html[data-theme='dark'] .navbar.navbar-light .navbar-brand {
     #fannjiang2022designing .pub-thumb .preview {
       max-width: 128px !important;
       width: 100% !important;
+      aspect-ratio: 1 / 1;
     }
 
     .pub-thumb:empty {
