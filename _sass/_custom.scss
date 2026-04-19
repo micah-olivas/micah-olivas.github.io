@@ -13,25 +13,22 @@
   line-gap-override: 0%;
 }
 
-// Subtle slide-up fade on page load, scoped to main content so the nav stays static
+// Pure opacity fade on page load, scoped to main content so the nav stays
+// static. No translateY: any vertical motion reads as a layout shift rather
+// than a polished transition.
 body > .container[role="main"] {
   opacity: 0;
-  transform: translate3d(0, 8px, 0);
-  transition:
-    opacity 0.45s cubic-bezier(0.22, 0.61, 0.36, 1),
-    transform 0.55s cubic-bezier(0.22, 0.61, 0.36, 1);
-  will-change: opacity, transform;
+  transition: opacity 0.28s ease-out;
+  will-change: opacity;
 }
 
 body.page-loaded > .container[role="main"] {
   opacity: 1;
-  transform: translate3d(0, 0, 0);
 }
 
 @media (prefers-reduced-motion: reduce) {
   body > .container[role="main"] {
-    transform: none;
-    transition: opacity 0.2s ease-in;
+    transition: opacity 0.15s linear;
   }
 }
 
