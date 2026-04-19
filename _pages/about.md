@@ -25,7 +25,7 @@ latest_posts:
 
 I'm a Genetics PhD candidate and [NRSA F31 fellow](https://reporter.nih.gov/search/bPF1kztkukeMtJJIhyTr_w/project-details/10752370) at Stanford University, where I am advised by [Polly Fordyce](http://www.fordycelab.com).
 
-In my research, I design high-throughput microfluidics experiments to reveal how enzyme sequence dictates function. By developing optically coupled assays for catalysis, binding, and stability, I generate the large-scale datasets needed to connect protein sequence with biochemically resolved properties.
+In my research, I design high-throughput microfluidics experiments to reveal how the sequences of natural enzymes dictate their function. By developing optically coupled assays for catalysis, binding, and stability, I generate the large-scale datasets needed to connect protein sequence with biochemically resolved properties.
 
 <!-- Image: overview of work -->
 
