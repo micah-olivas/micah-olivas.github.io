@@ -462,6 +462,23 @@ header nav {
   }
 }
 
+// Larger, more tappable profile social icons on mobile
+@media (max-width: 576px) {
+  .profile .social .contact-icons {
+    font-size: 1.9rem !important;
+    gap: 0.35rem;
+
+    a {
+      margin: 0 0.3rem !important;
+
+      img, svg {
+        width: 1.9rem !important;
+        height: 1.9rem !important;
+      }
+    }
+  }
+}
+
 // Publication link buttons - better size
 .bibliography .links {
   display: flex;
