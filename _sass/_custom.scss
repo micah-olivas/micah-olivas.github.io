@@ -308,6 +308,15 @@ html[data-theme='dark'] {
       margin-left: 0;
       margin-right: 0;
     }
+
+    // More breathing room between the GitHub button + star/watch stats
+    .project-links {
+      gap: 1rem !important;
+
+      .project-stats {
+        gap: 1rem !important;
+      }
+    }
   }
 }
 
@@ -462,14 +471,15 @@ header nav {
   }
 }
 
-// Larger, more tappable profile social icons on mobile
+// Larger, more tappable profile social icons on mobile, with extra spacing
+// so each icon is an unambiguous tap target.
 @media (max-width: 576px) {
   .profile .social .contact-icons {
     font-size: 1.9rem !important;
-    gap: 0.35rem;
+    gap: 0.9rem;
 
     a {
-      margin: 0 0.3rem !important;
+      margin: 0 0.5rem !important;
 
       img, svg {
         width: 1.9rem !important;
