@@ -34,8 +34,8 @@ description:
     if (containerWidth === lastWidth) return;
     lastWidth = containerWidth;
 
-    // Render at up to 2x the device pixel ratio for crisp text/lines
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    // Oversample 3x for crisp text/lines, even on non-retina displays.
+    const dpr = Math.max(window.devicePixelRatio || 1, 2) * 1.5;
     const fragment = document.createDocumentFragment();
 
     for (let i = 1; i <= pdfDoc.numPages; i++) {

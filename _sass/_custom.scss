@@ -778,7 +778,7 @@ html[data-theme='dark'] .projects {
    Appended last so it overrides earlier rules. Remove this block to revert.
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+// Inter + JetBrains Mono now preloaded via <link> in _includes/head.liquid.
 
 // --- Refined palette ------------------------------------------------------
 :root {
