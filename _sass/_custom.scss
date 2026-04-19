@@ -1154,12 +1154,13 @@ html[data-theme='dark'] .news table a {
     }
 
     .project-icon {
-      width: 56px !important;
-      height: 56px !important;
+      width: 72px !important;
+      height: 72px !important;
       border-radius: 8px !important;
       border: 1px solid var(--em-divider-strong) !important;
       background-color: var(--em-bg);
       transition: transform 0.2s ease;
+      flex-shrink: 0;
     }
 
     .card-text {
