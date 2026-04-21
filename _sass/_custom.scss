@@ -14,21 +14,28 @@
 }
 
 // Pure opacity fade on page load, scoped to main content so the nav stays
-// static. No translateY: any vertical motion reads as a layout shift rather
-// than a polished transition.
+// static. Uses a CSS animation (not a transition) because mobile Safari
+// often produces its first paint AFTER the `page-loaded` class is added —
+// with a transition there's no state change to animate and the fade is
+// skipped. An animation is triggered by rule application, so it always runs.
 body > .container[role="main"] {
   opacity: 0;
-  transition: opacity 0.28s ease-out;
   will-change: opacity;
 }
 
 body.page-loaded > .container[role="main"] {
-  opacity: 1;
+  animation: page-fade-in 0.32s ease-out forwards;
+}
+
+@keyframes page-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  body > .container[role="main"] {
-    transition: opacity 0.15s linear;
+  body.page-loaded > .container[role="main"] {
+    animation-duration: 0.15s;
+    animation-timing-function: linear;
   }
 }
 
