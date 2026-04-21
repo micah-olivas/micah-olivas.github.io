@@ -434,3 +434,71 @@ ul.timeline li::before {
   left: 2px;
   top: -0.5rem;
 }
+
+/*****************************
+ * Dark mode: invert the PDF canvas + theme surrounding chrome so the whole
+ * CV page reads on a dark background. The canvas is an image of a white
+ * document, so we use the same invert(1) hue-rotate(180deg) trick al-folio
+ * applies to dark-on-light thumbnails elsewhere — black text becomes light,
+ * white bg becomes dark, and any color imagery's hue is approximately
+ * preserved by the 180° rotation.
+ *****************************/
+
+html[data-theme='dark'] {
+  // Invert the rasterized canvas only. The text/link overlays sit above the
+  // canvas and need their own color treatment (they're transparent anyway).
+  canvas.cv-page {
+    filter: invert(1) hue-rotate(180deg);
+  }
+
+  // Page wrap reads as a card on dark bg. The canvas inverts to dark inside
+  // it so the wrap color only shows as a hairline frame / shadow base — but
+  // match it to the card color so nothing flashes white if the canvas hasn't
+  // painted yet.
+  .cv-page-wrap {
+    background: var(--global-card-bg-color);
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.5);
+  }
+
+  // Skeleton: same card background, with lighter gradient lines so they read
+  // against the dark fill. Keep the shimmer sweep tuned for dark too (a
+  // light-ish band against a dark surface).
+  .cv-skeleton {
+    background-color: var(--global-card-bg-color);
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.22) 0 0),  // title
+      linear-gradient(rgba(255, 255, 255, 0.12) 0 0),  // subtitle
+      linear-gradient(rgba(255, 255, 255, 0.16) 0 0),  // section heading 1
+      linear-gradient(rgba(255, 255, 255, 0.08) 0 0),
+      linear-gradient(rgba(255, 255, 255, 0.08) 0 0),
+      linear-gradient(rgba(255, 255, 255, 0.08) 0 0),
+      linear-gradient(rgba(255, 255, 255, 0.08) 0 0),
+      linear-gradient(rgba(255, 255, 255, 0.16) 0 0),  // section heading 2
+      linear-gradient(rgba(255, 255, 255, 0.08) 0 0),
+      linear-gradient(rgba(255, 255, 255, 0.08) 0 0),
+      linear-gradient(rgba(255, 255, 255, 0.08) 0 0);
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.5);
+
+    &::after {
+      background: linear-gradient(
+        105deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.04) 30%,
+        rgba(255, 255, 255, 0.09) 50%,
+        rgba(255, 255, 255, 0.04) 70%,
+        transparent 100%
+      );
+    }
+  }
+
+  // Text-layer selection highlight on dark: a brighter blue so the selected
+  // range reads against the inverted canvas beneath.
+  .cv-textlayer ::selection {
+    background: rgba(100, 149, 237, 0.5);
+  }
+
+  // Link hover: slightly brighter tint on dark.
+  a.cv-link:hover {
+    background: rgba(100, 149, 237, 0.28);
+  }
+}
