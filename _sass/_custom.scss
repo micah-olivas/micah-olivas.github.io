@@ -13,55 +13,47 @@
   line-gap-override: 0%;
 }
 
-// Page load reveal. Fades main content in with a subtle top-to-bottom sweep:
-// a gradient mask sized taller than the container is animated from above
-// the viewport down to aligned-top, so the fade-front moves through the
-// content. Top items finish fading in first. The opacity fade runs in
-// parallel so the overall feel stays soft — the mask just biases which
-// region lands first.
+// Page load reveal: content eases into focus. Starts slightly blurred +
+// transparent, animates to sharp + opaque. Feels like a camera lens pulling
+// focus rather than a wipe or a flat fade. Keyframe uses `filter: blur(0)` at
+// end (equivalent to no filter — the GPU short-circuits) so there's no
+// lingering composited layer once the animation settles.
 // Uses a CSS animation (not a transition) because mobile Safari often
 // produces its first paint AFTER the `page-loaded` class is added — with a
 // transition there's no state change to animate, so the fade is skipped.
 body > .container[role="main"] {
   opacity: 0;
-  will-change: opacity, mask-position;
+  filter: blur(6px);
+  will-change: opacity, filter;
 }
 
 body.page-loaded > .container[role="main"] {
-  animation: page-reveal 0.55s ease-out forwards;
-  -webkit-mask-image: linear-gradient(to bottom, #000 40%, transparent 80%);
-          mask-image: linear-gradient(to bottom, #000 40%, transparent 80%);
-  -webkit-mask-size: 100% 250%;
-          mask-size: 100% 250%;
-  -webkit-mask-repeat: no-repeat;
-          mask-repeat: no-repeat;
+  animation: page-focus 0.55s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
 }
 
-@keyframes page-reveal {
+@keyframes page-focus {
   from {
     opacity: 0;
-    -webkit-mask-position: 0 -150%;
-            mask-position: 0 -150%;
+    filter: blur(6px);
   }
   to {
     opacity: 1;
-    -webkit-mask-position: 0 0%;
-            mask-position: 0 0%;
+    filter: blur(0);
   }
 }
 
-// Keep the older keyframe name around for reduced-motion — a plain opacity
-// fade without the mask sweep, for users who've opted out of motion.
+// Reduced-motion: skip the blur, just a quick opacity fade.
 @keyframes page-fade-in {
   from { opacity: 0; }
   to { opacity: 1; }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  body > .container[role="main"] {
+    filter: none;
+  }
   body.page-loaded > .container[role="main"] {
     animation: page-fade-in 0.15s linear forwards;
-    -webkit-mask-image: none;
-            mask-image: none;
   }
 }
 
