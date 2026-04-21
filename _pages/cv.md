@@ -26,6 +26,28 @@ description:
   let lastWidth = 0;
   let resizeTimer = null;
 
+  // Fallback "Loading CV…" is hidden by default. Only show it if the PDF
+  // takes longer than 700ms to render — fast renders skip it entirely so
+  // it doesn't flash in and get replaced.
+  const initialFallback = container.querySelector('.cv-fallback');
+  const fallbackShowTimer = initialFallback
+    ? setTimeout(() => initialFallback.classList.add('is-visible'), 700)
+    : null;
+
+  async function swapContent(fragment) {
+    // If the fallback is (or is becoming) visible, fade it out before
+    // replacing content so the pages don't pop in on top of a vanishing
+    // placeholder. Otherwise the swap is instant.
+    clearTimeout(fallbackShowTimer);
+    const fb = container.querySelector('.cv-fallback');
+    if (fb && getComputedStyle(fb).opacity !== '0') {
+      fb.classList.remove('is-visible');
+      await new Promise(r => setTimeout(r, 260)); // match CSS transition
+    }
+    container.innerHTML = '';
+    container.appendChild(fragment);
+  }
+
   async function render() {
     const myToken = ++renderToken;
     if (!pdfDoc) pdfDoc = await pdfjsLib.getDocument(url).promise;
@@ -112,8 +134,7 @@ description:
     }
 
     if (myToken !== renderToken) return;
-    container.innerHTML = '';
-    container.appendChild(fragment);
+    await swapContent(fragment);
 
     // The scroll progress bar caches its max value on window.onload (before
     // the PDF renders), so without a refresh it overshoots on this page.
@@ -125,7 +146,8 @@ description:
 
   render().catch(err => {
     console.error('CV render failed', err);
-    container.innerHTML = '<p class="cv-fallback"><a href="' + url + '">Download the CV (PDF)</a></p>';
+    clearTimeout(fallbackShowTimer);
+    container.innerHTML = '<p class="cv-fallback is-visible"><a href="' + url + '">Download the CV (PDF)</a></p>';
   });
 
   // Only re-render on actual width changes (ignore mobile URL-bar resizes)

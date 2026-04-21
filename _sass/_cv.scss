@@ -135,6 +135,15 @@ a.cv-link {
   font-size: 0.9rem;
   text-align: center;
   padding: 2rem 0;
+  // Start hidden. The CV module script fades it in after a grace period so a
+  // fast PDF render never flashes it. A transition covers the fade-out right
+  // before the pages replace it.
+  opacity: 0;
+  transition: opacity 0.25s ease-out;
+
+  &.is-visible {
+    opacity: 1;
+  }
 }
 
 div.container-link-button {
