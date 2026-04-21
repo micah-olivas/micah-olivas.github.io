@@ -46,8 +46,11 @@ function getCurrentScrollPosition() {
 }
 
 function initializeProgressElement() {
+  // body.padding-top is owned by page-load.js (runs before the page fade
+  // reveals content) so we don't touch it here — doing so previously caused
+  // a visible upward shift mid-fade when window.onload fired after the
+  // fade had already started.
   let navbarHeight = $("#navbar").outerHeight(true);
-  $("body").css({ "padding-top": navbarHeight });
   $("progress-container").css({ "padding-top": navbarHeight });
   progressBar.css({ top: navbarHeight });
   progressBar.attr({
