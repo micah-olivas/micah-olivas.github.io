@@ -24,9 +24,14 @@
 body > .container[role="main"] {
   opacity: 0;
   filter: blur(6px);
-  will-change: opacity, filter;
 }
 
+// will-change is deliberately NOT set here: it would pin a GPU layer for the
+// lifetime of the element. On the CV page the container height balloons
+// after pdf.js renders multiple pages into it, and a pinned layer means the
+// GPU has to re-rasterize a now-huge layer — visible jitter. page-load.js
+// sets will-change inline right before the animation and clears it on
+// animationend, so the hint lives only for the ~550ms it's needed.
 body.page-loaded > .container[role="main"] {
   animation: page-focus 0.55s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
 }

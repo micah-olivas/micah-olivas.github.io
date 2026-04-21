@@ -194,22 +194,29 @@ a.cv-link {
   overflow: hidden;
   transition: opacity 0.22s ease-out, transform 0.22s ease-out;
 
+  // Shimmer sweep. Uses transform: translateX on a narrow band rather than
+  // animating background-position on a full-size gradient — transforms are
+  // composited on the GPU and don't force repaints each frame, which matters
+  // while the CV page is also laying out PDF canvases.
   &::after {
     content: "";
     position: absolute;
-    inset: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 40%;
     background: linear-gradient(
-      115deg,
-      transparent 25%,
-      rgba(0, 0, 0, 0.04) 45%,
-      rgba(0, 0, 0, 0.07) 50%,
-      rgba(0, 0, 0, 0.04) 55%,
-      transparent 75%
+      105deg,
+      transparent 0%,
+      rgba(0, 0, 0, 0.04) 30%,
+      rgba(0, 0, 0, 0.08) 50%,
+      rgba(0, 0, 0, 0.04) 70%,
+      transparent 100%
     );
-    background-size: 220% 100%;
-    background-position: -40% 0;
+    transform: translateX(-120%);
     animation: cv-skeleton-shimmer 1.9s ease-in-out infinite;
     pointer-events: none;
+    will-change: transform;
   }
 
   &.is-leaving {
@@ -219,8 +226,8 @@ a.cv-link {
 }
 
 @keyframes cv-skeleton-shimmer {
-  0%   { background-position: -40% 0; }
-  100% { background-position: 140% 0; }
+  0%   { transform: translateX(-120%); }
+  100% { transform: translateX(350%); }
 }
 
 // Error fallback (only shown if render() throws).

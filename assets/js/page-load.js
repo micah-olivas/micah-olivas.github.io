@@ -25,6 +25,23 @@
     // Sync padding synchronously before committing the reveal so the fade
     // runs over the final layout.
     syncBodyPaddingToNavbar();
+
+    // Hint the compositor that opacity + filter are about to animate, but
+    // ONLY for the duration of the animation. Leaving will-change on forever
+    // pins a GPU layer that becomes expensive on pages whose content grows
+    // after load (notably the CV page after pdf.js renders).
+    var main = document.querySelector('.container[role="main"]');
+    if (main) {
+      main.style.willChange = 'opacity, filter';
+      main.addEventListener('animationend', function onDone(e) {
+        if (e.target !== main) return; // ignore descendant animations
+        main.removeEventListener('animationend', onDone);
+        main.style.willChange = 'auto';
+        // Explicitly clear filter so any lingering GPU layer is released.
+        main.style.filter = 'none';
+      });
+    }
+
     // Two rAFs so the browser is guaranteed to have committed a paint at
     // opacity 0 before the animation keyframe application — belt and
     // braces for the mobile Safari paint batcher.
