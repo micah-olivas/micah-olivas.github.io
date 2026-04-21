@@ -13,20 +13,45 @@
   line-gap-override: 0%;
 }
 
-// Pure opacity fade on page load, scoped to main content so the nav stays
-// static. Uses a CSS animation (not a transition) because mobile Safari
-// often produces its first paint AFTER the `page-loaded` class is added —
-// with a transition there's no state change to animate and the fade is
-// skipped. An animation is triggered by rule application, so it always runs.
+// Page load reveal. Fades main content in with a subtle top-to-bottom sweep:
+// a gradient mask sized taller than the container is animated from above
+// the viewport down to aligned-top, so the fade-front moves through the
+// content. Top items finish fading in first. The opacity fade runs in
+// parallel so the overall feel stays soft — the mask just biases which
+// region lands first.
+// Uses a CSS animation (not a transition) because mobile Safari often
+// produces its first paint AFTER the `page-loaded` class is added — with a
+// transition there's no state change to animate, so the fade is skipped.
 body > .container[role="main"] {
   opacity: 0;
-  will-change: opacity;
+  will-change: opacity, mask-position;
 }
 
 body.page-loaded > .container[role="main"] {
-  animation: page-fade-in 0.32s ease-out forwards;
+  animation: page-reveal 0.55s ease-out forwards;
+  -webkit-mask-image: linear-gradient(to bottom, #000 40%, transparent 80%);
+          mask-image: linear-gradient(to bottom, #000 40%, transparent 80%);
+  -webkit-mask-size: 100% 250%;
+          mask-size: 100% 250%;
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
 }
 
+@keyframes page-reveal {
+  from {
+    opacity: 0;
+    -webkit-mask-position: 0 -150%;
+            mask-position: 0 -150%;
+  }
+  to {
+    opacity: 1;
+    -webkit-mask-position: 0 0%;
+            mask-position: 0 0%;
+  }
+}
+
+// Keep the older keyframe name around for reduced-motion — a plain opacity
+// fade without the mask sweep, for users who've opted out of motion.
 @keyframes page-fade-in {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -34,8 +59,9 @@ body.page-loaded > .container[role="main"] {
 
 @media (prefers-reduced-motion: reduce) {
   body.page-loaded > .container[role="main"] {
-    animation-duration: 0.15s;
-    animation-timing-function: linear;
+    animation: page-fade-in 0.15s linear forwards;
+    -webkit-mask-image: none;
+            mask-image: none;
   }
 }
 

@@ -55,6 +55,28 @@ body:has(.cv-pages) {
   box-shadow: 0 2px 14px rgba(0, 0, 0, 0.12);
   border-radius: 2px;
   overflow: hidden;
+  // Pages are appended to the DOM only once pdf.js finishes rendering, well
+  // after the main page fade has completed. A small staggered fade-in keeps
+  // them from popping in abruptly.
+  animation: cv-page-appear 0.45s ease-out both;
+
+  @for $i from 1 through 12 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{($i - 1) * 55}ms;
+    }
+  }
+}
+
+@keyframes cv-page-appear {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cv-page-wrap {
+    animation-duration: 0.15s;
+    animation-delay: 0ms !important;
+  }
 }
 
 canvas.cv-page {
