@@ -10,9 +10,7 @@ description:
 {% assign cv_url = '/assets/pdf/CV.pdf' | relative_url %}
 
 <div id="cv-pages" class="cv-pages" data-pdf-url="{{ cv_url }}">
-  <p class="cv-fallback">
-    Loading CV… <a href="{{ cv_url }}">Download the PDF</a> if this doesn't render.
-  </p>
+  <div class="cv-skeleton" role="status" aria-label="Loading CV"></div>
 </div>
 
 <script type="module">
@@ -26,23 +24,13 @@ description:
   let lastWidth = 0;
   let resizeTimer = null;
 
-  // Fallback "Loading CV…" is hidden by default. Only show it if the PDF
-  // takes longer than 700ms to render — fast renders skip it entirely so
-  // it doesn't flash in and get replaced.
-  const initialFallback = container.querySelector('.cv-fallback');
-  const fallbackShowTimer = initialFallback
-    ? setTimeout(() => initialFallback.classList.add('is-visible'), 700)
-    : null;
-
+  // Skeleton placeholder is visible from the start; fade it out before the
+  // real pages are appended so we don't pop.
   async function swapContent(fragment) {
-    // If the fallback is (or is becoming) visible, fade it out before
-    // replacing content so the pages don't pop in on top of a vanishing
-    // placeholder. Otherwise the swap is instant.
-    clearTimeout(fallbackShowTimer);
-    const fb = container.querySelector('.cv-fallback');
-    if (fb && getComputedStyle(fb).opacity !== '0') {
-      fb.classList.remove('is-visible');
-      await new Promise(r => setTimeout(r, 260)); // match CSS transition
+    const skeleton = container.querySelector('.cv-skeleton');
+    if (skeleton) {
+      skeleton.classList.add('is-leaving');
+      await new Promise(r => setTimeout(r, 220)); // match CSS transition
     }
     container.innerHTML = '';
     container.appendChild(fragment);
@@ -146,7 +134,6 @@ description:
 
   render().catch(err => {
     console.error('CV render failed', err);
-    clearTimeout(fallbackShowTimer);
     container.innerHTML = '<p class="cv-fallback is-visible"><a href="' + url + '">Download the CV (PDF)</a></p>';
   });
 

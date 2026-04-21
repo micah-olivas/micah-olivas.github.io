@@ -130,20 +130,115 @@ a.cv-link {
   }
 }
 
+// Skeleton placeholder shown while pdf.js renders. Shaped and shadowed like a
+// real .cv-page-wrap so when the rendered pages replace it the transition
+// reads as "that placeholder resolved into real content" rather than a pop.
+// Two layers:
+//   - Faint content scaffolding (a title bar and several text-lines) drawn
+//     with stacked linear-gradients, to suggest "document" at a glance.
+//   - A slow diagonal shimmer sweep over the top via ::after.
+// On leave (.is-leaving), fade + a tiny lift for a natural hand-off to the
+// first real page, which slides in from 6px below.
+.cv-skeleton {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 8.5 / 11;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-image:
+    // Title block
+    linear-gradient(rgba(0, 0, 0, 0.16) 0 0),
+    // Subtitle
+    linear-gradient(rgba(0, 0, 0, 0.08) 0 0),
+    // Section heading
+    linear-gradient(rgba(0, 0, 0, 0.10) 0 0),
+    // Body paragraph lines (4)
+    linear-gradient(rgba(0, 0, 0, 0.05) 0 0),
+    linear-gradient(rgba(0, 0, 0, 0.05) 0 0),
+    linear-gradient(rgba(0, 0, 0, 0.05) 0 0),
+    linear-gradient(rgba(0, 0, 0, 0.05) 0 0),
+    // Second section heading
+    linear-gradient(rgba(0, 0, 0, 0.10) 0 0),
+    // Body lines (3)
+    linear-gradient(rgba(0, 0, 0, 0.05) 0 0),
+    linear-gradient(rgba(0, 0, 0, 0.05) 0 0),
+    linear-gradient(rgba(0, 0, 0, 0.05) 0 0);
+  background-position:
+    // x   y       (size defined below)
+    8%  8%,    // title
+    8%  12.5%,  // subtitle
+    8%  22%,    // section heading 1
+    8%  28%,    // line
+    8%  32%,    // line
+    8%  36%,    // line
+    8%  40%,    // line
+    8%  50%,    // section heading 2
+    8%  56%,    // line
+    8%  60%,    // line
+    8%  64%;    // line
+  background-size:
+    50% 18px,   // title
+    30% 10px,   // subtitle
+    22% 12px,   // section heading 1
+    84% 6px,    // line
+    84% 6px,
+    84% 6px,
+    70% 6px,    // short line
+    22% 12px,   // section heading 2
+    84% 6px,
+    84% 6px,
+    60% 6px;    // short line
+
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.12);
+  border-radius: 2px;
+  overflow: hidden;
+  transition: opacity 0.22s ease-out, transform 0.22s ease-out;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      115deg,
+      transparent 25%,
+      rgba(0, 0, 0, 0.04) 45%,
+      rgba(0, 0, 0, 0.07) 50%,
+      rgba(0, 0, 0, 0.04) 55%,
+      transparent 75%
+    );
+    background-size: 220% 100%;
+    background-position: -40% 0;
+    animation: cv-skeleton-shimmer 1.9s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  &.is-leaving {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes cv-skeleton-shimmer {
+  0%   { background-position: -40% 0; }
+  100% { background-position: 140% 0; }
+}
+
+// Error fallback (only shown if render() throws).
 .cv-fallback {
   color: var(--global-text-color-light);
   font-size: 0.9rem;
   text-align: center;
   padding: 2rem 0;
-  // Start hidden. The CV module script fades it in after a grace period so a
-  // fast PDF render never flashes it. A transition covers the fade-out right
-  // before the pages replace it.
   opacity: 0;
   transition: opacity 0.25s ease-out;
 
   &.is-visible {
     opacity: 1;
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cv-skeleton::after { animation: none; }
 }
 
 div.container-link-button {
