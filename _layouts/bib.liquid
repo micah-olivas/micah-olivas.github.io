@@ -290,6 +290,10 @@
               <img
                 src="https://img.shields.io/badge/scholar-{{ citation_count }}-4285F4?logo=googlescholar&labelColor=beige"
                 alt="{{ citation_count }} Google Scholar citations"
+                width="108"
+                height="20"
+                loading="lazy"
+                decoding="async"
               >
             </a>
           {% endif %}
@@ -302,6 +306,10 @@
               <img
                 src="https://img.shields.io/badge/inspire-{% inspirehep_citations entry.inspirehep_id %}-001628?logo=inspire&logoColor=001628&labelColor=beige"
                 alt="{% inspirehep_citations entry.inspirehep_id %} InspireHEP citations"
+                width="108"
+                height="20"
+                loading="lazy"
+                decoding="async"
               >
             </a>
           {% endif %}

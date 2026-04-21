@@ -51,7 +51,7 @@ function initializeProgressElement() {
   // a visible upward shift mid-fade when window.onload fired after the
   // fade had already started.
   let navbarHeight = $("#navbar").outerHeight(true);
-  $("progress-container").css({ "padding-top": navbarHeight });
+  $(".progress-container").css({ "padding-top": navbarHeight });
   progressBar.css({ top: navbarHeight });
   progressBar.attr({
     max: getDistanceToScroll(),
