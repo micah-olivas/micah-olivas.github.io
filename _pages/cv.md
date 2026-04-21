@@ -114,6 +114,13 @@ description:
     if (myToken !== renderToken) return;
     container.innerHTML = '';
     container.appendChild(fragment);
+
+    // The scroll progress bar caches its max value on window.onload (before
+    // the PDF renders), so without a refresh it overshoots on this page.
+    // Dispatch a resize so progress-bar.js re-reads document height. Our
+    // own resize handler above early-returns when clientWidth is unchanged,
+    // so this doesn't cause a re-render loop.
+    window.dispatchEvent(new Event('resize'));
   }
 
   render().catch(err => {
