@@ -55,16 +55,10 @@ body:has(.cv-pages) {
   box-shadow: 0 2px 14px rgba(0, 0, 0, 0.12);
   border-radius: 2px;
   overflow: hidden;
-  // Pages are appended to the DOM only once pdf.js finishes rendering, well
-  // after the main page fade has completed. A small staggered fade-in keeps
-  // them from popping in abruptly.
+  // Pages are appended progressively as pdf.js finishes each one, so the
+  // cadence of rasterization IS the stagger — no extra animation-delay
+  // needed. Each page simply fades in from slightly below on append.
   animation: cv-page-appear 0.45s ease-out both;
-
-  @for $i from 1 through 12 {
-    &:nth-child(#{$i}) {
-      animation-delay: #{($i - 1) * 55}ms;
-    }
-  }
 }
 
 @keyframes cv-page-appear {

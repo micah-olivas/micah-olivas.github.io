@@ -32,7 +32,12 @@
     // after load (notably the CV page after pdf.js renders).
     var main = document.querySelector('.container[role="main"]');
     if (main) {
-      main.style.willChange = 'opacity, filter';
+      // CV page uses a plain opacity fade (see _custom.scss — blur is scoped
+      // out because pdf.js fights the main thread during reveal). Don't hint
+      // `filter` there or we pin a GPU layer over the entire multi-thousand-
+      // pixel-tall container for an animation that never runs.
+      var isCv = !!document.querySelector('.cv-pages');
+      main.style.willChange = isCv ? 'opacity' : 'opacity, filter';
       main.addEventListener('animationend', function onDone(e) {
         if (e.target !== main) return; // ignore descendant animations
         main.removeEventListener('animationend', onDone);

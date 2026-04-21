@@ -47,6 +47,17 @@ body.page-loaded > .container[role="main"] {
   }
 }
 
+// CV page override: plain opacity fade, no blur. pdf.js rasterizes page
+// canvases on the main thread during reveal, and running filter: blur over
+// a multi-thousand-pixel-tall container at the same time drops frames. The
+// skeleton → pages cascade already provides plenty of motion for this page.
+body:has(.cv-pages) > .container[role="main"] {
+  filter: none;
+}
+body.page-loaded:has(.cv-pages) > .container[role="main"] {
+  animation: page-fade-in 0.4s ease-out forwards;
+}
+
 // Reduced-motion: skip the blur, just a quick opacity fade.
 @keyframes page-fade-in {
   from { opacity: 0; }
