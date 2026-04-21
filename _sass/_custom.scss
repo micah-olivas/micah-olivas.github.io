@@ -27,6 +27,15 @@ body > .container[role="main"],
   filter: blur(6px);
 }
 
+// Subsequent in-session navigations: navbar is already familiar, no need to
+// re-animate it. Skip the pre-reveal hidden state so the navbar paints
+// immediately at its normal resting style on internal nav. Main content
+// still animates each page load so there's a sense of transition.
+html.nav-seen #navbar {
+  opacity: 0.95;
+  filter: none;
+}
+
 // will-change is deliberately NOT set here: it would pin a GPU layer for the
 // lifetime of the element. On the CV page the container height balloons
 // after pdf.js renders multiple pages into it, and a pinned layer means the
@@ -43,6 +52,13 @@ body.page-loaded > .container[role="main"] {
 // page-focus (end opacity: 1) we'd lose the frosting.
 body.page-loaded #navbar {
   animation: nav-focus 0.55s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+// Subsequent in-session navigations: navbar already on screen, don't re-animate.
+// Without this, nav-focus's `from { opacity: 0 }` would briefly flash the navbar
+// out and back in on internal page loads.
+html.nav-seen body.page-loaded #navbar {
+  animation: none;
 }
 
 @keyframes page-focus {
@@ -258,7 +274,7 @@ html[data-theme='dark'] {
     figure {
       margin-left: auto !important;
       margin-right: auto !important;
-      max-width: 62% !important;
+      max-width: 56% !important; // ~10% smaller than the previous 62% to give the name + intro more breathing room on small screens
       display: block !important;
     }
 
@@ -1359,6 +1375,31 @@ html[data-theme='dark'] .navbar-light .navbar-nav .nav-link {
 html[data-theme='dark'] .navbar-light .navbar-nav .active > .nav-link {
   color: var(--em-text) !important;
   font-weight: 600 !important;
+  // Smooth entrance for the active tab on every page load. Inter ships as
+  // discrete weights (no variable axis), so font-weight itself can't be
+  // interpolated — color + a whisper of scale carry the cue instead.
+  // transform-origin: center bottom keeps the baseline stable so the letters
+  // appear to settle into place rather than float.
+  animation: nav-active-in 0.45s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  transform-origin: center bottom;
+}
+
+@keyframes nav-active-in {
+  from {
+    color: var(--em-text-soft);
+    transform: scale(0.97);
+  }
+  to {
+    color: var(--em-text);
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar-light .navbar-nav .active > .nav-link,
+  html[data-theme='dark'] .navbar-light .navbar-nav .active > .nav-link {
+    animation: none;
+  }
 }
 
 // Vertically align the theme toggle (and search button) with the nav-link text

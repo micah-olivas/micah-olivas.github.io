@@ -1,3 +1,21 @@
+<!-- Mark this tab as having already seen the navbar, so subsequent page
+     navigations within the same session skip the navbar fade-in. Must run
+     BEFORE any stylesheets match so the initial rule evaluates the class
+     already present (otherwise we'd flash a blurred navbar on internal nav).
+     Inline + synchronous; sessionStorage is per-tab so reopening the site
+     later still gets the first-visit animation. -->
+<script>
+  (function () {
+    try {
+      if (sessionStorage.getItem('nav-seen')) {
+        document.documentElement.classList.add('nav-seen');
+      } else {
+        sessionStorage.setItem('nav-seen', '1');
+      }
+    } catch (e) { /* private mode / storage disabled — fall through to first-visit animation */ }
+  })();
+</script>
+
 <!-- Metadata, OpenGraph and Schema.org -->
 {% include metadata.liquid %}
 
