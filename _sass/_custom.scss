@@ -21,7 +21,8 @@
 // Uses a CSS animation (not a transition) because mobile Safari often
 // produces its first paint AFTER the `page-loaded` class is added — with a
 // transition there's no state change to animate, so the fade is skipped.
-body > .container[role="main"] {
+body > .container[role="main"],
+#navbar {
   opacity: 0;
   filter: blur(6px);
 }
@@ -36,6 +37,14 @@ body.page-loaded > .container[role="main"] {
   animation: page-focus 0.55s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
 }
 
+// Navbar gets its own keyframe so we can land at al-folio's default 0.95
+// opacity (which combines with backdrop-blur to create the frosted-glass
+// look). animation-fill-mode: forwards holds the end state, so if we used
+// page-focus (end opacity: 1) we'd lose the frosting.
+body.page-loaded #navbar {
+  animation: nav-focus 0.55s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
 @keyframes page-focus {
   from {
     opacity: 0;
@@ -47,10 +56,23 @@ body.page-loaded > .container[role="main"] {
   }
 }
 
+@keyframes nav-focus {
+  from {
+    opacity: 0;
+    filter: blur(6px);
+  }
+  to {
+    opacity: 0.95;
+    filter: blur(0);
+  }
+}
+
 // CV page override: plain opacity fade, no blur. pdf.js rasterizes page
 // canvases on the main thread during reveal, and running filter: blur over
 // a multi-thousand-pixel-tall container at the same time drops frames. The
 // skeleton → pages cascade already provides plenty of motion for this page.
+// Navbar stays with the focus animation — it's a fixed-size strip, not
+// competing with pdf.js.
 body:has(.cv-pages) > .container[role="main"] {
   filter: none;
 }
@@ -65,12 +87,22 @@ body.page-loaded:has(.cv-pages) > .container[role="main"] {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  body > .container[role="main"] {
+  body > .container[role="main"],
+  #navbar {
     filter: none;
   }
   body.page-loaded > .container[role="main"] {
     animation: page-fade-in 0.15s linear forwards;
   }
+  // Navbar-specific quick fade that ends at 0.95, same reason as above.
+  body.page-loaded #navbar {
+    animation: nav-fade-in 0.15s linear forwards;
+  }
+}
+
+@keyframes nav-fade-in {
+  from { opacity: 0; }
+  to { opacity: 0.95; }
 }
 
 // Ensure bold text works properly
