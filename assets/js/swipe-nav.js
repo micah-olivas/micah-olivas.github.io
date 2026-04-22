@@ -68,7 +68,14 @@
     var nextIdx = dx > 0 ? currentIdx - 1 : currentIdx + 1;
     if (nextIdx < 0 || nextIdx >= paths.length) return;
 
-    location.href = paths[nextIdx];
+    // Route through the exit-animation helper so swipe navigation gets the
+    // same fade-out as link clicks. Falls back to a direct assignment if
+    // page-exit.js hasn't loaded yet (e.g. race on slow networks).
+    if (typeof window.__pageExit === 'function') {
+      window.__pageExit(paths[nextIdx]);
+    } else {
+      location.href = paths[nextIdx];
+    }
   }
 
   document.addEventListener('touchstart', onTouchStart, { passive: true });

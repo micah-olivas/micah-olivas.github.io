@@ -102,6 +102,39 @@ body.page-loaded:has(.cv-pages) > .container[role="main"] {
   to { opacity: 1; }
 }
 
+// Page exit animation — mirror of page-focus, in reverse. Triggered by
+// page-exit.js when the user clicks an internal link (or swipes between
+// nav pages on mobile). Runs shorter than the entrance because a long
+// fade-out before navigation feels sluggish; accelerate-in easing lets
+// the first frame still look close to resting, which keeps the click
+// feeling responsive. Navbar is NOT included — it's preserved across
+// in-session navigation (see html.nav-seen).
+body.page-exiting > .container[role="main"] {
+  animation: page-unfocus 0.22s cubic-bezier(0.4, 0.0, 1, 1) forwards;
+}
+
+@keyframes page-unfocus {
+  from {
+    opacity: 1;
+    filter: blur(0);
+  }
+  to {
+    opacity: 0;
+    filter: blur(6px);
+  }
+}
+
+// CV page exit: plain opacity, no blur (same reason as entrance).
+body.page-exiting:has(.cv-pages) > .container[role="main"] {
+  animation: page-fade-out 0.18s ease-in forwards;
+  filter: none;
+}
+
+@keyframes page-fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   body > .container[role="main"],
   #navbar {
@@ -113,6 +146,11 @@ body.page-loaded:has(.cv-pages) > .container[role="main"] {
   // Navbar-specific quick fade that ends at 0.95, same reason as above.
   body.page-loaded #navbar {
     animation: nav-fade-in 0.15s linear forwards;
+  }
+  // Exit: same quick linear fade, no blur. page-exit.js's fallback timer
+  // still fires navigation even if this animation doesn't complete first.
+  body.page-exiting > .container[role="main"] {
+    animation: page-fade-out 0.1s linear forwards;
   }
 }
 
