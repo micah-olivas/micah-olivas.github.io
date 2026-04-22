@@ -1490,6 +1490,33 @@ html[data-theme='dark'] .navbar.navbar-light .navbar-brand {
   letter-spacing: -0.01em !important;
 }
 
+// Animate the brand in on every page load. The navbar itself only fades
+// in on first visit (html.nav-seen suppresses the rest), but the brand
+// only renders when permalink != '/', so navigating about → publications
+// inserts it into the DOM fresh — without this, it'd pop in statically.
+// Slides a few px from the left so it feels like it's settling in from
+// where the profile image sat on the home page.
+.navbar.navbar-light .navbar-brand {
+  animation: nav-brand-in 0.5s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+@keyframes nav-brand-in {
+  from {
+    opacity: 0;
+    transform: translateX(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar.navbar-light .navbar-brand {
+    animation: none;
+  }
+}
+
 // --- Bibliography / publications: richer, cleaner ------------------------
 .bibliography {
   list-style: none;
