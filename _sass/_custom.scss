@@ -1500,6 +1500,13 @@ html[data-theme='dark'] .navbar.navbar-light .navbar-brand {
   animation: nav-brand-in 0.5s cubic-bezier(0.22, 0.61, 0.36, 1) both;
 }
 
+// Coming from another non-home page? The brand was already on screen,
+// so don't re-animate it. html.brand-seen is set by the inline head
+// script when sessionStorage says the previous page had a brand.
+html.brand-seen .navbar.navbar-light .navbar-brand {
+  animation: none;
+}
+
 @keyframes nav-brand-in {
   from {
     opacity: 0;

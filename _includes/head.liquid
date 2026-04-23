@@ -12,7 +12,27 @@
       } else {
         sessionStorage.setItem('nav-seen', '1');
       }
+      // Brand animates only when newly appearing (home → non-home). On
+      // non-home → non-home it should sit still. We can't check the DOM
+      // yet (parser hasn't reached <nav>), so we rely on the
+      // previous-page flag: if the last page had a brand, mark it
+      // already-seen now so CSS suppresses the animation before paint.
+      if (sessionStorage.getItem('brand-seen')) {
+        document.documentElement.classList.add('brand-seen');
+      }
     } catch (e) { /* private mode / storage disabled — fall through to first-visit animation */ }
+    // After DOM parse, refresh the brand-seen flag to reflect THIS page.
+    // Home page has no .navbar-brand → clear it so the next non-home
+    // navigation animates again.
+    document.addEventListener('DOMContentLoaded', function () {
+      try {
+        if (document.querySelector('.navbar-brand')) {
+          sessionStorage.setItem('brand-seen', '1');
+        } else {
+          sessionStorage.removeItem('brand-seen');
+        }
+      } catch (e) { /* storage disabled, fine */ }
+    });
   })();
 </script>
 
