@@ -1095,6 +1095,14 @@ header.post-header .desc {
   -webkit-hyphens: auto;
   -ms-hyphens: auto;
   text-wrap: pretty;
+  // Cap measure at a comfortable reading width on desktop. Paragraphs
+  // wrapping next to the floated profile are already narrow; this only
+  // affects the lines below the image where the column would otherwise
+  // stretch to the full container. Mobile (<576px) keeps full width —
+  // container padding is already tight there.
+  @media (min-width: 577px) {
+    max-width: 62ch;
+  }
 }
 
 // --- Profile --------------------------------------------------------------
