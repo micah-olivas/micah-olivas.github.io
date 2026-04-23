@@ -10,8 +10,8 @@
 // (html.nav-seen suppresses its re-entrance).
 
 (function () {
-  var EXIT_MS = 220;       // keep in sync with @keyframes page-unfocus duration
-  var FALLBACK_MS = 400;   // never block navigation longer than this
+  var EXIT_MS = 160;       // keep in sync with @keyframes page-unfocus duration
+  var FALLBACK_MS = 280;   // never block navigation longer than this
   var exiting = false;
 
   // Expose for swipe-nav.js (and anything else that programmatically routes

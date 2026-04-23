@@ -86,7 +86,15 @@
     var fontsReady = (document.fonts && document.fonts.ready)
       ? document.fonts.ready
       : Promise.resolve();
-    var cap = new Promise(function (r) { setTimeout(r, 600); });
+    // In-session navigations almost always have fonts/images cached, so
+    // waiting a full 600ms before revealing makes transitions feel slow.
+    // A tighter 300ms cap for subsequent visits still catches the
+    // common case (everything cached → resolves ~immediately) without
+    // blocking when a slow asset would otherwise drag the cap out. First
+    // visit keeps the longer window so late fonts don't cause a shift
+    // under the reveal.
+    var isFirstVisit = !document.documentElement.classList.contains('nav-seen');
+    var cap = new Promise(function (r) { setTimeout(r, isFirstVisit ? 600 : 300); });
     Promise.race([
       Promise.all([fontsReady, eagerImagesReady()]),
       cap,

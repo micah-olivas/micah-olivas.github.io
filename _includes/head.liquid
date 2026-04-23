@@ -85,6 +85,8 @@
 
 <!-- Smooth page load script -->
 <script src="{{ '/assets/js/page-load.js' | relative_url | bust_file_cache }}"></script>
+<!-- Prefetch internal links on hover/touch — navigation uses cached HTML -->
+<script defer src="{{ '/assets/js/prefetch.js' | relative_url | bust_file_cache }}"></script>
 <!-- Page exit animation (intercepts internal link clicks, runs the reverse fade) -->
 <script defer src="{{ '/assets/js/page-exit.js' | relative_url | bust_file_cache }}"></script>
 

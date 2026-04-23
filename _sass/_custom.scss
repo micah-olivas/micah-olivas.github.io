@@ -46,6 +46,26 @@ body.page-loaded > .container[role="main"] {
   animation: page-focus 0.55s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
 }
 
+// Subsequent in-session navigations feel clunky if they use the full
+// first-visit cinematic timing — the fade layers on top of the exit
+// fade and network, so the total transition reads as slow. Tighten it
+// for every load after the first: faster fade, softer blur so the
+// keyframe doesn't need to travel as far.
+html.nav-seen body.page-loaded > .container[role="main"] {
+  animation: page-focus-quick 0.3s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+@keyframes page-focus-quick {
+  from {
+    opacity: 0;
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
 // Navbar gets its own keyframe so we can land at al-folio's default 0.95
 // opacity (which combines with backdrop-blur to create the frosted-glass
 // look). animation-fill-mode: forwards holds the end state, so if we used
@@ -110,7 +130,7 @@ body.page-loaded:has(.cv-pages) > .container[role="main"] {
 // feeling responsive. Navbar is NOT included — it's preserved across
 // in-session navigation (see html.nav-seen).
 body.page-exiting > .container[role="main"] {
-  animation: page-unfocus 0.22s cubic-bezier(0.4, 0.0, 1, 1) forwards;
+  animation: page-unfocus 0.16s cubic-bezier(0.4, 0.0, 1, 1) forwards;
 }
 
 @keyframes page-unfocus {
@@ -120,7 +140,7 @@ body.page-exiting > .container[role="main"] {
   }
   to {
     opacity: 0;
-    filter: blur(6px);
+    filter: blur(4px);
   }
 }
 
@@ -1531,7 +1551,7 @@ html.brand-seen .navbar.navbar-light .navbar-brand {
 // content fade so it doesn't snap away when the new page lands. Only
 // applied when page-exit.js confirms the destination has no brand.
 body.brand-exiting .navbar.navbar-light .navbar-brand {
-  animation: nav-brand-out 0.22s cubic-bezier(0.4, 0.0, 1, 1) forwards;
+  animation: nav-brand-out 0.16s cubic-bezier(0.4, 0.0, 1, 1) forwards;
 }
 
 @keyframes nav-brand-out {
