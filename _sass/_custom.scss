@@ -1404,39 +1404,51 @@ html[data-theme='dark'] .navbar-light .navbar-nav .nav-link {
   letter-spacing: normal !important;
   text-transform: none !important;
   color: var(--em-text-soft) !important;
-  transition: color 0.15s ease;
+  // font-weight transitions only interpolate against a variable font —
+  // we load Inter with wght@100..900 for exactly this reason. The crossfade
+  // duration is matched to color so the letters appear to "lean in"
+  // instead of snapping thicker.
+  transition:
+    color 0.25s ease,
+    font-weight 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
 
   &:hover { color: var(--em-text) !important; }
+}
+
+// Width reservation: scope to anchor nav-links only (excludes the
+// <span class="nav-link"> used inside the search toggle, which also has
+// an icon child that we don't want flex-column'd).
+.navbar-light .navbar-nav a.nav-link[data-nav-label] {
+  // inline-flex column lets the hidden ::after contribute to the anchor's
+  // intrinsic width. Its text is rendered at weight 600 (the "bold" end
+  // state), so the anchor width always equals the bold variant and
+  // neighbors stay put when the active tab thickens.
+  display: inline-flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &::after {
+    content: attr(data-nav-label);
+    font-weight: 600;
+    height: 0;
+    visibility: hidden;
+    overflow: hidden;
+    pointer-events: none;
+    user-select: none;
+  }
 }
 
 .navbar-light .navbar-nav .active > .nav-link,
 html[data-theme='dark'] .navbar-light .navbar-nav .active > .nav-link {
   color: var(--em-text) !important;
   font-weight: 600 !important;
-  // Smooth entrance for the active tab on every page load. Inter ships as
-  // discrete weights (no variable axis), so font-weight itself can't be
-  // interpolated — color + a whisper of scale carry the cue instead.
-  // transform-origin: center bottom keeps the baseline stable so the letters
-  // appear to settle into place rather than float.
-  animation: nav-active-in 0.45s cubic-bezier(0.22, 0.61, 0.36, 1) both;
-  transform-origin: center bottom;
-}
-
-@keyframes nav-active-in {
-  from {
-    color: var(--em-text-soft);
-    transform: scale(0.97);
-  }
-  to {
-    color: var(--em-text);
-    transform: scale(1);
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .navbar-light .navbar-nav .active > .nav-link,
-  html[data-theme='dark'] .navbar-light .navbar-nav .active > .nav-link {
-    animation: none;
+  .navbar-light .navbar-nav .nav-link,
+  html[data-theme='dark'] .navbar-light .navbar-nav .nav-link {
+    transition: none;
   }
 }
 
