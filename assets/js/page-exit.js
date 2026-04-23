@@ -18,6 +18,14 @@
   // to an internal URL) so the exit animation plays for that path too.
   window.__pageExit = exitTo;
 
+  function isHomeUrl(url) {
+    try {
+      var u = new URL(url, location.href);
+      var p = u.pathname.replace(/\/+$/, '') || '/';
+      return p === '/';
+    } catch (err) { return false; }
+  }
+
   function exitTo(url) {
     if (exiting) return;
     exiting = true;
@@ -27,6 +35,13 @@
 
     // No main element? Just navigate — nothing to animate.
     if (!main) { location.href = url; return; }
+
+    // Going home? The destination has no navbar-brand, so fade the brand
+    // out alongside the main content instead of letting it snap away when
+    // the new page lands. Non-home → non-home keeps the brand static.
+    if (isHomeUrl(url) && document.querySelector('.navbar-brand')) {
+      body.classList.add('brand-exiting');
+    }
 
     // Hint the compositor for opacity+filter while the exit runs. Cleared
     // implicitly when the page unloads.
@@ -99,6 +114,7 @@
   window.addEventListener('pageshow', function () {
     exiting = false;
     document.body.classList.remove('page-exiting');
+    document.body.classList.remove('brand-exiting');
     var main = document.querySelector('.container[role="main"]');
     if (main) main.style.willChange = '';
   });

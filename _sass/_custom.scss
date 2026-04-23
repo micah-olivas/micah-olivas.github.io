@@ -1507,6 +1507,31 @@ html.brand-seen .navbar.navbar-light .navbar-brand {
   animation: none;
 }
 
+// Navigating TO the home page: fade the brand out in sync with the main
+// content fade so it doesn't snap away when the new page lands. Only
+// applied when page-exit.js confirms the destination has no brand.
+body.brand-exiting .navbar.navbar-light .navbar-brand {
+  animation: nav-brand-out 0.22s cubic-bezier(0.4, 0.0, 1, 1) forwards;
+}
+
+@keyframes nav-brand-out {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.brand-exiting .navbar.navbar-light .navbar-brand {
+    animation: none;
+    opacity: 0;
+  }
+}
+
 @keyframes nav-brand-in {
   from {
     opacity: 0;
