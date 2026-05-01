@@ -35,6 +35,20 @@ repo_trophies:
   theme_dark: gitdimmed # https://github.com/ryo-ma/github-profile-trophy
 
 # -----------------------------------------------------------------------------
+# Highlighted projects (auto-populated from GitHub at build time)
+# -----------------------------------------------------------------------------
+# The plugin in _plugins/highlighted_projects.rb fetches public repos from these
+# users/orgs that are tagged with the configured topic, and replaces
+# site.data.highlighted_projects with the result. Per-repo thumbnails (and any
+# other field overrides) live in _data/project_overrides.yml, keyed by
+# "owner/repo".
+github_projects:
+  users:
+    - micah-olivas
+    - FordyceLab
+  topic: featured
+
+# -----------------------------------------------------------------------------
 # RSS Feed
 # -----------------------------------------------------------------------------
 # will use title and url fields

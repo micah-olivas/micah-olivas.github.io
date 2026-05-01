@@ -1,0 +1,14 @@
+# Per-repo overrides for the auto-populated highlighted projects.
+# Keyed by GitHub "owner/repo". Any field set here wins over the value pulled
+# from the GitHub API. Common use is `thumbnail:` since GitHub has no
+# equivalent.
+
+micah-olivas/beak:
+  thumbnail: assets/img/beak_thumbnail.jpg
+
+FordyceLab/usortm:
+  name: uSort-M
+  thumbnail: assets/img/publication_preview/usortm-icon.png
+
+micah-olivas/array-print:
+  name: ArrayPrint
