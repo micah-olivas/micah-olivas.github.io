@@ -1270,12 +1270,32 @@ html[data-theme='dark'] .news table a {
 .highlighted-projects {
   margin-bottom: 3rem;
 
-  .row { margin-left: -1rem; margin-right: -1rem; }
+  // Masonry layout — cards size to content; shorter cards let the next one
+  // pack in below them rather than waiting for the next row.
+  .projects-masonry {
+    column-count: 3;
+    column-gap: 1.5rem;
 
-  .col {
-    padding-left: 1rem;
-    padding-right: 1rem;
-    margin-bottom: 1.5rem;
+    @media (max-width: 991.98px) {
+      column-count: 2;
+    }
+    @media (max-width: 575.98px) {
+      column-count: 1;
+    }
+
+    > .card {
+      // CSS columns place children top-to-bottom in each column; this keeps
+      // each card whole and gives the spacing between cards.
+      display: inline-block;
+      width: 100%;
+      margin-bottom: 1.5rem;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      -webkit-column-break-inside: avoid;
+
+      .card-body { height: auto; }
+      .project-links { margin-top: 0.85rem; }
+    }
   }
 
   .card {

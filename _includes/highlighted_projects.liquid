@@ -1,41 +1,39 @@
 <div class="highlighted-projects">
   {% assign projects = site.data.highlighted_projects %}
   {% if projects %}
-    <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="projects-masonry">
       {% for project in projects %}
-        <div class="col">
-          <div class="card h-100">
-            <div class="card-body">
-              <div class="project-content-wrapper">
-                <div class="project-text">
-                  <h5 class="card-title">
-                    <a href="{{ project.github }}" target="_blank" rel="noopener noreferrer">{{ project.name }}</a>
-                  </h5>
-                  <p class="card-text">{{ project.description }}</p>
+        <div class="card">
+          <div class="card-body">
+            <div class="project-content-wrapper">
+              <div class="project-text">
+                <h5 class="card-title">
+                  <a href="{{ project.github }}" target="_blank" rel="noopener noreferrer">{{ project.name }}</a>
+                </h5>
+                <p class="card-text">{{ project.description }}</p>
+              </div>
+              {% if project.thumbnail %}
+                <div class="project-icon">
+                  {% include figure.liquid loading="eager" path=project.thumbnail alt=project.name class="img-fluid" %}
                 </div>
-                {% if project.thumbnail %}
-                  <div class="project-icon">
-                    {% include figure.liquid loading="eager" path=project.thumbnail alt=project.name class="img-fluid" %}
-                  </div>
-                {% endif %}
-              </div>
-              <div class="project-links">
-                <a href="{{ project.github }}" class="btn btn-sm z-depth-0" role="button" target="_blank" rel="noopener noreferrer">
-                  <i class="fa-brands fa-github"></i> GitHub
-                </a>
-                {% if project.github_repo %}
-                  <span class="project-stats" data-repo="{{ project.github_repo }}">
-                    <span class="project-stat">
-                      <i class="fa-solid fa-star"></i>
-                      <span class="star-count">-</span>
-                    </span>
-                    <span class="project-stat">
-                      <i class="fa-solid fa-eye"></i>
-                      <span class="watcher-count">-</span>
-                    </span>
+              {% endif %}
+            </div>
+            <div class="project-links">
+              <a href="{{ project.github }}" class="btn btn-sm z-depth-0" role="button" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github"></i> GitHub
+              </a>
+              {% if project.github_repo %}
+                <span class="project-stats" data-repo="{{ project.github_repo }}">
+                  <span class="project-stat">
+                    <i class="fa-solid fa-star"></i>
+                    <span class="star-count">-</span>
                   </span>
-                {% endif %}
-              </div>
+                  <span class="project-stat">
+                    <i class="fa-solid fa-eye"></i>
+                    <span class="watcher-count">-</span>
+                  </span>
+                </span>
+              {% endif %}
             </div>
           </div>
         </div>
