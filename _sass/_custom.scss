@@ -311,10 +311,15 @@ html[data-theme='dark'] {
     line-height: 1.55 !important;
   }
 
-  // About-page intro paragraphs: left-aligned reads cleanest at narrow column widths
+  // About-page intro paragraphs: left-aligned reads cleanest at narrow column widths.
+  // Slightly larger type and a right-side inset so the block doesn't run
+  // all the way to the screen edge.
   .post.post-about article > .clearfix p {
     text-align: left;
     hyphens: manual;
+    font-size: 1.1rem !important;
+    line-height: 1.55 !important;
+    padding-right: 1.25rem;
   }
 }
 
