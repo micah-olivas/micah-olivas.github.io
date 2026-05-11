@@ -8,6 +8,7 @@ profile:
   align: right
   image: prof_pic.jpg
   image_circular: false
+  image_alt: Portrait of Micah Olivas
   more_info:
 
 highlighted_projects: true
@@ -23,9 +24,9 @@ latest_posts:
   enabled: false
 ---
 
-I am a PhD candidate in genetics and [NIH F31 fellow](https://reporter.nih.gov/search/bPF1kztkukeMtJJIhyTr_w/project-details/10752370) at Stanford University, where I am advised by [Polly Fordyce](http://www.fordycelab.com).
+I am a genetics PhD candidate and [NIH F31 fellow](https://reporter.nih.gov/search/bPF1kztkukeMtJJIhyTr_w/project-details/10752370) at Stanford University, where I am advised by [Polly Fordyce](http://www.fordycelab.com).
 
-In my research, I design high-throughput microfluidics experiments to reveal how the sequences of natural enzymes dictate their function. By developing optically coupled assays for catalysis, binding, and stability, I generate the large-scale datasets needed to connect protein sequence with biochemically resolved properties.
+In my research, I design high-throughput microfluidics experiments to reveal how the sequences of natural enzymes encode their function. By developing optically coupled assays for catalysis, binding, and protein stability, I generate large-scale datasets to map biochemically resolved properties to broad sequence landscapes.
 
 <!-- Image: overview of work -->
 

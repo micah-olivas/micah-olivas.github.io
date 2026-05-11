@@ -224,17 +224,17 @@ header.post-header .post-title {
 
 // Light mode customizations
 html[data-theme='light'] {
-  --global-bg-color: #FAF9F5 !important;
-  --global-theme-color: #0066cc !important; // Blue links
+  --global-bg-color: var(--em-bg) !important;
+  --global-theme-color: var(--em-accent) !important;
 
   a {
-    color: #0066cc !important;
+    color: var(--em-accent) !important;
   }
 }
 
-// Ensure link color is blue in default/light mode
+// Default/light mode link color
 :root {
-  --global-theme-color: #0066cc !important;
+  --global-theme-color: var(--em-accent) !important;
 }
 
 a {
@@ -316,7 +316,9 @@ html[data-theme='dark'] {
   // all the way to the screen edge.
   .post.post-about article > .clearfix p {
     text-align: left;
-    hyphens: manual;
+    hyphens: none;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
     font-size: 1.1rem !important;
     line-height: 1.55 !important;
     font-weight: 500 !important;
@@ -363,6 +365,15 @@ html[data-theme='dark'] {
 
       .email-address {
         text-align: center !important;
+        font-size: 0.95rem !important;
+
+        // Make the link itself the tap target so it meets 44px minimum.
+        a {
+          display: inline-block;
+          padding: 0.6rem 0.5rem;
+          min-height: 44px;
+          line-height: 1.6;
+        }
       }
     }
   }
@@ -598,27 +609,31 @@ header nav {
 
 // Profile social and email layout - very compact spacing
 .profile .social {
-  margin-top: 0.5rem !important;
+  margin-top: 0.9rem !important;
   padding-top: 0 !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
 
   .contact-icons {
     margin-top: 0 !important;
     margin-bottom: 0.25rem !important;
     padding-top: 0 !important;
     padding-bottom: 0 !important;
-    font-size: 1.5rem !important;
+    font-size: 1.75rem !important;
 
     a {
-      margin: 0 0.25rem !important;
+      margin: 0 0.4rem !important;
       padding: 0 !important;
 
       img, svg {
-        width: 1.5rem !important;
-        height: 1.5rem !important;
+        width: 1.75rem !important;
+        height: 1.75rem !important;
         margin-bottom: 0 !important;
       }
 
-      // Hide email icon since email address is displayed below
+      // Hide the envelope icon — the text email below acts as the mail link.
       &[href^="mailto"] {
         display: none !important;
       }
@@ -630,15 +645,15 @@ header nav {
 // so each icon is an unambiguous tap target.
 @media (max-width: 576px) {
   .profile .social .contact-icons {
-    font-size: 1.9rem !important;
-    gap: 0.9rem;
+    font-size: 2.15rem !important;
+    gap: 1rem;
 
     a {
-      margin: 0 0.5rem !important;
+      margin: 0 0.55rem !important;
 
       img, svg {
-        width: 1.9rem !important;
-        height: 1.9rem !important;
+        width: 2.15rem !important;
+        height: 2.15rem !important;
       }
     }
   }
@@ -663,11 +678,12 @@ header nav {
 
 @media (max-width: 576px) {
   .bibliography .links {
-    gap: 0.45rem;
+    gap: 0.5rem;
 
     .btn {
-      font-size: 0.82rem !important;
-      padding: 0.38rem 0.75rem !important;
+      font-size: 0.95rem !important;
+      padding: 0.4rem 0.85rem !important;
+      line-height: 1.3 !important;
     }
   }
 }
@@ -974,10 +990,10 @@ html[data-theme='dark'] .projects {
 
 // --- Refined palette ------------------------------------------------------
 :root {
-  --em-bg: #FAF8F3;            // cream (kept as-is)
-  --em-surface: #F5F1E8;       // card resting surface (a hair darker than bg)
-  --em-surface-strong: #EEE8DA; // card hover / stronger offset
-  --em-news-bg: #F7F4ED;       // just a hint darker than bg, for news container
+  --em-bg: #F8F7F3;            // soft off-white, warmth dialed down from prior cream
+  --em-surface: #F2F0EA;       // card resting surface (a hair darker than bg)
+  --em-surface-strong: #E9E6DE; // card hover / stronger offset
+  --em-news-bg: #F4F2EC;       // just a hint darker than bg, for news container
   --em-text: #141414;
   --em-text-soft: #5a5a5a;
   --em-text-muted: #8a8a8a;
@@ -1077,9 +1093,10 @@ header.post-header .desc {
   line-height: 1.2 !important;
   letter-spacing: -0.015em !important;
   color: var(--em-text) !important;
-  border-top: 1px solid var(--em-divider) !important;
-  padding-top: 1.1rem !important;
-  margin-top: 1.5rem !important;
+  clear: both;
+  border-top: none !important;
+  padding-top: 0 !important;
+  margin-top: 2.25rem !important;
   margin-bottom: 0.65rem !important;
 
   a {
@@ -1113,15 +1130,15 @@ header.post-header .desc {
 }
 
 // About page: let content wrap/hyphenate nicely around the profile image
-.post.about-page article .clearfix {
+.post.post-about article .clearfix {
   container-type: inline-size;
 }
 
-.post.about-page article .clearfix > p {
+.post.post-about article .clearfix > p {
   text-align: start;
-  hyphens: auto;
-  -webkit-hyphens: auto;
-  -ms-hyphens: auto;
+  hyphens: none;
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
   text-wrap: pretty;
   // Cap measure at a comfortable reading width on desktop. Paragraphs
   // wrapping next to the floated profile are already narrow; this only
@@ -1129,7 +1146,7 @@ header.post-header .desc {
   // stretch to the full container. Mobile (<576px) keeps full width —
   // container padding is already tight there.
   @media (min-width: 577px) {
-    max-width: 62ch;
+    max-width: 64ch;
   }
 }
 
@@ -1146,14 +1163,41 @@ html[data-theme='dark'] .profile img {
 
 .profile .email-address {
   font-family: 'JetBrains Mono', ui-monospace, monospace;
-  font-size: 0.78rem;
-  letter-spacing: -0.01em;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
 
   a {
-    color: var(--em-text-soft) !important;
+    color: var(--em-accent) !important;
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    transition: text-decoration-color 0.25s ease-out;
+
+    &:visited,
+    &:visited > span {
+      color: var(--em-accent) !important;
+    }
 
     &:hover {
-      color: var(--em-accent) !important;
+      text-decoration-color: var(--em-accent);
+    }
+
+    // Visible blue background lives on the inner span so it hugs the text
+    // tightly regardless of any tap-area padding the link carries.
+    // Robust equal-padding pill: display: inline-block + line-height: 1
+    // makes the box height exactly font-size + 2·padding, and the same em
+    // value on all sides produces visually equal margins around the text.
+    // (line-height: 1 is safe here because the email is one line of text;
+    // descenders fit inside the font's em box.)
+    > span {
+      color: inherit !important;
+      background-color: var(--em-accent-soft);
+      display: inline-block;
+      line-height: 1;
+      padding: 0.5em;
+      border-radius: 3px;
     }
   }
 }
@@ -1162,7 +1206,7 @@ html[data-theme='dark'] .profile img {
 .post article p,
 .post article li {
   color: var(--em-text);
-  font-size: 1rem;
+  font-size: 1.125rem;
   line-height: 1.65;
   text-wrap: pretty;
 }
@@ -1207,7 +1251,7 @@ html[data-theme='dark'] .profile img {
 
     th[scope="row"] {
       font-family: inherit !important;
-      font-size: 0.88rem !important;
+      font-size: 0.95rem !important;
       font-weight: 400 !important;
       letter-spacing: normal !important;
       color: var(--em-text-muted) !important;
@@ -1217,8 +1261,8 @@ html[data-theme='dark'] .profile img {
     }
 
     td {
-      font-size: 0.95rem;
-      line-height: 1.55;
+      font-size: 1.0625rem;
+      line-height: 1.6;
     }
 
     a {
@@ -1277,28 +1321,30 @@ html[data-theme='dark'] .news table a {
 .highlighted-projects {
   margin-bottom: 3rem;
 
-  // Masonry layout — cards size to content; shorter cards let the next one
-  // pack in below them rather than waiting for the next row.
+  // Cards size to content. CSS Grid keeps DOM order = visual order
+  // (row-major). On Firefox, grid-template-rows: masonry packs short
+  // cards under tall ones; everywhere else, cards align to the top of
+  // their row, leaving slight gaps below shorter cards in a row.
   .projects-masonry {
-    column-count: 3;
-    column-gap: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    align-items: start;
+
+    @supports (grid-template-rows: masonry) {
+      grid-template-rows: masonry;
+    }
 
     @media (max-width: 991.98px) {
-      column-count: 2;
+      grid-template-columns: repeat(2, 1fr);
     }
     @media (max-width: 575.98px) {
-      column-count: 1;
+      grid-template-columns: 1fr;
     }
 
     > .card {
-      // CSS columns place children top-to-bottom in each column; this keeps
-      // each card whole and gives the spacing between cards.
-      display: inline-block;
       width: 100%;
-      margin-bottom: 1.5rem;
-      break-inside: avoid;
-      page-break-inside: avoid;
-      -webkit-column-break-inside: avoid;
+      margin-bottom: 0;
 
       .card-body { height: auto; }
       .project-links { margin-top: 0.85rem; }
