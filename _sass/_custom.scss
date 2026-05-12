@@ -1116,6 +1116,11 @@ header.post-header .desc {
   }
 }
 
+// Remove gap between "papers" h2 and the publications list
+.post article h2 + .publications {
+  margin-top: 0 !important;
+}
+
 // Jekyll-scholar per-year heading inside .publications — subtle right-aligned label
 .publications h2.bibliography {
   font-family: inherit !important;
