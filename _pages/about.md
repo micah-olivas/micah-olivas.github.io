@@ -24,7 +24,7 @@ latest_posts:
   enabled: false
 ---
 
-I'm a PhD candidate and [NIH F31 fellow](https://reporter.nih.gov/search/bPF1kztkukeMtJJIhyTr_w/project-details/10752370) at Stanford University, and I'm advised by [Polly Fordyce](http://www.fordycelab.com).
+I'm a PhD candidate and [NIH F31 fellow](https://reporter.nih.gov/search/bPF1kztkukeMtJJIhyTr_w/project-details/10752370) at Stanford University advised by [Polly Fordyce](http://www.fordycelab.com).
 
 <!-- Image: overview of work -->
 
