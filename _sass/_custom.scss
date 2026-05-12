@@ -305,8 +305,16 @@ a {
     font-size: 1.1rem !important;
     line-height: 1.55 !important;
     font-weight: 500 !important;
-    padding-left: 0.75rem !important;
-    padding-right: 0.75rem !important;
+    padding-left: 0.25rem !important;
+    padding-right: 0.25rem !important;
+  }
+}
+
+// Bump name weight on mobile for stronger title presence
+@media (max-width: 576px) {
+  header.post-header .post-title,
+  .post-title {
+    font-weight: 500 !important;
   }
 }
 
@@ -318,7 +326,7 @@ a {
     float: none !important;
     margin-left: auto !important;
     margin-right: auto !important;
-    margin-bottom: 1.5rem !important;
+    margin-bottom: 1rem !important;
     text-align: center !important;
     display: block !important;
 
@@ -1161,9 +1169,9 @@ html[data-theme='dark'] .profile img {
 }
 
 .profile .email-address {
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-family: inherit;
   font-size: 0.9rem;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
 
   a {
     color: var(--em-accent) !important;
