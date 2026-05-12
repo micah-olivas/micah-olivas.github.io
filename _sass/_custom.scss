@@ -1000,7 +1000,7 @@ html[data-theme='dark'] .projects {
   --em-news-bg: #F4F2EC;       // just a hint darker than bg, for news container
   --em-text: #141414;
   --em-text-soft: #5a5a5a;
-  --em-text-muted: #8a8a8a;
+  --em-text-muted: #6a6a6a;
   --em-divider: rgba(20, 20, 20, 0.18);
   --em-divider-strong: rgba(20, 20, 20, 0.28);
   --em-accent: #2F5BD8;        // refined editorial blue
@@ -1084,9 +1084,11 @@ header.post-header .post-title,
 
 header.post-header .desc {
   font-family: inherit;
-  font-size: 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
   color: var(--em-text-soft);
-  letter-spacing: 0;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 // Section headings — plain, no mono eyebrow label (skip .year/.publications h2)
