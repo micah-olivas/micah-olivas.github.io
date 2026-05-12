@@ -583,7 +583,8 @@ html[data-theme='dark'] .profile img {
 // Dark-mode: invert dark-on-light thumbnails so they render on the dark bg.
 // Opt in per entry via data-invert-dark (set in _sass via entry key).
 html[data-theme='dark'] .bibliography .preview.invert-on-dark,
-html[data-theme='dark'] .bibliography .invert-on-dark .preview {
+html[data-theme='dark'] .bibliography .invert-on-dark .preview,
+html[data-theme='dark'] .bibliography #fannjiang2022designing .preview {
   filter: invert(1) hue-rotate(180deg);
 }
 
