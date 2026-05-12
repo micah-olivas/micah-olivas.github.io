@@ -241,23 +241,6 @@ a {
   color: var(--global-theme-color) !important;
 }
 
-// Dark mode customizations
-html[data-theme='dark'] {
-  --global-bg-color: #2b2b2b !important;
-  --global-card-bg-color: #3d3d3d !important;
-  --global-divider-color: rgba(255, 255, 255, 0.18) !important;
-  --global-theme-color: #6BA3FF !important; // Lighter blue for links
-  --global-text-color-light: rgba(255, 255, 255, 0.6) !important;
-
-  a {
-    color: #6BA3FF !important;
-  }
-
-  // Keep section titles white
-  h2, h3 {
-    color: white !important;
-  }
-}
 
 // Add horizontal lines above section headings
 .post article h2 {
@@ -508,16 +491,6 @@ html[data-theme='dark'] {
   }
 }
 
-// Add adaptive outline to profile picture (black/white)
-.profile img {
-  border: 2px solid #000000 !important;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1) !important;
-}
-
-html[data-theme='dark'] .profile img {
-  border-color: #FFFFFF !important;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2) !important;
-}
 
 // Make news scrollable
 .news .table-responsive {
@@ -1062,7 +1035,7 @@ html[data-theme='dark'] {
 
 body {
   font-family: 'Inter', 'Inter Fallback', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
-  font-size: 15.5px;
+  font-size: 16px;
   line-height: 1.5;
   letter-spacing: normal;
   text-wrap: pretty;
