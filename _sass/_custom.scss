@@ -352,29 +352,32 @@ html[data-theme='dark'] {
       display: block !important;
     }
 
+    // .social {
+    //   text-align: center !important;
+    //   margin-left: auto !important;
+    //   margin-right: auto !important;
+    //
+    //   .contact-icons {
+    //     text-align: center !important;
+    //     justify-content: center !important;
+    //     display: flex !important;
+    //   }
+    //
+    //   .email-address {
+    //     text-align: center !important;
+    //     font-size: 0.95rem !important;
+    //
+    //     // Make the link itself the tap target so it meets 44px minimum.
+    //     a {
+    //       display: inline-block;
+    //       padding: 0.6rem 0.5rem;
+    //       min-height: 44px;
+    //       line-height: 1.6;
+    //     }
+    //   }
+    // }
     .social {
-      text-align: center !important;
-      margin-left: auto !important;
-      margin-right: auto !important;
-
-      .contact-icons {
-        text-align: center !important;
-        justify-content: center !important;
-        display: flex !important;
-      }
-
-      .email-address {
-        text-align: center !important;
-        font-size: 0.95rem !important;
-
-        // Make the link itself the tap target so it meets 44px minimum.
-        a {
-          display: inline-block;
-          padding: 0.6rem 0.5rem;
-          min-height: 44px;
-          line-height: 1.6;
-        }
-      }
+      display: none !important;
     }
   }
 
@@ -643,21 +646,22 @@ header nav {
 
 // Larger, more tappable profile social icons on mobile, with extra spacing
 // so each icon is an unambiguous tap target.
-@media (max-width: 576px) {
-  .profile .social .contact-icons {
-    font-size: 2.15rem !important;
-    gap: 1rem;
-
-    a {
-      margin: 0 0.55rem !important;
-
-      img, svg {
-        width: 2.15rem !important;
-        height: 2.15rem !important;
-      }
-    }
-  }
-}
+// (Hidden on mobile — uncomment .social block above to restore)
+// @media (max-width: 576px) {
+//   .profile .social .contact-icons {
+//     font-size: 2.15rem !important;
+//     gap: 1rem;
+//
+//     a {
+//       margin: 0 0.55rem !important;
+//
+//       img, svg {
+//         width: 2.15rem !important;
+//         height: 2.15rem !important;
+//       }
+//     }
+//   }
+// }
 
 // Publication link buttons - better size
 .bibliography .links {
