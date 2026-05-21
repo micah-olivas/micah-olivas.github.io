@@ -13,3 +13,9 @@ vendor
 .idea
 .venv
 .cache/
+.claude/
+
+# Local-only resources (not part of the published site)
+Graphical-abstract.ai
+project_thumbnails/
+old_site/

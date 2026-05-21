@@ -206,6 +206,9 @@ exclude:
   - vendor
   - assets/jupyter/
   - data/
+  - Graphical-abstract.ai
+  - project_thumbnails/
+  - old_site/
 keep_files:
   - CNAME
   - .nojekyll
