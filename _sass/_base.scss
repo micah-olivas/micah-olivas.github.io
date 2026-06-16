@@ -940,13 +940,25 @@ code {
   word-wrap: break-word;
 }
 
-// Transitioning Themes - smooth and subtle
+// Theme cross-fade for browsers with the View Transitions API (Safari 18+,
+// Chrome, Firefox). The root snapshot blends old → new as one GPU-composited
+// layer, so every element recolors in sync. This is the primary path —
+// theme.js wraps the swap in document.startViewTransition().
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 220ms;
+  animation-timing-function: ease-in-out;
+}
+
+// Fallback for browsers without View Transitions: animate color on every
+// element via a temporary class. Safari recolors this tile-by-tile (slow,
+// staggered), which is exactly why the View Transition above is preferred.
 html.transition,
 html.transition *,
 html.transition *:before,
 html.transition *:after {
   transition: background-color 300ms ease-in-out, color 300ms ease-in-out !important;
-  transition-delay: 0 !important;
+  transition-delay: 0s !important;
 }
 
 // Extra Markdown style (post Customization)

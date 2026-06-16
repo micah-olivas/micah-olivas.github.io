@@ -1096,7 +1096,7 @@ header.post-header .desc {
 .post article h2:not(.year):not(.bibliography) {
   font-family: inherit !important;
   font-weight: 600 !important;
-  font-size: 1.3rem !important;
+  font-size: 1.6rem !important;
   line-height: 1.2 !important;
   letter-spacing: -0.015em !important;
   color: var(--em-text) !important;
@@ -1600,7 +1600,6 @@ header nav #light-toggle {
 }
 
 // Override padding-top set in _themes.scss so the active theme icon centers in the nav
-header nav #light-toggle #light-toggle-system,
 header nav #light-toggle #light-toggle-dark,
 header nav #light-toggle #light-toggle-light {
   padding-top: 0 !important;

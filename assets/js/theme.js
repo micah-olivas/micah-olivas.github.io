@@ -2,30 +2,47 @@
 
 // Toggle through light, dark, and system theme settings.
 let toggleThemeSetting = () => {
-  let themeSetting = determineThemeSetting();
-  if (themeSetting == "system") {
-    setThemeSetting("light");
-  } else if (themeSetting == "light") {
-    setThemeSetting("dark");
-  } else {
-    setThemeSetting("system");
-  }
+  // Two-state toggle: flip to the opposite of whatever is currently shown.
+  // Reading the computed theme (not the setting) means the first click always
+  // does the intuitive thing even from the first-visit "system" default.
+  let computed = determineComputedTheme();
+  setThemeSetting(computed == "dark" ? "light" : "dark", true);
 };
 
-// Change the theme setting and apply the theme.
-let setThemeSetting = (themeSetting) => {
+// Change the theme setting and apply the theme. `animate` should be true only
+// for user-initiated changes (toggle / system pref switch), not the initial
+// page load — animating on load would flash.
+let setThemeSetting = (themeSetting, animate = false) => {
   localStorage.setItem("theme", themeSetting);
 
   document.documentElement.setAttribute("data-theme-setting", themeSetting);
 
-  applyTheme();
+  applyThemeWithTransition(animate);
+};
+
+// Run the theme swap, cross-fading the whole page when possible. The View
+// Transitions API (Safari 18+, Chrome, Firefox) snapshots the page and blends
+// old → new as a single GPU-composited layer, so every element recolors in
+// sync. This replaces the per-element `html.transition *` color transitions,
+// which Safari applied tile-by-tile and produced visible slow, staggered
+// recoloring. Older browsers fall back to that class-based transition.
+let applyThemeWithTransition = (animate) => {
+  let reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (!animate || reduceMotion) {
+    applyTheme();
+  } else if (document.startViewTransition) {
+    document.startViewTransition(() => applyTheme());
+  } else {
+    transTheme();
+    applyTheme();
+  }
 };
 
 // Apply the computed dark or light theme to the website.
 let applyTheme = () => {
   let theme = determineComputedTheme();
 
-  transTheme();
   setHighlight(theme);
   setGiscusTheme(theme);
   setSearchTheme(theme);
@@ -303,6 +320,6 @@ let initTheme = () => {
 
   // Add event listener to the system theme preference change.
   window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", ({ matches }) => {
-    applyTheme();
+    applyThemeWithTransition(true);
   });
 };
