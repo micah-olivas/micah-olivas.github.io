@@ -28,7 +28,7 @@ I'm a PhD candidate and [NIH F31 fellow](https://reporter.nih.gov/search/bPF1kzt
 
 <!-- Image: overview of work -->
 
-In my research, I design high-throughput microfluidics experiments to reveal how the sequences of natural enzymes encode their function. By developing optically coupled assays for catalysis, binding, and protein stability, I generate large-scale datasets to map biochemically resolved properties to broad sequence landscapes.
+In my research, I design high-throughput microfluidics experiments to reveal how the sequences of natural enzymes determine their function. By developing optically coupled assays for catalysis, binding, and protein stability, I generate large-scale datasets to map biochemically resolved properties to broad sequence landscapes.
 
 <!-- **Research interests**:
 - assay development for high-throughput measurements of catalysis, binding, and protein stability
