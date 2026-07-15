@@ -1,44 +1,39 @@
 <div class="highlighted-projects">
   {% assign projects = site.data.highlighted_projects %}
   {% if projects %}
+    {% assign work_projects = projects | where_exp: "p", "p.personal != true" %}
+    {% assign personal_projects = projects | where_exp: "p", "p.personal == true" %}
+
+    <!-- Work-related projects, shown by default -->
     <div class="projects-masonry">
-      {% for project in projects %}
-        <div class="card">
-          <div class="card-body">
-            <div class="project-content-wrapper">
-              <div class="project-text">
-                <h5 class="card-title">
-                  <a href="{{ project.github }}" target="_blank" rel="noopener noreferrer">{{ project.name }}</a>
-                </h5>
-                <p class="card-text">{{ project.description }}</p>
-              </div>
-              {% if project.thumbnail %}
-                <div class="project-icon">
-                  {% include figure.liquid loading="eager" path=project.thumbnail alt=project.name class="img-fluid" %}
-                </div>
-              {% endif %}
-            </div>
-            <div class="project-links">
-              <a href="{{ project.github }}" class="btn btn-sm z-depth-0" role="button" target="_blank" rel="noopener noreferrer">
-                <i class="fa-brands fa-github"></i> GitHub
-              </a>
-              {% if project.github_repo %}
-                <span class="project-stats" data-repo="{{ project.github_repo }}">
-                  <span class="project-stat">
-                    <i class="fa-solid fa-star"></i>
-                    <span class="star-count">-</span>
-                  </span>
-                  <span class="project-stat">
-                    <i class="fa-solid fa-eye"></i>
-                    <span class="watcher-count">-</span>
-                  </span>
-                </span>
-              {% endif %}
-            </div>
-          </div>
-        </div>
+      {% for project in work_projects %}
+        {% include highlighted_project_card.liquid %}
       {% endfor %}
     </div>
+
+    <!-- Personal / non-work projects, hidden behind a toggle -->
+    {% if personal_projects.size > 0 %}
+      <div class="projects-toggle-wrap">
+        <button
+          type="button"
+          id="toggle-personal-highlighted"
+          class="projects-toggle"
+          aria-expanded="false"
+          aria-controls="personal-highlighted"
+        >
+          <span class="toggle-label">Show personal projects</span>
+          <i class="fa-solid fa-chevron-down toggle-chevron"></i>
+        </button>
+      </div>
+
+      <div id="personal-highlighted" class="personal-projects" hidden>
+        <div class="projects-masonry">
+          {% for project in personal_projects %}
+            {% include highlighted_project_card.liquid %}
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
@@ -56,7 +51,72 @@
             })
             .catch(function () {});
         });
+
+        var btn = document.getElementById("toggle-personal-highlighted");
+        var panel = document.getElementById("personal-highlighted");
+        if (btn && panel) {
+          var label = btn.querySelector(".toggle-label");
+          btn.addEventListener("click", function () {
+            var expanded = btn.getAttribute("aria-expanded") === "true";
+            btn.setAttribute("aria-expanded", String(!expanded));
+            panel.hidden = expanded;
+            label.textContent = expanded ? "Show personal projects" : "Hide personal projects";
+          });
+        }
       });
     </script>
+
+    <noscript>
+      <style>
+        /* Without JS there is no toggle, so just show everything. */
+        #personal-highlighted[hidden] {
+          display: block;
+        }
+        .highlighted-projects .projects-toggle-wrap {
+          display: none;
+        }
+      </style>
+    </noscript>
+
+    <style>
+      .highlighted-projects .projects-toggle-wrap {
+        text-align: center;
+        margin: 1.5rem 0 0.5rem;
+      }
+      .highlighted-projects .projects-toggle {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: none;
+        border: 1px solid var(--em-divider-strong);
+        border-radius: 8px;
+        color: var(--em-text-soft);
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        padding: 0.5rem 1.1rem;
+        cursor: pointer;
+        transition:
+          color 0.15s ease-in-out,
+          border-color 0.15s ease-in-out;
+      }
+      .highlighted-projects .projects-toggle:hover {
+        color: var(--em-accent);
+        border-color: var(--em-accent);
+      }
+      .highlighted-projects .projects-toggle .toggle-chevron {
+        font-size: 0.7rem;
+        transition: transform 0.2s ease-in-out;
+      }
+      .highlighted-projects .projects-toggle[aria-expanded="true"] .toggle-chevron {
+        transform: rotate(180deg);
+      }
+      .highlighted-projects #personal-highlighted {
+        margin-top: 0.85rem;
+      }
+      .highlighted-projects #personal-highlighted[hidden] {
+        display: none;
+      }
+    </style>
   {% endif %}
 </div>

@@ -43,7 +43,11 @@ module Jekyll
       site.data["highlighted_projects"] = featured.map do |r|
         slug = r["full_name"]
         ov = overrides[slug] || {}
-        tags = Array(r["topics"]).reject { |t| t == topic }
+        tags = Array(r["topics"]).reject { |t| t == topic || t == "personal" }
+        # A repo is "personal" (non-work) if the override says so, otherwise
+        # if it carries a "personal" GitHub topic. Personal projects are
+        # hidden behind a toggle on the about page.
+        personal = ov.key?("personal") ? ov["personal"] : Array(r["topics"]).include?("personal")
         {
           "name" => ov["name"] || r["name"],
           "description" => ov["description"] || r["description"].to_s,
@@ -51,6 +55,7 @@ module Jekyll
           "github_repo" => slug,
           "thumbnail" => ov["thumbnail"],
           "tags" => ov["tags"] || tags,
+          "personal" => personal,
         }
       end
 

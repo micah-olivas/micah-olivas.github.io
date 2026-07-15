@@ -2,6 +2,10 @@
 # Keyed by GitHub "owner/repo". Any field set here wins over the value pulled
 # from the GitHub API. Common use is `thumbnail:` since GitHub has no
 # equivalent.
+#
+# Set `personal: true` to mark a repo as non-work: it is hidden on the about
+# page behind the "Show personal projects" toggle. (A `personal` GitHub topic
+# does the same thing without needing an entry here.)
 
 micah-olivas/beak:
   thumbnail: assets/img/beak_thumbnail.jpg
@@ -12,3 +16,6 @@ FordyceLab/usortm:
 
 micah-olivas/array-print:
   name: ArrayPrint
+
+micah-olivas/whisper-cleaner:
+  personal: true
