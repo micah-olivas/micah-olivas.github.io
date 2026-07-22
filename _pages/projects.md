@@ -97,15 +97,26 @@ horizontal: false
     var panel = document.getElementById("personal-projects");
     if (!btn || !panel) return;
     var label = btn.querySelector(".toggle-label");
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var hideTimer;
     btn.addEventListener("click", function () {
       var expanded = btn.getAttribute("aria-expanded") === "true";
+      window.clearTimeout(hideTimer);
       if (expanded) {
         btn.setAttribute("aria-expanded", "false");
-        panel.classList.remove("is-visible");
-        panel.hidden = true;
         if (label) label.textContent = "Show personal";
+        // fade the set out, then remove from layout once it settles
+        panel.classList.remove("is-visible");
+        if (reduce) {
+          panel.hidden = true;
+        } else {
+          hideTimer = window.setTimeout(function () {
+            if (btn.getAttribute("aria-expanded") === "false") panel.hidden = true;
+          }, 500);
+        }
       } else {
         btn.setAttribute("aria-expanded", "true");
+        if (label) label.textContent = "Hide personal";
         panel.hidden = false;
         // paint the hidden (lifted/transparent) state, then transition in
         requestAnimationFrame(function () {
@@ -113,7 +124,6 @@ horizontal: false
             panel.classList.add("is-visible");
           });
         });
-        if (label) label.textContent = "Hide personal";
       }
     });
   });

@@ -1577,11 +1577,16 @@ html[data-theme='dark'] .highlighted-projects .card {
     display: none;
   }
 
-  // grid items rest lifted + transparent; .is-visible animates them in
+  // Items rest lifted + transparent. The transition lives on the base rule so
+  // the set eases out on collapse just as smoothly as it eases in — .is-visible
+  // only flips the end state (and layers on the reveal stagger).
   .row > .col,
   .projects-masonry > .card {
     opacity: 0;
     transform: translateY(10px);
+    transition:
+      opacity 0.45s cubic-bezier(0.22, 0.61, 0.36, 1),
+      transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
   }
 
   &.is-visible {
@@ -1589,11 +1594,9 @@ html[data-theme='dark'] .highlighted-projects .card {
     .projects-masonry > .card {
       opacity: 1;
       transform: none;
-      transition:
-        opacity 0.5s ease,
-        transform 0.5s ease;
     }
-    // gentle stagger so the set eases in rather than snapping together
+    // Stagger only on the way in, so revealing eases in rather than snapping
+    // together; collapsing drops the delays and fades the set out as one.
     @for $i from 1 through 10 {
       .row > .col:nth-child(#{$i}),
       .projects-masonry > .card:nth-child(#{$i}) {
