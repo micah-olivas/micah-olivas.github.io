@@ -1413,12 +1413,16 @@ html[data-theme='dark'] .news table a {
       }
     }
 
+    // Thumbnails sit flush: no framing border or background fill. The logos
+    // already carry their own rounded backgrounds, so an outer frame just
+    // double-frames them and reads as a pasted-on sticker. overflow:hidden +
+    // radius (inherited from the base rule) clips any square image cleanly.
     .project-icon {
-      width: 72px !important;
-      height: 72px !important;
-      border-radius: 8px !important;
-      border: 1px solid var(--em-divider-strong) !important;
-      background-color: var(--em-bg);
+      width: 76px !important;
+      height: 76px !important;
+      border-radius: 10px !important;
+      border: none !important;
+      background-color: transparent !important;
       transition: transform 0.2s ease;
       flex-shrink: 0;
     }
@@ -1475,7 +1479,7 @@ html[data-theme='dark'] .highlighted-projects .card {
     background-color: var(--em-surface) !important;
   }
   .project-icon {
-    background-color: var(--em-surface);
+    background-color: transparent;
   }
 }
 
@@ -1491,6 +1495,126 @@ html[data-theme='dark'] .highlighted-projects .card {
   color: var(--em-accent) !important;
   border: 1px solid var(--em-divider-strong) !important;
   text-transform: none !important;
+}
+
+// --- Personal-projects reveal toggle -------------------------------------
+// Shared by the projects page (Bootstrap grid) and the about-page highlighted
+// projects (CSS-grid masonry). The control tucks into the empty trailing cell
+// to the right of the last card, bottom-aligned to its baseline; the hidden
+// set fades + lifts into view on click.
+.projects-toggle-cell {
+  align-self: stretch; // fill the row height in either grid
+  display: flex;
+  align-items: flex-end; // sit on the baseline of the last card
+  justify-content: flex-start; // hug the left edge -> just right of that card
+  min-height: 2.5rem;
+
+  @media (max-width: 575.98px) {
+    align-items: center;
+    margin-top: 0.25rem;
+  }
+}
+
+.projects-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: none;
+  border: 1px solid transparent; // hairline only surfaces on hover/focus
+  border-radius: 8px;
+  color: var(--em-text-muted);
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  padding: 0.4rem 0.65rem;
+  cursor: pointer;
+  transition:
+    color 0.18s ease,
+    border-color 0.18s ease,
+    background-color 0.18s ease;
+
+  &:hover,
+  &:focus-visible {
+    color: var(--em-accent);
+    border-color: var(--em-divider);
+    background-color: var(--em-accent-soft);
+  }
+  &:focus-visible {
+    outline: 2px solid var(--em-accent);
+    outline-offset: 2px;
+  }
+
+  .toggle-count {
+    font-size: 0.72rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--em-text-muted);
+
+    &::before {
+      content: '·';
+      margin-right: 0.4rem;
+      opacity: 0.6;
+    }
+  }
+  &[aria-expanded='true'] .toggle-count {
+    display: none;
+  }
+
+  .toggle-chevron {
+    font-size: 0.62rem;
+    transition: transform 0.22s ease;
+  }
+  &[aria-expanded='true'] .toggle-chevron {
+    transform: rotate(180deg);
+  }
+}
+
+.personal-projects {
+  margin-top: 1rem;
+
+  &[hidden] {
+    display: none;
+  }
+
+  // grid items rest lifted + transparent; .is-visible animates them in
+  .row > .col,
+  .projects-masonry > .card {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  &.is-visible {
+    .row > .col,
+    .projects-masonry > .card {
+      opacity: 1;
+      transform: none;
+      transition:
+        opacity 0.5s ease,
+        transform 0.5s ease;
+    }
+    // gentle stagger so the set eases in rather than snapping together
+    @for $i from 1 through 10 {
+      .row > .col:nth-child(#{$i}),
+      .projects-masonry > .card:nth-child(#{$i}) {
+        transition-delay: #{($i - 1) * 0.05}s;
+      }
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .personal-projects {
+    .row > .col,
+    .projects-masonry > .card {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+  .projects-toggle .toggle-chevron {
+    transition: none;
+  }
 }
 
 // --- Navbar ---------------------------------------------------------------
