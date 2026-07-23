@@ -1413,10 +1413,11 @@ html[data-theme='dark'] .news table a {
       }
     }
 
-    // Thumbnails sit flush: no framing border or background fill. The logos
-    // already carry their own rounded backgrounds, so an outer frame just
-    // double-frames them and reads as a pasted-on sticker. overflow:hidden +
-    // radius (inherited from the base rule) clips any square image cleanly.
+    // Thumbnails sit flush: no framing border or background fill, one uniform
+    // corner radius applied here. Source images are kept as plain edge-to-edge
+    // squares (no baked-in rounding/border/shadow) so the card alone controls
+    // the shape and every tile matches. object-fit:cover + fixed size make the
+    // rendered tile exactly 76×76 regardless of a source's minor aspect quirks.
     .project-icon {
       width: 76px !important;
       height: 76px !important;
@@ -1425,6 +1426,12 @@ html[data-theme='dark'] .news table a {
       background-color: transparent !important;
       transition: transform 0.2s ease;
       flex-shrink: 0;
+
+      img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+      }
     }
 
     .card-text {
@@ -1570,50 +1577,46 @@ html[data-theme='dark'] .highlighted-projects .card {
   }
 }
 
-.personal-projects {
-  margin-top: 1rem;
-
-  &[hidden] {
-    display: none;
-  }
-
-  // Items rest lifted + transparent. The transition lives on the base rule so
-  // the set eases out on collapse just as smoothly as it eases in — .is-visible
-  // only flips the end state (and layers on the reveal stagger).
-  .row > .col,
-  .projects-masonry > .card {
-    opacity: 0;
-    transform: translateY(10px);
-    transition:
-      opacity 0.45s cubic-bezier(0.22, 0.61, 0.36, 1),
-      transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
-  }
-
-  &.is-visible {
-    .row > .col,
-    .projects-masonry > .card {
-      opacity: 1;
-      transform: none;
-    }
-    // Stagger only on the way in, so revealing eases in rather than snapping
-    // together; collapsing drops the delays and fades the set out as one.
-    @for $i from 1 through 10 {
-      .row > .col:nth-child(#{$i}),
-      .projects-masonry > .card:nth-child(#{$i}) {
-        transition-delay: #{($i - 1) * 0.05}s;
-      }
-    }
-  }
+// Personal cards live inline in the same grid as the work cards and fill in
+// right after them once revealed. They rest out of the flow (display: none)
+// until the toggle opens the set; then they take their grid cells transparent
+// + lifted and fade into place. `personal-open` puts them in the layout;
+// `personal-in` runs the fade — a two-step so display can flip before the
+// transition. The base transition also carries the smooth collapse.
+// Scoped (two-class) so this reliably beats Bootstrap's own `.card { display:
+// flex }` regardless of stylesheet order — a bare `.js-personal` would only tie.
+.projects .js-personal,
+.highlighted-projects .js-personal {
+  display: none;
+}
+.projects.personal-open .js-personal,
+.highlighted-projects.personal-open .js-personal {
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.45s cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+// Restore each surface's own display when shown: the projects page wraps cards
+// in a block `.col`; the masonry marks the flex `.card` itself.
+.projects.personal-open .js-personal {
+  display: block;
+}
+.highlighted-projects.personal-open .js-personal {
+  display: flex;
+}
+.projects.personal-open.personal-in .js-personal,
+.highlighted-projects.personal-open.personal-in .js-personal {
+  opacity: 1;
+  transform: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .personal-projects {
-    .row > .col,
-    .projects-masonry > .card {
-      opacity: 1;
-      transform: none;
-      transition: none;
-    }
+  .projects.personal-open .js-personal,
+  .highlighted-projects.personal-open .js-personal {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
   .projects-toggle .toggle-chevron {
     transition: none;

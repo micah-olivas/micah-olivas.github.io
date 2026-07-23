@@ -1,6 +1,6 @@
 <!-- One highlighted-project card. Expects a `project` variable in scope, set by
      the enclosing for-loop in highlighted_projects.liquid. -->
-<div class="card">
+<div class="card {{ include.extra_class }}"{% if include.id %} id="{{ include.id }}"{% endif %}>
   <div class="card-body">
     <div class="project-content-wrapper">
       <div class="project-text">

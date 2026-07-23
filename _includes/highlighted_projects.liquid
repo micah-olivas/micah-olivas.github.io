@@ -4,11 +4,19 @@
     {% assign work_projects = projects | where_exp: "p", "p.personal != true" %}
     {% assign personal_projects = projects | where_exp: "p", "p.personal == true" %}
 
-    <!-- Work-related projects, shown by default. The reveal control rides along
-         in the masonry's trailing cell, just right of the last card. -->
+    {% assign personal_ids = "" %}
+    {% for project in personal_projects %}{% assign personal_ids = personal_ids | append: "personal-highlighted-" | append: forloop.index | append: " " %}{% endfor %}
+
+    <!-- Work + personal share one masonry grid. Personal cards sit inline,
+         hidden until the toggle reveals them, so they fill in right after the
+         work cards; the toggle trails along to whatever the last cell becomes. -->
     <div class="projects-masonry">
       {% for project in work_projects %}
         {% include highlighted_project_card.liquid %}
+      {% endfor %}
+      {% for project in personal_projects %}
+        {% capture pid %}personal-highlighted-{{ forloop.index }}{% endcapture %}
+        {% include highlighted_project_card.liquid extra_class="js-personal" id=pid %}
       {% endfor %}
 
       {% if personal_projects.size > 0 %}
@@ -18,7 +26,7 @@
             id="toggle-personal-highlighted"
             class="projects-toggle"
             aria-expanded="false"
-            aria-controls="personal-highlighted"
+            aria-controls="{{ personal_ids | strip }}"
           >
             <span class="toggle-label">Show personal</span>
             <span class="toggle-count">{{ personal_projects.size }}</span>
@@ -27,17 +35,6 @@
         </div>
       {% endif %}
     </div>
-
-    <!-- Personal / non-work projects, revealed by the toggle above -->
-    {% if personal_projects.size > 0 %}
-      <div id="personal-highlighted" class="personal-projects" hidden>
-        <div class="projects-masonry">
-          {% for project in personal_projects %}
-            {% include highlighted_project_card.liquid %}
-          {% endfor %}
-        </div>
-      </div>
-    {% endif %}
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
@@ -57,8 +54,8 @@
         });
 
         var btn = document.getElementById("toggle-personal-highlighted");
-        var panel = document.getElementById("personal-highlighted");
-        if (btn && panel) {
+        var grid = document.querySelector(".highlighted-projects");
+        if (btn && grid) {
           var label = btn.querySelector(".toggle-label");
           var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
           var hideTimer;
@@ -68,23 +65,23 @@
             if (expanded) {
               btn.setAttribute("aria-expanded", "false");
               if (label) label.textContent = "Show personal";
-              // fade the set out, then remove from layout once it settles
-              panel.classList.remove("is-visible");
+              // fade the cards out, then drop them from the grid once they settle
+              grid.classList.remove("personal-in");
               if (reduce) {
-                panel.hidden = true;
+                grid.classList.remove("personal-open");
               } else {
                 hideTimer = window.setTimeout(function () {
-                  if (btn.getAttribute("aria-expanded") === "false") panel.hidden = true;
+                  if (btn.getAttribute("aria-expanded") === "false") grid.classList.remove("personal-open");
                 }, 500);
               }
             } else {
               btn.setAttribute("aria-expanded", "true");
               if (label) label.textContent = "Hide personal";
-              panel.hidden = false;
-              // paint the hidden (lifted/transparent) state, then transition in
+              // place the cards in the grid (transparent), then fade them in
+              grid.classList.add("personal-open");
               requestAnimationFrame(function () {
                 requestAnimationFrame(function () {
-                  panel.classList.add("is-visible");
+                  grid.classList.add("personal-in");
                 });
               });
             }
@@ -95,11 +92,10 @@
 
     <noscript>
       <style>
-        /* Without JS there is no toggle, so just show everything, un-hidden. */
-        #personal-highlighted[hidden] {
-          display: block;
-        }
-        #personal-highlighted .projects-masonry > .card {
+        /* Without JS there is no toggle, so just show everything, un-hidden.
+           Cards are flex (Bootstrap .card), so restore flex, not block. */
+        .highlighted-projects .js-personal {
+          display: flex !important;
           opacity: 1 !important;
           transform: none !important;
         }
