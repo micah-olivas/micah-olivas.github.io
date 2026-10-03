@@ -42,7 +42,12 @@
         if (e.target !== main) return; // ignore descendant animations
         main.removeEventListener('animationend', onDone);
         main.style.willChange = 'auto';
-        // Explicitly clear filter so any lingering GPU layer is released.
+        // The animation's `forwards` fill outranks inline styles, so a
+        // leftover blur(0) would keep the page on a composited layer and
+        // rasterize thin rounded borders grainy. Drop the animation and pin
+        // the resting state so the layer is released.
+        main.style.animation = 'none';
+        main.style.opacity = '1';
         main.style.filter = 'none';
       });
     }
